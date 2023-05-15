@@ -3,14 +3,14 @@ const router = express.Router();
 const userData = require("../../db/config");
 
 router.get('/', async (req,res) => {
-    const snapshot = await userData.get()
-    const list = snapshot.docs.map((doc)=>doc.data())
-    res.send(list)    
+    const snapshot = await userData.get();
+    const list = snapshot.docs.map((doc)=>doc.data());
+    res.send(list);
 });
 
-router.post('/add', (req, res) => {
+router.post('/add', async (req, res) => {
     const data = req.body;
-    userData.add({ data });
+    await userData.add({ data });
     res.send({ msg: data});
 });
 
