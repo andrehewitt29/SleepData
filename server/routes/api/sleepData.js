@@ -32,16 +32,10 @@ router.post('/signup', async (req, res) =>{
                 emailVerified: false,
                 disabled: false
             });
+
+            res.json(userResponse);
         }
       })
-    const userResponse = await firebaseAdmin.auth().createUser({
-        email: user.email,
-        password: user.password,
-        emailVerified: false,
-        disabled: false
-    });
-
-    res.json(userResponse);
 });
 
 
