@@ -1,4 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react';
+import './style.css';
+import logo from './img/LifespanTrustLogo.png';
+
 
 function App(){
 
@@ -15,16 +18,22 @@ function App(){
   }, [])
 
   return(
-    <div>
-      {(typeof backendData.users === 'undefined') ? (
-        <p>Loading...</p>
-      ):(
-        backendData.users.map((user, i) => (
-          <p>{user}</p>
-        ))
-      )}
-    </div>
+    <Navigation />
   )
 }
+
+const Navigation = () => (
+  <header id="topbar">
+        <ul id="leftHeader">
+            <a href="#" class="headlink" id="selected"><li>Home</li></a>
+            <a href="#" class="headlink"><li>About</li></a>
+        </ul>
+        <img id="logo" src={logo} />
+        <ul id="rightHeader">
+            <a href="#" class="headlink"><li>Sign Up</li></a>
+            <a href="#" class="headlink"><li>Login</li></a>
+        </ul>
+    </header>
+)
 
 export default App
