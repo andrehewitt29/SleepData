@@ -32,11 +32,24 @@ router.post('/signup', async (req, res) =>{
                 emailVerified: false,
                 disabled: false
             });
-
+            res.locals.currentUser = 
             res.json(userResponse);
         }
       })
 });
+
+router.post('/signin', async (req, res) =>{
+    const user = {
+        email: req.body.email,
+        password: req.body.password
+    };
+});
+
+router.use((req, res, next) => {
+    var user = firebaseAdmin.auth().currentUser;
+    res.locals.currentUser = user;
+    next();
+})
 
 
 module.exports = router;
