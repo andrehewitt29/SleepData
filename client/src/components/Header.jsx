@@ -17,16 +17,16 @@ function Header(Title) {
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="navbar-nav">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home</a>
+                                <a class="nav-link" href="home">Home</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="about.html">About</a>
+                                <a class="nav-link" href="about">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="signup.html">Sign Up</a>
+                                <a class="nav-link" href="signup">Sign Up</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="signin.html">Sign In</a>
+                                <a class="nav-link" href="signin">Sign In</a>
                             </li>
                         </ul>
                     </div>
