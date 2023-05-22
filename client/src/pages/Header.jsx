@@ -1,6 +1,24 @@
 import React from "react";
+import '../style.css';
+import logo from '../img/LifespanTrustLogo.png';
 
 function Header(Title) {
+    return(
+    <header id="topbar">
+        <ul id="leftHeader">
+            <a href="#" class="headlink" id="selected"><li>Home</li></a>
+            <a href="#" class="headlink"><li>About</li></a>
+        </ul>
+        <img id="logo" src={logo} />
+        <ul id="rightHeader">
+            <a href="#" class="headlink"><li>Sign Up</li></a>
+            <a href="#" class="headlink"><li>Login</li></a>
+        </ul>
+    </header>
+    );
+}
+
+function OldHeader(Title) {
     return (
         <div class="row">
             <div class="col-md-12">
