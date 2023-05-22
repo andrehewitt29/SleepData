@@ -6,6 +6,10 @@ function Home() {
     return (
         <div class="container-fluid">
             {Header("About")}
+            <div>
+                This is the about page, all information about purpose of this application will go here.
+             
+            </div>
             <Footer />
         </div>
     );
