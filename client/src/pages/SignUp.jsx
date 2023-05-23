@@ -5,7 +5,7 @@ import SignInForm from '../components/SignUpForm';
 function SignUp() {
     return (
         <div class="container-fluid">
-            {Header("Sign In")}
+            {Header("Sign Up")}
             {SignInForm()}
             <Footer />
         </div>
