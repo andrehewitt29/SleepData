@@ -1,11 +1,12 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import '../style.css';
 
 function SignUp() {
     return (
         <div class="container-fluid">
-            {Header("Sign Up")}
+            {Header("signup")}
             <div class="row">
                 <div class="col-md-4"/>
                 <div class="col-md-4">

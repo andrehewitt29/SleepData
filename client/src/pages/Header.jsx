@@ -6,18 +6,23 @@ function Header(Title) {
     return(
     <header id="topbar">
         <ul id="leftHeader">
-            <a href="#" class="headlink" id="selected"><li>Home</li></a>
-            <a href="#" class="headlink"><li>About</li></a>
+            <a href="#" class="headlink" id="home"><li>Home</li></a>
+            <a href="#" class="headlink" id="about"><li>About</li></a>
         </ul>
-        <img id="logo" src={logo} />
+        <img id="logo" src={logo} alt=""/>
         <ul id="rightHeader">
-            <a href="#" class="headlink"><li>Sign Up</li></a>
-            <a href="#" class="headlink"><li>Login</li></a>
+            <a href="#" class="headlink" id="signup"><li>Sign Up</li></a>
+            <a href="#" class="headlink" id="login"><li>Login</li></a>
         </ul>
+        <script>
+            document.getElementById({Title}).style.color = "#0073c9";
+            console.log({Title});
+        </script>
     </header>
     );
 }
 
+/*
 function OldHeader(Title) {
     return (
         <div class="row">
@@ -53,5 +58,6 @@ function OldHeader(Title) {
       </div>
     );
 }
+*/
 
 export default Header;

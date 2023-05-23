@@ -13,6 +13,7 @@
 #topbar {
     display: flex;
     height: 12vh;
+    min-height: 100px;
 }
 
 #topbar ul {
@@ -47,6 +48,7 @@
     /* background-image:url(../images/sleeping_1.jpg); */
     color: #ffffff;
     height: 45vh;
+    min-height: 420px;
 }
 
 #starter-paragraph {

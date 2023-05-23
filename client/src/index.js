@@ -4,13 +4,16 @@ import './index.css';
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import Home from './pages/Home';
+import TestPage from './pages/Home';
+//import TestPage from './pages/About';
+//import TestPage from './pages/SignUp';
+//import TestPage from './pages/SignIn';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Home />
+    <TestPage />
   </React.StrictMode>
 );
 
