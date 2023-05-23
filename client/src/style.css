@@ -1,0 +1,134 @@
+/* Stylesheet for Lifespan Organization */
+
+/* Global Styling */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* Header */
+
+#topbar {
+    display: flex;
+    height: 12vh;
+    min-height: 100px;
+}
+
+#topbar ul {
+    display: flex;
+    margin: auto auto;
+}
+
+.headlink {
+    list-style-type: none;
+    font-weight: bold;
+    padding: 25px;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.2em;
+}
+
+#selected {
+    color: #0073c9;
+}
+
+
+#logo {
+    width: 18em;
+    margin: auto;
+}
+
+/* Main */
+
+#starter-page {
+    background-color: #8d2828;
+    /* background-image:url(../images/sleeping_1.jpg); */
+    color: #ffffff;
+    height: 45vh;
+    min-height: 420px;
+}
+
+#starter-paragraph {
+    width: 30%;
+    height: 100%;
+/*    height: 25%;*/
+/*    border: 4px solid #3e90ff;*/
+    padding: 5% 25px;
+    margin: 0px 18%;
+}
+
+#starter-paragraph h1 {
+    margin: 13px 0;
+}
+
+#quote {
+    font-style: italic;
+    width: 80%;
+/*    margin: 5px 50%;*/
+    text-align: right;
+}
+
+/* (Main) Cards */
+#card-title {
+    text-align: center;
+    width: 100%;
+    margin: 3.5vh 0;
+}
+
+#group-cards {
+    width: 100%;
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.card {
+    width: 25%;
+    margin: 25px auto 0 auto;
+    height: 40vh;
+    background-color: #dedede;
+/*    padding: 0 25px;*/
+}
+
+.card img {
+    width: 100%;
+}
+
+.card-paragraph {
+    padding: 0 10px;
+}
+
+.card-paragraph h1 {
+    margin: 5px 0;
+}
+
+/* Footer */
+footer {
+    height: 100px;
+    background-color: black;
+    color: white;
+    display: flex;
+}
+
+.footer-section {
+    width: 50%;
+    display: flex;
+}
+
+.footer-section a {
+    color: #FFF;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+#copyright a {
+    margin: auto;
+    padding: 15px;
+}
+
+#policy a {
+    margin: auto;
+}
