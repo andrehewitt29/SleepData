@@ -2,7 +2,7 @@ import React from "react";
 import '../style.css';
 import logo from '../img/LifespanTrustLogo.png';
 
-function Header(Title) {
+function Header() {
     return(
     <header id="topbar">
         <ul id="leftHeader">
@@ -14,10 +14,6 @@ function Header(Title) {
             <a href="#" class="headlink" id="signup"><li>Sign Up</li></a>
             <a href="#" class="headlink" id="login"><li>Login</li></a>
         </ul>
-        <script>
-            document.getElementById({Title}).style.color = "#0073c9";
-            console.log({Title});
-        </script>
     </header>
     );
 }

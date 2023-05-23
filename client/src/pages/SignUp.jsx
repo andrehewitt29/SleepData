@@ -6,7 +6,7 @@ import '../style.css';
 function SignUp() {
     return (
         <div class="container-fluid">
-            {Header("signup")}
+            <Header />
             <div class="row">
                 <div class="col-md-4"/>
                 <div class="col-md-4">

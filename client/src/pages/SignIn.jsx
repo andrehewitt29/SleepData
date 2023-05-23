@@ -6,7 +6,7 @@ import '../style.css';
 function SignIn() {
     return (
         <div class="container-fluid">
-            {Header("signin")}
+            <Header />
             <div class="row" style={{minHeight: "250px", padding:"25px"}}>
                 <div class="col-md-4"/>
                 <div class="col-md-4">

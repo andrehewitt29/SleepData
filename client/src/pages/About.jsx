@@ -6,7 +6,7 @@ import '../style.css';
 function About() {
     return (
         <div class="container-fluid">
-            {Header("about")}
+            <Header />
             <Footer />
         </div>
     );

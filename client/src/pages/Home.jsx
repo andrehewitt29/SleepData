@@ -7,7 +7,7 @@ import placeholdImg from '../img/card_placeholder.png';
 function Home() {
     return (
         <div class="container-fluid">
-            {Header('home')}
+            <Header />
             <div id="starter-page">
                 <div id="starter-paragraph">
                     <h1>Quote of the Month</h1>
