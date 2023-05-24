@@ -3,6 +3,8 @@ import Header from './Header';
 import Footer from './Footer';
 import '../style.css';
 
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 function SignIn() {
     return (
         <div class="container-fluid">
@@ -10,7 +12,9 @@ function SignIn() {
             <div class="row" style={{minHeight: "250px", padding:"25px"}}>
                 <div class="col-md-4"/>
                 <div class="col-md-4">
-                    <form>
+                    <form onSubmit={
+                        Test()
+                    }>
                         <div class="form-group">
                             <label for="InputEmail">Email address</label>
                             <input type="email" class="form-control" id="InputEmail" />
@@ -27,6 +31,15 @@ function SignIn() {
             <Footer />
         </div>
     );
+}
+
+function Test(){
+    try{
+        console.log(document.getElementById("InputEmail").value)
+    }
+    catch{
+        
+    }    
 }
 
 export default SignIn;
