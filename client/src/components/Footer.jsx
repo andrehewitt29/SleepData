@@ -2,16 +2,16 @@ import React from 'react';
 
 function Footer() {
     return (
-        <div class="row">
-            <div class="col-md-3">
-                <p class="text-center">Copyright</p>
+        <div className="row">
+            <div className="col-md-3">
+                <p className="text-center">Copyright</p>
             </div>
-            <div class="col-md-3" />
-            <div class="col-md-3">
-                <p class="text-center">Privacy Policy</p>
+            <div className="col-md-3" />
+            <div className="col-md-3">
+                <p className="text-center">Privacy Policy</p>
             </div>
-            <div class="col-md-3">
-                <p class="text-center">Terms and Condition</p>
+            <div className="col-md-3">
+                <p className="text-center">Terms and Condition</p>
             </div>
         </div>
     );

@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 
 function Home() {
     return (
-        <div class="container-fluid">
+        <div className="container-fluid">
             {Header("Home Page")}
             <Footer />
         </div>
