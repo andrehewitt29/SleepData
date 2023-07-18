@@ -6,13 +6,13 @@ function Header() {
     return(
     <header id="topbar">
         <ul id="leftHeader">
-            <a href="#" class="headlink" id="home"><li>Home</li></a>
-            <a href="#" class="headlink" id="about"><li>About</li></a>
+            <a href="Home" class="headlink" id="home"><li>Home</li></a>
+            <a href="About" class="headlink" id="about"><li>About</li></a>
         </ul>
         <img id="logo" src={logo} alt=""/>
         <ul id="rightHeader">
-            <a href="#" class="headlink" id="signup"><li>Sign Up</li></a>
-            <a href="#" class="headlink" id="login"><li>Login</li></a>
+            <a href="SignUp" class="headlink" id="signup"><li>Sign Up</li></a>
+            <a href="SignIn" class="headlink" id="login"><li>Login</li></a>
         </ul>
     </header>
     );
