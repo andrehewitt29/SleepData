@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import Home from "./pages/Home";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import NoPage from "./pages/NoPage";
 import About from "./pages/About";
+import DataForm from './pages/DataForm';
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import NoPage from "./pages/NoPage";
+import Payment from "./pages/Payment";
+import Settings from "./pages/Settings";
+import SignUp from "./pages/SignUp";
 
 
 function App(){
@@ -26,11 +29,14 @@ function App(){
     <BrowserRouter>
     <Routes>
     <Route index element={<Home/>}/>
-    <Route path="/home" element={<Home/>}/>
-    <Route path="/signin" element={<SignIn/>}/>
-    <Route path="/signup" element={<SignUp/>}/>
-    <Route path="/about" element={<About/>}/>
-    <Route path="/nopage" element={<NoPage/>}/>
+    <Route path="/About" element={<About/>}/>
+    <Route path="/DataForm" element={<DataForm/>}/>
+    <Route path="/Home" element={<Home/>}/>
+    <Route path="/Login" element={<Login/>}/>
+    <Route path="/Payment" element={<Payment/>}/>
+    <Route path="/Settings" element={<Settings/>}/>
+    <Route path="/SignUp" element={<SignUp/>}/>
+    <Route path="/*" element={<NoPage/>}/>
   </Routes>
     </BrowserRouter>     
   </div>

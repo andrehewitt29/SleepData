@@ -12,7 +12,7 @@ function Header() {
         <img id="logo" src={logo} alt=""/>
         <ul id="rightHeader">
             <a href="SignUp" class="headlink" id="signup"><li>Sign Up</li></a>
-            <a href="SignIn" class="headlink" id="login"><li>Login</li></a>
+            <a href="Login" class="headlink" id="login"><li>Login</li></a>
         </ul>
     </header>
     );
