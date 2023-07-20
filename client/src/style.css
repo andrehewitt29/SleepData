@@ -132,3 +132,8 @@ footer {
 #policy a {
     margin: auto;
 }
+
+.inputAlignHeight {
+    float: right;
+    line-height: 100%;
+}
