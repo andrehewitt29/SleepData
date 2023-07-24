@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { AuthCredential, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "../firebase";
 
@@ -10,7 +10,8 @@ const SignIn = () => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            console.log(userCredential);
+            console.log(userCredential);       
+        
         }).catch((error) => {
             console.log(error)
         })
@@ -33,7 +34,9 @@ const SignIn = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 ></input>
                 <button type="submit">Login</button>
+                
             </form>
+            
         </div>
     );
 };

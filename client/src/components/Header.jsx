@@ -1,5 +1,6 @@
 import React from "react";
-
+//import { Auth } from "firebase/auth";
+//import { auth } from "../firebase";
 function Header(Title) {
     return (
         <div className="row">
@@ -27,13 +28,16 @@ function Header(Title) {
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="signin">Sign In</a>
-                            </li>
+                            </li>   
+                            <li className="nav-item">
+                                <a className="nav-link" href="account">Account</a>
+                            </li>  
                         </ul>
                     </div>
                 </nav>
             </div>
       </div>
     );
-}
+} //</div><form onSubmit={[auth.signOut()]}><button type="submit">Log Out</button></form>
 
 export default Header;
