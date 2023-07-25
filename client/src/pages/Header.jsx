@@ -2,22 +2,18 @@ import React from "react";
 import '../style.css';
 import logo from '../img/LifespanTrustLogo.png';
 
-function Header(Title) {
+function Header() {
     return(
     <header id="topbar">
         <ul id="leftHeader">
-            <a href="#" class="headlink" id="home"><li>Home</li></a>
-            <a href="#" class="headlink" id="about"><li>About</li></a>
+            <a href="Home" class="headlink" id="home"><li>Home</li></a>
+            <a href="About" class="headlink" id="about"><li>About</li></a>
         </ul>
         <img id="logo" src={logo} alt=""/>
         <ul id="rightHeader">
-            <a href="#" class="headlink" id="signup"><li>Sign Up</li></a>
-            <a href="#" class="headlink" id="login"><li>Login</li></a>
+            <a href="SignUp" class="headlink" id="signup"><li>Sign Up</li></a>
+            <a href="Login" class="headlink" id="login"><li>Login</li></a>
         </ul>
-        <script>
-            document.getElementById({Title}).style.color = "#0073c9";
-            console.log({Title});
-        </script>
     </header>
     );
 }

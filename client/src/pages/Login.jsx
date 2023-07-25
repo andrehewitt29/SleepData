@@ -3,10 +3,10 @@ import Header from './Header';
 import Footer from './Footer';
 import '../style.css';
 
-function SignIn() {
+function Login() {
     return (
         <div class="container-fluid">
-            {Header("signin")}
+            <Header />
             <div class="row" style={{minHeight: "250px", padding:"25px"}}>
                 <div class="col-md-4"/>
                 <div class="col-md-4">
@@ -19,7 +19,8 @@ function SignIn() {
                             <label for="InputPassword">Password</label>
                             <input type="password" class="form-control" id="InputPassword" />
                         </div>
-                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                        <br/>
+                        <button type="submit" class="btn btn-primary">Login</button>
                     </form>
                 </div>
                 <div class="col-md-4"/>
@@ -29,4 +30,4 @@ function SignIn() {
     );
 }
 
-export default SignIn;
+export default Login;

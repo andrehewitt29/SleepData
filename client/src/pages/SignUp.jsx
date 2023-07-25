@@ -6,8 +6,8 @@ import '../style.css';
 function SignUp() {
     return (
         <div class="container-fluid">
-            {Header("signup")}
-            <div class="row">
+            <Header />
+            <div class="row" style={{minHeight: "250px", padding:"25px"}}>
                 <div class="col-md-4"/>
                 <div class="col-md-4">
                     <form>
@@ -19,6 +19,7 @@ function SignUp() {
                             <label for="InputPassword">Password</label>
                             <input type="password" class="form-control" id="InputPassword" />
                         </div>
+                        <br/>
                         <button type="submit" class="btn btn-primary">Sign Up</button>
                     </form>
                 </div>
