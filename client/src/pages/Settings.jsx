@@ -13,26 +13,26 @@ function Settings() {
             <div class="row">
                 <div class="col-md-4" />
                 <div class="col-md-4">
-                    <form style={{lineHeight: "200%"}}>
-                    <label>Username: </label><span class="inputAlignHeight"><input id="usernameValue"></input></span><br />
-                    <label>Email: </label><span class="inputAlignHeight"><input id="emailValue"></input></span><br />
-                    <label>Password: </label><span class="inputAlignHeight"><input id="passwordValue"></input></span><br />
-                    <label>First Name: </label><span class="inputAlignHeight"><input id="firstNameValue"></input></span><br />
-                    <label>Last Name: </label><span class="inputAlignHeight"><input id="lastNameValue"></input></span><br />
-                    <label>Date of Birth: </label><span class="inputAlignHeight"><input id="dateOfBirthValue" type="date"></input></span><br />
-                    <label>Country: </label><span class="inputAlignHeight"><input id="countryValue"></input></span><br />
-                    <label>District/City: </label><span class="inputAlignHeight"><input id="districtValue"></input></span><br />
-                    <label>Android or Apple: </label><span class="inputAlignHeight"><select id="phoneValue" defaultValue={"Neither"}><option value="Android">Android</option><option value="Apple">Apple</option><option value="Both">Both</option><option value="Neither">Neither</option></select></span><br />
-                    <label>Height (CM): </label><span class="inputAlignHeight"><input type="number" id="heightValue" min="0" max="300" ></input></span><br />
-                    <label>Waist (CM): </label><span class="inputAlignHeight"><input type="number" id="waistValue" min="0" max="300" ></input></span><br />
-                    <label>Weight (Kg): </label><span class="inputAlignHeight"><input type="number" id="weightValue" min="0" max="500"></input></span><br />
-                    <label>Body-Mass Index: </label><span class="inputAlignHeight"><input type="number" id="bodyMassIndexValue" min="0" max="50"></input></span><br />
-                    <label>Body Fat Percentage: </label><span class="inputAlignHeight"><input type="number" id="bodyFatPercentageValue" min="0" max="100"></input></span><br />
-                    <label>Max Heart Rate Variability: </label><span class="inputAlignHeight"><input type="number" id="maxHeartRateVariabilityValue"></input></span><br />
+                    <form class="inputAlignHeight" style={{lineHeight: "200%"}}>
+                    <label>Username: </label><input id="usernameValue"></input><br />
+                    <label>Email: </label><input id="emailValue"></input><br />
+                    <label>Password: </label><input id="passwordValue"></input><br />
+                    <label>First Name: </label><input id="firstNameValue"></input><br />
+                    <label>Last Name: </label><input id="lastNameValue"></input><br />
+                    <label>Date of Birth: </label><input id="dateOfBirthValue" type="date"></input><br />
+                    <label>Country: </label><input id="countryValue"></input><br />
+                    <label>District/City: </label><input id="districtValue"></input><br />
+                    <label>Android or Apple: </label><select id="phoneValue" defaultValue={"Neither"}><option value="Android">Android</option><option value="Apple">Apple</option><option value="Both">Both</option><option value="Neither">Neither</option></select><br />
+                    <label>Height (CM): </label><input type="number" id="heightValue" min="0" max="300" ></input><br />
+                    <label>Waist (CM): </label><input type="number" id="waistValue" min="0" max="300" ></input><br />
+                    <label>Weight (Kg): </label><input type="number" id="weightValue" min="0" max="500"></input><br />
+                    <label>Body-Mass Index: </label><input type="number" id="bodyMassIndexValue" min="0" max="50"></input><br />
+                    <label>Body Fat Percentage: </label><input type="number" id="bodyFatPercentageValue" min="0" max="100"></input><br />
+                    <label>Max Heart Rate Variability: </label><input type="number" id="maxHeartRateVariabilityValue"></input><br />
                     <br />
-                    <label>Enter current password to confirm changes: </label><br /><input type="password" id="changePasswordValue"></input><br />
+                    <label>Enter current password to confirm changes: </label><br /><input style={{float: "left"}} type="password" id="changePasswordValue"></input><br />
                     <br />
-                    <input type='submit' value="Done" style={{float: "center"}}></input><br />
+                    <input type='submit' value="Done" style={{float: "left"}}></input><br />
                     </form>
                 </div>
                 <div class="col-md-4"/>
