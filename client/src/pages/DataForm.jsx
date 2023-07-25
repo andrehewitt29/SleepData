@@ -14,14 +14,14 @@ function DataForm() {
                 <div class="col-md-3" />
                 <div class="col-md-6">
                     <form style={{lineHeight: "200%"}}>
-                        <label>How many books do you read each week?</label><span class="inputAlignHeight"><input id="readValue" type='number' max={10} min={0} defaultValue={5}></input></span><br />
-                        <label>How much do you enjoy read?</label><span class="inputAlignHeight"><input id="readEnjoymentValue" type='number' max={10} min={0} defaultValue={5}></input></span><br />
-                        <label>How many non-fiction books do you read each week?</label><span class="inputAlignHeight"><input id="readNonFictionValue" type='number' max={10} min={0} defaultValue={5}></input></span><br />
+                        <label>How many books do you read each week?</label><span class="inputAlignHeight"><input id="readValue" type='number' max={70} min={0}></input></span><br />
+                        <label>How much do you enjoy reading? (Score out of 10)</label><span class="inputAlignHeight"><input id="readEnjoymentValue" type='number' max={10} min={0} defaultValue={5}></input></span><br />
+                        <label>How many non-fiction books do you read each week?</label><span class="inputAlignHeight"><input id="readNonFictionValue" type='number' max={70} min={0}></input></span><br />
                         <label>Dyslexic Score(???)</label><span class="inputAlignHeight"><input id="dyslexicValue" type='number'></input></span><br />
                         <label>Self-Focus Score(???)</label><span class="inputAlignHeight"><input id="selfFocusValue" type='number'></input></span><br />
-                        <label>How lucky do you think you are?</label><span class="inputAlignHeight"><input id="luckValue" type='number' max={10} min={0} defaultValue={5}></input></span><br />
+                        <label>How lucky do you think you are? (Score out of 10)</label><span class="inputAlignHeight"><input id="luckValue" type='number' max={10} min={0} defaultValue={5}></input></span><br />
                         <label>Wellbeing Score(???)</label><span class="inputAlignHeight"><input id="wellbeingValue" type='number'></input></span><br />
-                        <label>How stressed do you perceive yourself?</label><span class="inputAlignHeight"><input id="stressValue" type='number' max={10} min={0} defaultValue={5}></input></span><br />
+                        <label>How stressed do you perceive yourself? (Score out of 10)</label><span class="inputAlignHeight"><input id="stressValue" type='number' max={10} min={0} defaultValue={5}></input></span><br />
                         <br />
                         <label>On an average night, how many hours of sleep do you get?</label><span class="inputAlignHeight"><input id="sleepValue" type='number' max={24} min={0}></input></span><br />
                         <label>How long, in terms of minutes, does it take for you to fall asleep?</label><span class="inputAlignHeight"><input id="fallAsleepValue" type='number' max={600} min={0}></input></span><br />
@@ -38,7 +38,7 @@ function DataForm() {
                         <h2><strong>Love Language Score(???)</strong></h2><br />
                         <br />
                         <label>How many minutes each week do you spend exercising?</label><span class="inputAlignHeight"><input id="exerciseValue" max={7200} defaultValue={0}></input></span><br />
-                        <label>How fit do you perceive yourself?</label><span class="inputAlignHeight"><input id="fitnessValue" type='number' max={10} min={0} defaultValue={5}></input></span><br />
+                        <label>How fit do you perceive yourself? (Score out of 10)</label><span class="inputAlignHeight"><input id="fitnessValue" type='number' max={10} min={0} defaultValue={5}></input></span><br />
                         <br />
                         <label>How many cups of coffee do you drink each day?</label><span class="inputAlignHeight"><input id="coffeeValue" type='number' max={50} min={0} defaultValue={1}></input></span><br />
                         <label>When did you last drink a cup of coffee?</label><span class="inputAlignHeight"><input id="coffeeDateValue" type='date'></input></span><br />

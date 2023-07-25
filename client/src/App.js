@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import About from "./pages/About";
-import DataForm from './pages/DataForm';
+import Data from "./pages/Data";
+import DataForm from "./pages/DataForm";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import NoPage from "./pages/NoPage";
@@ -30,6 +31,7 @@ function App(){
     <Routes>
     <Route index element={<Home/>}/>
     <Route path="/About" element={<About/>}/>
+    <Route path="/Data" element={<Data/>}/>
     <Route path="/DataForm" element={<DataForm/>}/>
     <Route path="/Home" element={<Home/>}/>
     <Route path="/Login" element={<Login/>}/>
