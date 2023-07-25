@@ -137,3 +137,8 @@ footer {
     float: right;
     line-height: 100%;
 }
+
+.inputAlignHeight > select{
+    float: right;
+    line-height: 100%;
+}
