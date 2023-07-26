@@ -19,7 +19,10 @@ function SignUp() {
                             <label for="InputPassword">Password</label>
                             <input type="password" class="form-control" id="InputPassword" />
                         </div>
+                        <br />
+                        <label style={{color: "#333333"}}>By signing up to our website, you agree to our Terms and Condition and Privacy Policy.</label>
                         <br/>
+                        <br />
                         <button type="submit" class="btn btn-primary">Sign Up</button>
                     </form>
                 </div>

@@ -4,7 +4,7 @@ import Footer from './Footer';
 import '../style.css';
 import placeholdImg from '../img/exampleStats.png';
 
-function Data() {
+function AccountData() {
     return (
         <div class="container-fluid">
             <Header />
@@ -24,4 +24,4 @@ function Data() {
     );
 }
 
-export default Data;
+export default AccountData;

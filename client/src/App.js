@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import About from "./pages/About";
-import Data from "./pages/Data";
+import AccountData from "./pages/AccountData";
 import DataForm from "./pages/DataForm";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -31,7 +31,7 @@ function App(){
     <Routes>
     <Route index element={<Home/>}/>
     <Route path="/About" element={<About/>}/>
-    <Route path="/Data" element={<Data/>}/>
+    <Route path="/AccountData" element={<AccountData/>}/>
     <Route path="/DataForm" element={<DataForm/>}/>
     <Route path="/Home" element={<Home/>}/>
     <Route path="/Login" element={<Login/>}/>
