@@ -13,9 +13,12 @@ function Login() {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            console.log(userCredential);       
+            console.log(userCredential);    
+            alert("Logged In as " + userCredential.user.email);  
+             
         
         }).catch((error) => {
+            alert(error);
             console.log(error)
         })
     }
