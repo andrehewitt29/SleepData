@@ -4,6 +4,8 @@ import Footer from './Footer';
 import '../style.css';
 
 function Login() {
+
+    
     return (
         <div class="container-fluid">
             <Header />
@@ -19,6 +21,7 @@ function Login() {
                             <label for="InputPassword">Password</label>
                             <input type="password" class="form-control" id="InputPassword" />
                         </div>
+                        <h6><a href="ForgotPassword" id="forgotpasswordbutton">Forgot Password?</a></h6>
                         <br/>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>

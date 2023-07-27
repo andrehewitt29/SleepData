@@ -11,7 +11,7 @@ function LoggedInHeader() {
         </ul>
         <img id="logo" src={logo} alt=""/>
         <ul id="rightHeader">
-            <a href="AccountData" class="headlink" id="accountdata"><li>[UserName]]</li></a>
+            <a href="AccountData" class="headlink" id="accountdata"><li>[UserName]</li></a>
             <a href="Logout" class="headlink" id="logout"><li>Log Out</li></a>
         </ul>
     </header>
