@@ -11,6 +11,7 @@ function Header() {
         </ul>
         <img id="logo" src={logo} alt=""/>
         <ul id="rightHeader">
+            <a href="Account" class="headlink" id="account"><li>My Account</li></a>
             <a href="SignUp" class="headlink" id="signup"><li>Sign Up</li></a>
             <a href="Login" class="headlink" id="login"><li>Login</li></a>
         </ul>

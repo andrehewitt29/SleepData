@@ -3,19 +3,21 @@ import Header from './Header';
 import Footer from './Footer';
 import '../style.css';
 import { auth } from "../firebase";
+import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthCredential, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const navigate = useNavigate();
     const signIn = (e) =>{
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             console.log(userCredential);    
-            alert("Logged In as " + userCredential.user.email);  
-             
+        
+           //setTimeout(navigate("/Account"), 4000);
+           navigate("/Account");
         
         }).catch((error) => {
             alert(error);
