@@ -8,7 +8,7 @@ function Login() {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     var elem = document.getElementById('popup');
-   var loginErrors = "Username or password was incorrect.";
+    var loginErrors = "Username or password was incorrect.";
     const signIn = (e) =>{
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
@@ -20,15 +20,14 @@ function Login() {
         
         }).catch((error) => {
 
-            
             if(elem){
                 //elem.style.display = 'block';
                 //elem.style.display = 'none';
             }
             elem.style.display = "block";
             //alert(error);
-            console.log(error)
-        })
+            console.log(error);
+        });
     }
 
     if (auth.currentUser != null) {
@@ -41,6 +40,7 @@ function Login() {
 
     return (
         <div class="container-fluid">
+            <h1 style={{textAlign: "center"}}>Login</h1>
             <div class="row" style={{minHeight: "250px", padding:"25px"}}>
                 <div class="col-md-4"/>
                 <div class="col-md-4">
@@ -54,7 +54,7 @@ function Login() {
                             <input type="password" class="form-control" id="InputPassword" onChange={(e) =>setPassword(e.target.value)}/>
                             <label id="popup" style={{ display: 'none' }}>{loginErrors}</label>
                         </div>
-                        <h6><a href="ForgotPassword" id="forgotpasswordbutton">Forgot Password?</a></h6>
+                        <h6><a href="ForgotPassword" id="forgotpasswordbutton" style={{textDecoration: "inherit"}}>Forgot Password?</a></h6>
                         <br/>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>

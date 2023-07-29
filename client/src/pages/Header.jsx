@@ -3,10 +3,10 @@ import logo from '../img/LifespanTrustLogo.png';
 import {auth} from "../firebase";
 
 function Header() {
-    if(auth.currentUser != null) {
+    if (auth.currentUser != null) {
         var userName = auth.currentUser.email;
     
-        return(
+        return (
             <header id="topbar">
                 <ul id="leftHeader">
                     <a href="Home" class="headlink" id="home"><li>Home</li></a>

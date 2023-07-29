@@ -6,8 +6,7 @@ function Settings() {
     if (auth.currentUser != null) {
         return (
             <div class="container-fluid">
-                <br />
-                <h1 style={{textAlign: "center"}}><strong>Account Settings:</strong></h1>
+                <h1 style={{textAlign: "center"}}><strong>Account Settings</strong></h1>
                 <br />
                 <div class="row">
                     <div class="col-md-4" />
@@ -40,14 +39,13 @@ function Settings() {
                 <div style={{textAlign: "center"}}>
                     <button class="btn btn-primary" style={{backgroundColor: "red"}}>Delete Account?</button>
                 </div>
-                <br />
             </div>
         );
     }
 
     return (
         <div class="container-fluid">
-            <h1 style={{textAlign: "center"}}>Must Be Logged In to access this page.</h1>
+            <h1 style={{textAlign: "center"}}>You must be Logged In to access this page.</h1>
         </div>
     );    
 }
