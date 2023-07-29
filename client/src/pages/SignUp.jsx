@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import '../style.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { auth } from "../firebase";
 import { AuthCredential, getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -26,7 +23,6 @@ function SignUp() {
 
     return (
         <div class="container-fluid">
-            <Header />
             <div class="row" style={{minHeight: "250px", padding:"25px"}}>
                 <div class="col-md-4"/>
                 <div class="col-md-4">
@@ -48,7 +44,6 @@ function SignUp() {
                 </div>
                 <div class="col-md-4"/>
             </div>
-            <Footer />
         </div>
     );
 }
