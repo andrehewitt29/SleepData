@@ -19,5 +19,5 @@ firebase.initializeApp({
     databaseURL: "https://rnd-sleep-data-project-test-default-rtdb.firebaseio.com"
 });
 const db = firebase.firestore();
-const data = db.collection("test_data");
+const data = db.collection("users");
 module.exports= data;
