@@ -14,7 +14,11 @@ function Account() {
                 <button onClick={() => auth.signOut()}>Log Out</button>
                 <form >
                     <div>
-                    
+                    <ul id="rightHeader">
+            <a href="Account" class="headlink" id="account"><li>My Account</li></a>
+            <a href="SignUp" class="headlink" id="signup"><li>Sign Up</li></a>
+            <a href="Login" class="headlink" id="login"><li>Login</li></a>
+        </ul>
                     </div>
                 </form>  
                 <br/><br/>
@@ -28,7 +32,7 @@ function Account() {
             <div class="container-fluid">
                 <Header />
                 Must Be Logged In to access this page.
-
+                <a href="Login" class="headlink" id="login"><li>Login Page</li></a>
 
                 <Footer />
             </div>
