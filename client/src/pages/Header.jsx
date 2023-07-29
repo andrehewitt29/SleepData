@@ -3,12 +3,9 @@ import '../style.css';
 import logo from '../img/LifespanTrustLogo.png';
 import {auth} from "../firebase";
 import LoggedInHeader from './LoggedInHeader';
-import { NavLink, useNavigate } from 'react-router-dom';
 function Header() {
-    const navigate = useNavigate();
         if(auth.currentUser != null){
-      var userName = auth.currentUser.email;
-    
+      var userName = auth.currentUser.email;  
       return(
         <header id="topbar">
         <ul id="leftHeader">
@@ -21,8 +18,7 @@ function Header() {
             <a href="Home" class="headlink" id="logout" onClick={() => auth.signOut()}><li>Log Out</li></a>
         </ul>
     </header>
-      );
-            
+      );        
       }
         else{
             return(
