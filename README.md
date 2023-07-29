@@ -7,6 +7,9 @@ SleepData\client> npm install react-scripts --save
 SleepData\client> npm start
 SleepData\client> npm i firebase
 
+(For testing it out first.)
+SleepData\client> npm start
+
 ### Server Side
 cd ..
 cd server
