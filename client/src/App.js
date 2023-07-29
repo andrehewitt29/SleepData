@@ -17,6 +17,7 @@ import Settings from "./pages/Settings";
 import SignUp from "./pages/SignUp";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import Protected from './components/Protected';
+import Contact from './pages/Contact'
 
 function App(){
   const [isSignedIn, setIsSignedIn] = useState(null);
@@ -61,6 +62,7 @@ function App(){
     <Route path="/DataForm" element={<DataForm/>}/>
     <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
     <Route path="/Home" element={<Home/>}/>
+    <Route path="/Contact" element={<Contact/>}/>
     <Route path="/Login" element={<Login/>}/>
     <Route path="/Logout" element={<Logout/>}/>
     <Route path="/PasswordReset" element={<PasswordReset/>}/>
