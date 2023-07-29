@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {auth} from "./firebase";
 import About from "./pages/About";
 import AccountData from "./pages/AccountData";
 import ContactUs from "./pages/ContactUs";
@@ -15,9 +16,20 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Settings from "./pages/Settings";
 import SignUp from "./pages/SignUp";
 import TermsAndConditions from "./pages/TermsAndConditions";
-
+import Account from "./pages/Account";
+import Protected from './components/Protected';
 
 function App(){
+  const [isSignedIn, setIsSignedIn] = useState(null);
+
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      setIsSignedIn(true);
+     
+    } else {
+      setIsSignedIn(false); 
+    }
+  });
 
   const [backendData, setBackendData] = useState([{}]);
 
@@ -39,6 +51,14 @@ function App(){
     <Route path="/About" element={<About/>}/>
     <Route path="/AccountData" element={<AccountData/>}/>
     <Route path="/ContactUs" element={<ContactUs/>}/>
+    <Route
+    path="/Account"
+    element={
+    <Protected status={isSignedIn}>
+        <Account />
+      </Protected>
+    }
+    />
     <Route path="/DataForm" element={<DataForm/>}/>
     <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
     <Route path="/Home" element={<Home/>}/>
@@ -51,7 +71,7 @@ function App(){
     <Route path="/SignUp" element={<SignUp/>}/>
     <Route path="/TermsAndConditions" element={<TermsAndConditions/>}/>
     <Route path="/*" element={<NoPage/>}/>
-  </Routes>
+        </Routes>
     </BrowserRouter>     
   </div>
     // <div>
@@ -63,6 +83,28 @@ function App(){
     //     ))
     // )}
     // </div>
+
+    //<Route index element={<Home/>}/>
+    //<Route path="/About" element={<About/>}/>
+    //<Route path="/Data" element={<Data/>}/>
+    //<Route path="/DataForm" element={<DataForm/>}/>
+    //<Route path="/Home" element={<Home/>}/>
+    //<Route path="/Login" element={<Login/>}/>
+    //<Route path="/Payment" element={<Payment/>}/>
+    //<Route path="/Settings" element={<Settings/>}/>
+    //<Route path="/SignUp" element={<SignUp/>}/>
+    //<Route path="/*" element={<NoPage/>}/>
+
+
+// Private Route Example
+    //<Route
+    //path="/About"
+    //element={
+    //  <Protected isSignedIn={false}>
+    //    <About />
+    //  </Protected>
+   // }
+  ///>
   )
 }
 
