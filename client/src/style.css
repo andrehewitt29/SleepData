@@ -120,7 +120,7 @@ footer {
     margin-top: auto;
 }
 
-.footer-section { /* Might need to change this into an ID soon */
+.footer-section {
     width: 50%;
     display: flex;
 }
@@ -128,20 +128,16 @@ footer {
 .footer-section a {
     color: #FFF;
     text-decoration: none;
+    font-size: 1.25em;
 }
 
-#copyright p {
+#copyright a {
     margin: auto;
-}
-
-#policy {
-    display: flex;
-    flex-direction: row-reverse;
-    padding-right: 10%; /* This is scuffed, check for margining on the #policy items */
+    padding: 15px;
 }
 
 #policy a {
-    margin: auto 5% auto 4px;
+    margin: auto;
 }
 
 .inputAlignHeight > input, .inputAlignHeight > select {
