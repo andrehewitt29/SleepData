@@ -1,8 +1,9 @@
 import React from "react";
 import '../style.css';
 import logo from '../img/LifespanTrustLogo.png';
+import {auth} from "../firebase";
 
-function LoggedInHeader() {
+function Header(Username) {
     return(
     <header id="topbar">
         <ul id="leftHeader">
@@ -11,11 +12,11 @@ function LoggedInHeader() {
         </ul>
         <img id="logo" src={logo} alt=""/>
         <ul id="rightHeader">
-            <a href="AccountData" class="headlink" id="accountdata"><li>[UserName]</li></a>
-            <a href="Logout" class="headlink" id="logout"><li>Log Out</li></a>
+            <a href="Account" class="headlink" id="account"><li>{Username}</li></a>
+            <a href="Logout" class="headlink" id="logout" onClick={() => auth.signOut()}><li>Log Out</li></a>
         </ul>
     </header>
     );
 }
 
-export default LoggedInHeader;
+export default Header;

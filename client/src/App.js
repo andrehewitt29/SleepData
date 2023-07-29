@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {auth} from "./firebase";
 import About from "./pages/About";
-import AccountData from "./pages/AccountData";
+import Account from "./pages/Account";
 import ContactUs from "./pages/ContactUs";
 import DataForm from "./pages/DataForm";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -16,7 +16,6 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Settings from "./pages/Settings";
 import SignUp from "./pages/SignUp";
 import TermsAndConditions from "./pages/TermsAndConditions";
-import Account from "./pages/Account";
 import Protected from './components/Protected';
 
 function App(){
@@ -50,8 +49,6 @@ function App(){
     <Routes>
     <Route index element={<Home/>}/>
     <Route path="/About" element={<About/>}/>
-    <Route path="/AccountData" element={<AccountData/>}/>
-    <Route path="/ContactUs" element={<ContactUs/>}/>
     <Route
     path="/Account"
     element={
@@ -60,6 +57,7 @@ function App(){
       </Protected>
     }
     />
+    <Route path="/ContactUs" element={<ContactUs/>}/>
     <Route path="/DataForm" element={<DataForm/>}/>
     <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
     <Route path="/Home" element={<Home/>}/>
