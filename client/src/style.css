@@ -133,7 +133,7 @@ footer {
     margin: auto;
 }
 
-.inputAlignHeight {
+.inputAlignHeight > input, .inputAlignHeight > select {
     float: right;
     line-height: 100%;
 }

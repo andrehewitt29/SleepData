@@ -51,6 +51,7 @@ function Login() {
                             <input type="password" class="form-control" id="InputPassword" onChange={(e) =>setPassword(e.target.value)}/>
                             <label id="popup">Username or password was incorrect.</label>
                         </div>
+                        <h6><a href="ForgotPassword" id="forgotpasswordbutton">Forgot Password?</a></h6>
                         <br/>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>
