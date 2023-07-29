@@ -18,19 +18,14 @@ function App(){
   
   auth.onAuthStateChanged(function(user) {
     if (user) {
+      // User is signed in.
       setIsSignedIn(true);
-     
     } else {
-      setIsSignedIn(false); 
+      // User is not signed in.
+      setIsSignedIn(false);
     }
   });
-  var user = auth.currentUser;
 
-  if (user) {
-    console.log("Logged In");
-  } else {
-    // No user is signed in.
-  }
   const [backendData, setBackendData] = useState([{}]);
 
   useEffect(() => {
@@ -53,7 +48,7 @@ function App(){
     <Route
     path="/Account"
     element={
-    <Protected status={user}>
+    <Protected isLoggedIn={true}>
         <Account />
       </Protected>
     }
