@@ -8,8 +8,7 @@
     font-family: sans-serif;
 }
 
-.content {
-    /* These are required for automatic footer */
+#root > div { /* Required for automatic footer */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -111,6 +110,26 @@
     margin: 5px 0;
 }
 
+/* About Page */
+#about-page {
+    background-color: #202020;
+    width: 50%;
+    margin: 0 auto 0 auto;
+    color: #fff;
+}
+
+#about-image {
+    background-position: center;
+    height: 250px;
+    background-image: url(img/aboutpage_image1.jpg);
+}
+
+#article-text {
+    width: 90%;
+    margin: auto;
+    padding-top: 5px;
+}
+
 /* Footer */
 footer {
     height: 100px;
@@ -130,7 +149,11 @@ footer {
     text-decoration: none;
 }
 
-#copyright p {
+#copyright {
+    padding-left: 10%;
+}
+
+#copyright p, #copyright a {
     margin: auto;
 }
 
@@ -140,7 +163,7 @@ footer {
     padding-right: 10%; /* This is scuffed, check for margining on the #policy items */
 }
 
-#policy a {
+#policy a, #copyright p, #copyright a{
     margin: auto 5% auto 4px;
 }
 
