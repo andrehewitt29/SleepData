@@ -3,9 +3,9 @@ Research And Development Project
 ## How to start the project
 ### Client Side
 npm install react-scripts --save</br>
-npm start
-npm i firebase
-npm install @emailjs/browser
+npm start</br>
+npm i firebase</br>
+npm install @emailjs/browser</br>
 ### Server Side
 Add this File to server folder: rnd-sleep-data-project-test-firebase-adminsdk-w1e0m-cb72d8ea51.json</br>
 Discord: Project-repo</br>
