@@ -5,7 +5,8 @@ function Footer() {
         <footer>
 
         <div class="footer-section" id="copyright">
-            <p>Copyright &copy; 2023 Lifespantrust | All rights reserved</p>
+            <p>Copyright &copy; 2023 Lifespantrust</p>
+            <a href="#">Contact Us</a>
         </div>
         
         <div class="footer-section" id="policy"> 
