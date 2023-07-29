@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const userData = require("../../db/config");
-import {auth} from "firebase";
 
 router.get('/', async (req,res) => {
     const snapshot = await userData.get();
@@ -16,6 +15,10 @@ router.post('/add', async (req, res) => {
     res.send({ msg: auth.currentUser.email});
 });
 
-
+//dummy statement DELTE BEFORE PRODUCTION LIVE
+router.get('/testUser', async (req, res) => {
+    const data = req.body;
+    res.send(data);
+});
 
 module.exports = router;
