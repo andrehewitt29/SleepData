@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import '../style.css';
 import { auth } from "../firebase";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthCredential, getAuth, reload, signInWithEmailAndPassword } from "firebase/auth";
@@ -34,11 +31,16 @@ function Login() {
         })
     }
 
-  
+    if (auth.currentUser != null) {
+        return (
+            <div class="container-fluid">
+                <h1 style={{textAlign: "center"}}>You are already logged in!</h1>
+            </div>
+        );
+    }
 
     return (
         <div class="container-fluid">
-            <Header />
             <div class="row" style={{minHeight: "250px", padding:"25px"}}>
                 <div class="col-md-4"/>
                 <div class="col-md-4">
@@ -59,7 +61,6 @@ function Login() {
                 </div>
                 <div class="col-md-4"/>
             </div>
-            <Footer />
         </div>
     );
 }

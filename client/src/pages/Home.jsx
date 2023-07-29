@@ -1,13 +1,9 @@
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import '../style.css';
 import placeholdImg from '../img/card_placeholder.png';
 
 function Home() {
     return (
         <div class="container-fluid">
-            <Header />
             <div id="starter-page">
                 <div id="starter-paragraph">
                     <h1>Quote of the Month</h1>
@@ -42,7 +38,6 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 }
