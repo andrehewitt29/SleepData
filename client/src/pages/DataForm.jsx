@@ -3,6 +3,14 @@ import Header from './Header';
 import Footer from './Footer';
 import '../style.css';
 
+function SubmitClicked(){
+    const headers = { 'Content-Type': 'application/json' }
+    
+    fetch('http://localhost:5000/api/sleepData/testUser', { 
+        body: JSON.stringify({test: 'hello world'})
+    })
+}
+
 function DataForm() {
     return (
         <div class="container-fluid">
@@ -46,7 +54,7 @@ function DataForm() {
                         <br />
                         <label>Do you have an addictive personality?</label><select id="petValue"><option value="Yes">Yes</option><option value="No">No</option></select><br />
                         <br />
-                        <input type='submit' value="Done"></input>
+                        <input type='submit' value="Done" onClick={SubmitClicked}></input>
                     </form>
                 </div>
                 <div class="col-md-3" />

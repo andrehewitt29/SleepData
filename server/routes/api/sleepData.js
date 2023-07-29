@@ -18,6 +18,8 @@ router.post('/add', async (req, res) => {
 //dummy statement DELTE BEFORE PRODUCTION LIVE
 router.get('/testUser', async (req, res) => {
     const data = req.body;
+    console.log("called ");
+    console.log(data);
     res.send(data);
 });
 
