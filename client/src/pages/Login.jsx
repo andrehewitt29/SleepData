@@ -4,12 +4,14 @@ import Footer from './Footer';
 import '../style.css';
 import { auth } from "../firebase";
 import { NavLink, useNavigate } from 'react-router-dom';
-import { AuthCredential, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { AuthCredential, getAuth, reload, signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    var elem = document.getElementById('popup');
+   var loginErrors = "Username or password was incorrect.";
     const signIn = (e) =>{
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
@@ -20,10 +22,19 @@ function Login() {
            navigate("/Account");
         
         }).catch((error) => {
-            alert(error);
+
+            
+            if(elem){
+                //elem.style.display = 'block';
+                //elem.style.display = 'none';
+            }
+            elem.style.display = "block";
+            //alert(error);
             console.log(error)
         })
     }
+
+  
 
     return (
         <div class="container-fluid">
@@ -39,7 +50,9 @@ function Login() {
                         <div class="form-group">
                             <label for="InputPassword">Password</label>
                             <input type="password" class="form-control" id="InputPassword" onChange={(e) =>setPassword(e.target.value)}/>
+                            <label id="popup" style={{ display: 'none' }}>{loginErrors}</label>
                         </div>
+                        <h6><a href="ForgotPassword" id="forgotpasswordbutton">Forgot Password?</a></h6>
                         <br/>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>

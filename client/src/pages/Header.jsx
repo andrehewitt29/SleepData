@@ -1,22 +1,40 @@
 import React from "react";
 import '../style.css';
 import logo from '../img/LifespanTrustLogo.png';
-
+import {auth} from "../firebase";
+import LoggedInHeader from './LoggedInHeader';
 function Header() {
-    return(
-    <header id="topbar">
+        if(auth.currentUser != null){
+      var userName = auth.currentUser.email;  
+      return(
+        <header id="topbar">
         <ul id="leftHeader">
             <a href="Home" class="headlink" id="home"><li>Home</li></a>
             <a href="About" class="headlink" id="about"><li>About</li></a>
         </ul>
         <img id="logo" src={logo} alt=""/>
         <ul id="rightHeader">
-            <a href="Account" class="headlink" id="account"><li>My Account</li></a>
-            <a href="SignUp" class="headlink" id="signup"><li>Sign Up</li></a>
-            <a href="Login" class="headlink" id="login"><li>Login</li></a>
+            <a href="Account" class="headlink" id="account"><li>{userName}</li></a>
+            <a href="Home" class="headlink" id="logout" onClick={() => auth.signOut()}><li>Log Out</li></a>
         </ul>
     </header>
-    );
+      );        
+      }
+        else{
+            return(
+        <header id="topbar">
+        <ul id="leftHeader">
+            <a href="Home" class="headlink" id="home"><li>Home</li></a>
+            <a href="About" class="headlink" id="about"><li>About</li></a>
+        </ul>
+        <img id="logo" src={logo} alt=""/>
+        <ul id="rightHeader">
+        <a href="SignUp" class="headlink" id="signup"><li>Sign Up</li></a>
+        <a href="Login" class="headlink" id="login"><li>Login</li></a>         
+        </ul>
+    </header>
+            );
+        }
 }
 
 /*
