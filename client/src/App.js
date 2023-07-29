@@ -15,7 +15,7 @@ import Protected from './components/Protected';
 
 function App(){
   const [isSignedIn, setIsSignedIn] = useState(null);
-
+  
   auth.onAuthStateChanged(function(user) {
     if (user) {
       setIsSignedIn(true);
@@ -24,7 +24,13 @@ function App(){
       setIsSignedIn(false); 
     }
   });
+  var user = auth.currentUser;
 
+  if (user) {
+    console.log("Logged In");
+  } else {
+    // No user is signed in.
+  }
   const [backendData, setBackendData] = useState([{}]);
 
   useEffect(() => {
@@ -47,7 +53,7 @@ function App(){
     <Route
     path="/Account"
     element={
-    <Protected status={isSignedIn}>
+    <Protected status={user}>
         <Account />
       </Protected>
     }

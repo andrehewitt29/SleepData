@@ -10,6 +10,8 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    var elem = document.getElementById('popup');
+   
     const signIn = (e) =>{
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
@@ -20,10 +22,18 @@ function Login() {
            navigate("/Account");
         
         }).catch((error) => {
-            alert(error);
+
+            
+            if(elem){
+                //elem.style.display = 'block';
+                //elem.style.display = 'none';
+            }
+            //alert(error);
             console.log(error)
         })
     }
+
+  
 
     return (
         <div class="container-fluid">
@@ -39,6 +49,7 @@ function Login() {
                         <div class="form-group">
                             <label for="InputPassword">Password</label>
                             <input type="password" class="form-control" id="InputPassword" onChange={(e) =>setPassword(e.target.value)}/>
+                            <label id="popup">Username or password was incorrect.</label>
                         </div>
                         <br/>
                         <button type="submit" class="btn btn-primary">Login</button>
