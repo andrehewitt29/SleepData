@@ -2,24 +2,15 @@
 Research And Development Project
 ## How to start the project
 ### Client Side
-cd client
-SleepData\client> npm install react-scripts --save
-SleepData\client> npm start
-SleepData\client> npm i firebase
-
-(For testing it out first.)
-SleepData\client> npm start
-
+npm install react-scripts --save</br>
+npm start
+npm i firebase
+npm install @emailjs/browser
 ### Server Side
-cd ..
-cd server
-
 Add this File to server folder: rnd-sleep-data-project-test-firebase-adminsdk-w1e0m-cb72d8ea51.json</br>
 Discord: Project-repo</br>
-
-SleepData\server> npm i express</br>
-SleepData\server>npm i nodemon -D</br>
-SleepData\server>npm run Dev
-
+npm i express</br>
+npm i nodemon -D</br>
+npm run Dev
 ### Node.js version
 v18.16.0
