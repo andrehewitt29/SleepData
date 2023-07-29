@@ -12,6 +12,7 @@ import Settings from "./pages/Settings";
 import SignUp from "./pages/SignUp";
 import Account from "./pages/Account";
 import Protected from './components/Protected';
+import Contact from './pages/Contact'
 
 function App(){
   const [isSignedIn, setIsSignedIn] = useState(null);
@@ -56,6 +57,7 @@ function App(){
     <Route path="/Data" element={<Data/>}/>
     <Route path="/DataForm" element={<DataForm/>}/>
     <Route path="/Home" element={<Home/>}/>
+    <Route path="/Contact" element={<Contact/>}/>
     <Route path="/Login" element={<Login/>}/>
     <Route path="/Payment" element={<Payment/>}/>
     <Route path="/Settings" element={<Settings/>}/>
