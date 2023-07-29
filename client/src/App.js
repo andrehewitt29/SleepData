@@ -19,6 +19,7 @@ import Protected from './components/Protected';
 import Header from './pages/Header';
 import Footer from './pages/Footer';
 import './style.css';
+import Contact from './pages/Contact'
 
 function App(){
   const [isSignedIn, setIsSignedIn] = useState(null);
@@ -64,6 +65,7 @@ function App(){
     <Route path="/DataForm" element={<DataForm/>}/>
     <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
     <Route path="/Home" element={<Home/>}/>
+    <Route path="/Contact" element={<Contact/>}/>
     <Route path="/Login" element={<Login/>}/>
     <Route path="/PasswordReset" element={<PasswordReset/>}/>
     <Route path="/Payment" element={<Payment/>}/>

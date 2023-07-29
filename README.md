@@ -5,6 +5,7 @@ Research And Development Project
 npm install react-scripts --save</br>
 npm start
 npm i firebase
+npm install @emailjs/browser
 ### Server Side
 Add this File to server folder: rnd-sleep-data-project-test-firebase-adminsdk-w1e0m-cb72d8ea51.json</br>
 Discord: Project-repo</br>
