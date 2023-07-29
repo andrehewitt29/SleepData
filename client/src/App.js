@@ -21,13 +21,14 @@ import Protected from './components/Protected';
 
 function App(){
   const [isSignedIn, setIsSignedIn] = useState(null);
-
+  
   auth.onAuthStateChanged(function(user) {
     if (user) {
+      // User is signed in.
       setIsSignedIn(true);
-     
     } else {
-      setIsSignedIn(false); 
+      // User is not signed in.
+      setIsSignedIn(false);
     }
   });
 
@@ -54,7 +55,7 @@ function App(){
     <Route
     path="/Account"
     element={
-    <Protected status={isSignedIn}>
+    <Protected isLoggedIn={true}>
         <Account />
       </Protected>
     }
