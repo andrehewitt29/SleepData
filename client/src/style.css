@@ -1,10 +1,15 @@
 /* Stylesheet for Lifespan Organization */
 
+:root {
+    --content-color: #202020;
+    --article-text: #fff;
+}
+
 /* Global Styling */
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; Already in reboot.css file */
     font-family: sans-serif;
 }
 
@@ -46,6 +51,55 @@
     width: 18em;
     margin: auto;
 }
+
+/* index page html */
+.two-box {
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: var(--content-color);
+    color: var(--article-text);
+    height: 100%;
+    padding: 3% 5% 1% 5%;
+}
+
+.two-box div {
+    width: 80%;
+    margin: 0 0 auto 0;
+}
+
+.sub-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-box h1 {
+    color: #3BA9FB;
+    height: 4rem;
+    font-size: 2.75rem;
+}
+
+.sub-box p {
+    font-size: 1.5rem;
+}
+
+.height-image img {
+    width: 50%;
+    display: block;
+    margin: auto;
+    box-shadow: 0 0 10px #000;
+}
+
+#try-now {
+    background-color: #0C67AD;
+    color: var(--article-text);
+    text-decoration: none;
+    width: 50%;
+    padding: 0.75rem 0;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
 
 /* Main */
 
