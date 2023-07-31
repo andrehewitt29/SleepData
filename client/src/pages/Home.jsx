@@ -57,7 +57,7 @@ function Home() {
                         </div>
                         <div>
                             <img src={peopleIcon}/>
-                            <p>By signing up an account, you can join online meetings <span id="highlight">LIVE</span> with the book writer Brian McKeown and his associates.</p>
+                            <p>By signing up an account, you can join online meetings <span id="highlight">live</span> with the book writer Brian McKeown and his associates.</p>
                         </div>
                     </div>
                 </div>
