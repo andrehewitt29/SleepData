@@ -1,31 +1,24 @@
-import {React } from 'react';
-import emailjs from '@emailjs/browser';
-import {auth} from "../firebase";
+import {React, useState } from 'react';
+
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 
 export default function ForgotPassword(){
-
-    function authUser(e) {
-        if (auth.currentUser == null) {
-            const testEmail = document.getElementById("inputForm");
-            console.log(testEmail);
-            sendEmail(testEmail);
-        }
-        else{
-            document.getElementById('test').innerHTML = "Email would not send";
-        }
+    const [email, setEmail] = useState("");
+    function sendEnail()
+    {
         
-    }   
-
-    function sendEmail(e) {
-        emailjs.sendForm('service_fd21fn8', 'template_tn8fwr5', e, 'aYWGmhYGv5UUon7N6')
-        .then((result) => {
-            document.getElementById('test').innerHTML = 'Success';
-            console.log(result.text);
-        }, (error) => {
-            document.getElementById('test').innerHTML = 'Fail to send. Please contact the owner';
-            console.log(error.text);
-        });
-        e.target.reset();
+        const auth = getAuth();
+        sendPasswordResetEmail(auth, email)
+        .then(()=>{
+            document.getElementById('test').innerHTML = "Reset Password Email have been sented, Check your email.";
+            console.log('email sented');
+        })
+        .catch((error) =>{
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode);
+            console.log(errorMessage);
+        })
     }
 
     return (
@@ -34,17 +27,17 @@ export default function ForgotPassword(){
             <div class="row" style={{minHeight: "150px", padding:"25px"}}>
                 <div class="col-md-4"/>
                 <div class="col-md-4">
-                    <form id = "inputForm" onSubmit={authUser}>
+                    <form id = "inputForm">
                         <div class="form-group">
                             <label for="inputResetEmail">Please input your email: </label>
-                            <input type="email" class="form-control" name = "email" id="inputResetEmail" required/>
+                            <input type="email" class="form-control" name = "email" id="inputResetEmail" required onChange={(e) =>setEmail(e.target.value)}/>  
                         </div>
                         <br />
-                        <button type="button" class="btn btn-primary" onClick={authUser}>Send Email</button>
+                        <button type="button" class="btn btn-primary" onClick={sendEnail}>Send Email</button>
                     </form>
                 </div>
                 <div class="col-md-4"/>
-                <p id = "test"></p>
+                <p id = "test" style={{textAlign: "center"}}></p>
             </div>
         </div>
     );
