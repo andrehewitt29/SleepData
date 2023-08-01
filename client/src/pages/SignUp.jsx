@@ -21,6 +21,14 @@ function SignUp() {
         });
     }
 
+    if (auth.currentUser != null) {
+        return (
+            <div class="container-fluid">
+                <h1 style={{textAlign: "center"}}>You are already logged in!</h1>
+            </div>
+        );
+    }
+
     return (
         <div class="container-fluid">
             <h1 style={{textAlign: "center"}}>Sign Up</h1>
