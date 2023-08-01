@@ -1,20 +1,67 @@
-import React from 'react';
+import {React, useRef} from 'react';
 import {auth} from "../firebase";
 
-function SubmitClicked(){
-    const headers = { 'Content-Type': 'application/json' }
-    
-    fetch('http://localhost:5000/api/sleepData/testUser', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify(
-            {userData: auth.currentUser},
-            {formData: }
-            )
-    })
-}
+
+
 
 function DataForm() {
+    const formRef = useRef();
+
+    function SubmitClicked(event){//when the submit button is clicked send all form data aswell as signed in user id to the backend
+        event.preventDefault();
+    
+        const headers = { 'Content-Type': 'application/json' }
+        
+        fetch('http://localhost:5000/api/sleepData/testUser', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(
+                {userData: auth.currentUser,
+                formData: {
+                    readValue: formRef.current.readValue.value,
+                    readNonFictionValue: formRef.current.readNonFictionValue.value,
+                    readEnjoymentValue: formRef.current.readEnjoymentValue.value,
+                    luckValue: formRef.current.luckValue.value,
+                    dyslexicValue: formRef.current.dyslexicValue.value,
+                    selfFocusValue: formRef.current.selfFocusValue.value,
+                    wellbeingValue: formRef.current.wellbeingValue.value,
+                    stressValue: formRef.current.stressValue.value,
+                    sleepValue: formRef.current.sleepValue.value,
+                    sleepHourValue: formRef.current.sleepHourValue.value,
+                    fallAsleepValue: formRef.current.fallAsleepValue.value,
+                    awakenValue: formRef.current.awakenValue.value,
+                    chronotypeValue: formRef.current.chronotypeValue.value,
+                    snoreValue: formRef.current.snoreValue.value,
+                    partnerSnoreValue: formRef.current.partnerSnoreValue.value,
+                    petValue: formRef.current.petValue.value,
+                    addictivePersonaly: formRef.current.addictivePersonaly.value,
+                    viaOneValue: formRef.current.viaOneValue.value,
+                    viaBestTwoValue: formRef.current.viaBestTwoValue.value,
+                    viaBestThreeValue: formRef.current.viaBestThreeValue.value,
+                    viaBestFourValue: formRef.current.viaBestFourValue.value,
+                    viaBestFiveValue: formRef.current.viaBestFiveValue.value,
+                    viaWorstFiveValue: formRef.current.viaWorstFiveValue.value,
+                    viaWorstFourValue: formRef.current.viaWorstFourValue.value,
+                    viaWorstThreefValue: formRef.current.viaWorstThreefValue.value,
+                    viaWorstTwoValue: formRef.current.viaWorstTwoValue.value,
+                    viaWorstOneValue: formRef.current.viaWorstOneValue.value,
+                    gritValue: formRef.current.gritValue.value,
+                    gritPercentage: formRef.current.gritPercentage.value,
+                    physicalTouchPercentage: formRef.current.physicalTouchPercentage.value,
+                    qualityTimePercentage: formRef.current.qualityTimePercentage.value,
+                    wordsOfAffirmationPercentage: formRef.current.wordsOfAffirmationPercentage.value,
+                    actsOfServicePercentage: formRef.current.actsOfServicePercentage.value,
+                    receivingGiftsPercentage: formRef.current.receivingGiftsPercentage.value,
+                    exerciseValue: formRef.current.exerciseValue.value,
+                    fitnessValue: formRef.current.fitnessValue.value,
+                    coffeeValue: formRef.current.coffeeValue.value,
+                    coffeeDateValue: formRef.current.coffeeDateValue.value,
+                    alcoholValue: formRef.current.alcoholValue.value
+                }}
+                )
+        })
+    }
+
     if (auth.currentUser != null) {
         return (
             <div class="container-fluid">
@@ -24,7 +71,7 @@ function DataForm() {
                 <div class="row">
                     <div class="col-md-3" />
                     <div class="col-md-6">
-                        <form class="inputAlignHeight" style={{lineHeight: "200%"}}>
+                        <form class="inputAlignHeight" style={{lineHeight: "200%"}} ref={formRef} onSubmit={SubmitClicked}>
                             <h5 style={{textAlign: "center"}}><strong>General Questions:</strong></h5>
                             <label>How many books do you read each week?</label><input id="readValue" type='number' max={70} min={0}></input><br />
                             <label>How many non-fiction books do you read each week?</label><input id="readNonFictionValue" type='number' max={70} min={0}></input><br />
@@ -43,7 +90,7 @@ function DataForm() {
                             <label>Your partner's snoring score (Score out of 10)</label><input id="partnerSnoreValue" type='number' max={10} min={1} defaultValue={5}></input><br />
                             <label style={{color: "red"}}>Note: Ask about the snoring scores as they are only briefly mentioned in the book, and how the score is calculated is never stated.</label><br />
                             <label>Are you normally disturbed during your sleep by a pet?</label><select id="petValue"><option value="Yes">Yes</option><option value="No">No</option></select><br />
-                            <label>Do you have an addictive personality?</label><select id="petValue"><option value="Yes">Yes</option><option value="No">No</option></select><br />
+                            <label>Do you have an addictive personality?</label><select id="addictivePersonaly"><option value="Yes">Yes</option><option value="No">No</option></select><br />
                             <br />
                             <h5 style={{textAlign: "center"}}><strong>Via Strengths <a href="https://www.authentichappiness.sas.upenn.edu/questionnaires/survey-character-strengths" title="Click here to find out your VIA Strengths!" style={{color: "inherit", textDecoration: "inherit"}} rel="noreferrer" target="_blank">(?)</a>:</strong></h5>
                             <h5 style={{textAlign: "center", color: "red"}}><strong>Note: Ask about this one because this requires the user to make an account on a different website and take a 40 minute quiz. I don't think a user would be willing to put up with that.</strong></h5>
@@ -78,7 +125,7 @@ function DataForm() {
                             <label>When did you last drink a cup of coffee?</label><input id="coffeeDateValue" type='date'></input><br />
                             <label>How many days each week do you drink alcohol?</label><input id="alcoholValue" type='number' max={7} min={0} defaultValue={0}></input><br />
                             <br />
-                            <input type='submit' value="Done" style={{float: "left"}} onClick={SubmitClicked}></input>
+                            <input type='submit' value="Done" style={{float: "left"}} />
                         </form>
                     </div>
                     <div class="col-md-3" />
