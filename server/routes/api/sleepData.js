@@ -11,9 +11,8 @@ router.get('/', async (req,res) => {
 router.post('/add', async (req, res) => {
     const body = req.body;
     const data = body.formData;
-    await userData.add({ data });
-    // res.send({ msg: data});
-    res.send('Success');
+    await userData.doc("Users").collection(body.userData.uid).doc(Date.now().toString()).set(data);
+    res.send({ msg: data});
 });
 
 //dummy statement DELTE BEFORE PRODUCTION LIVE
