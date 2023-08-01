@@ -12,14 +12,14 @@ router.post('/add', async (req, res) => {
     const data = req.body;
     await userData.add({ data });
     // res.send({ msg: data});
-    res.send({ msg: auth.currentUser.email});
+    res.send({ msg: auth.currentUser});
 });
 
 //dummy statement DELTE BEFORE PRODUCTION LIVE
-router.get('/testUser', async (req, res) => {
+router.post('/testUser', async (req, res) => {
     const data = req.body;
-    console.log("called ");
-    console.log(data);
+    console.log(data.userData.uid);
+    console.log(data.formData);
     res.send(data);
 });
 

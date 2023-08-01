@@ -4,8 +4,13 @@ import {auth} from "../firebase";
 function SubmitClicked(){
     const headers = { 'Content-Type': 'application/json' }
     
-    fetch('http://localhost:5000/api/sleepData/testUser', { 
-        body: JSON.stringify({test: 'hello world'})
+    fetch('http://localhost:5000/api/sleepData/testUser', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(
+            {userData: auth.currentUser},
+            {formData: }
+            )
     })
 }
 
@@ -73,7 +78,7 @@ function DataForm() {
                             <label>When did you last drink a cup of coffee?</label><input id="coffeeDateValue" type='date'></input><br />
                             <label>How many days each week do you drink alcohol?</label><input id="alcoholValue" type='number' max={7} min={0} defaultValue={0}></input><br />
                             <br />
-                            <input type='submit' value="Done" style={{float: "left"}}></input>
+                            <input type='submit' value="Done" style={{float: "left"}} onClick={SubmitClicked}></input>
                         </form>
                     </div>
                     <div class="col-md-3" />
