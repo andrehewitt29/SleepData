@@ -11,7 +11,8 @@ router.get('/', async (req,res) => {
 router.post('/add', async (req, res) => {
     const body = req.body;
     const data = body.formData;
-    await userData.doc("Users").collection(body.userData.uid).doc(Date.now().toString()).set(data);
+    const time = Date.now().toString();
+    await userData.doc("Users").collection(body.userData.uid).doc(time).set(data);
     res.send({ msg: data});
 });
 
