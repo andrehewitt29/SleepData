@@ -8,7 +8,6 @@ import DataForm from "./pages/DataForm";
 import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Logout from "./pages/Logout";
 import NoPage from "./pages/NoPage";
 import PasswordReset from "./pages/PasswordReset";
 import Payment from "./pages/Payment";
@@ -17,6 +16,9 @@ import Settings from "./pages/Settings";
 import SignUp from "./pages/SignUp";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import Protected from './components/Protected';
+import Header from './pages/Header';
+import Footer from './pages/Footer';
+import './style.css';
 
 function App(){
   const [isSignedIn, setIsSignedIn] = useState(null);
@@ -45,6 +47,8 @@ function App(){
 
   return(
     <div>
+    <Header />
+    <br />
     <BrowserRouter>
     <Routes>
     <Route index element={<Home/>}/>
@@ -62,7 +66,6 @@ function App(){
     <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
     <Route path="/Home" element={<Home/>}/>
     <Route path="/Login" element={<Login/>}/>
-    <Route path="/Logout" element={<Logout/>}/>
     <Route path="/PasswordReset" element={<PasswordReset/>}/>
     <Route path="/Payment" element={<Payment/>}/>
     <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>}/>
@@ -71,7 +74,9 @@ function App(){
     <Route path="/TermsAndConditions" element={<TermsAndConditions/>}/>
     <Route path="/*" element={<NoPage/>}/>
         </Routes>
-    </BrowserRouter>     
+    </BrowserRouter>
+    <br />
+    <Footer /> 
   </div>
     // <div>
     // {(typeof backendData.users === 'undefined') ? (

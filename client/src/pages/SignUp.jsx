@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import '../style.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { auth } from "../firebase";
 import { AuthCredential, getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -13,20 +10,20 @@ function SignUp() {
 
     const signup = (e) =>{
         e.preventDefault();
-       createUserWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             console.log(userCredential);       
             alert("Account with the email (" + userCredential.user.email + ") " + "was successfully created");  
             navigate("/login");
         }).catch((error) => {
             alert(error);
-            console.log(error)
-        })
+            console.log(error);
+        });
     }
 
     return (
         <div class="container-fluid">
-            <Header />
+            <h1 style={{textAlign: "center"}}>Sign Up</h1>
             <div class="row" style={{minHeight: "250px", padding:"25px"}}>
                 <div class="col-md-4"/>
                 <div class="col-md-4">
@@ -40,7 +37,7 @@ function SignUp() {
                             <input type="password" class="form-control" id="InputPassword" onChange={(e) =>setPassword(e.target.value)}/>
                         </div>
                         <br />
-                        <label style={{color: "#333333"}}>By signing up to our website, you agree to our Terms and Condition and Privacy Policy.</label>
+                        <label style={{color: "#333333"}}>By signing up to our website, you agree to our <a href="TermsAndConditions" style={{textDecoration: "inherit"}}>Terms and Conditions</a> and <a href="PrivacyPolicy" style={{textDecoration: "inherit"}}>Privacy Policy</a>.</label>
                         <br/>
                         <br/>
                         <button type="submit" class="btn btn-primary">Create Account </button>
@@ -48,7 +45,6 @@ function SignUp() {
                 </div>
                 <div class="col-md-4"/>
             </div>
-            <Footer />
         </div>
     );
 }

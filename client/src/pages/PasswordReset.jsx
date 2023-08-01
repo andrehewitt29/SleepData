@@ -1,13 +1,9 @@
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import '../style.css';
 
 function PasswordReset() {
     return (
         <div class="container-fluid">
-            <Header />
-            <Footer />
+            <h1 style={{textAlign: "center"}}>Password Reset</h1>
         </div>
     );
 }

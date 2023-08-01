@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import '../style.css';
 import { auth } from "../firebase";
 import { NavLink, useNavigate } from 'react-router-dom';
-import { AuthCredential, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { AuthCredential, getAuth, reload, signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     var elem = document.getElementById('popup');
-   
+    var loginErrors = "Username or password was incorrect.";
     const signIn = (e) =>{
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
@@ -23,21 +20,27 @@ function Login() {
         
         }).catch((error) => {
 
-            
             if(elem){
                 //elem.style.display = 'block';
                 //elem.style.display = 'none';
             }
+            elem.style.display = "block";
             //alert(error);
-            console.log(error)
-        })
+            console.log(error);
+        });
     }
 
-  
+    if (auth.currentUser != null) {
+        return (
+            <div class="container-fluid">
+                <h1 style={{textAlign: "center"}}>You are already logged in!</h1>
+            </div>
+        );
+    }
 
     return (
         <div class="container-fluid">
-            <Header />
+            <h1 style={{textAlign: "center"}}>Login</h1>
             <div class="row" style={{minHeight: "250px", padding:"25px"}}>
                 <div class="col-md-4"/>
                 <div class="col-md-4">
@@ -49,16 +52,15 @@ function Login() {
                         <div class="form-group">
                             <label for="InputPassword">Password</label>
                             <input type="password" class="form-control" id="InputPassword" onChange={(e) =>setPassword(e.target.value)}/>
-                            <label id="popup">Username or password was incorrect.</label>
+                            <label id="popup" style={{ display: 'none' }}>{loginErrors}</label>
                         </div>
-                        <h6><a href="ForgotPassword" id="forgotpasswordbutton">Forgot Password?</a></h6>
+                        <h6><a href="ForgotPassword" id="forgotpasswordbutton" style={{textDecoration: "inherit"}}>Forgot Password?</a></h6>
                         <br/>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>
                 </div>
                 <div class="col-md-4"/>
             </div>
-            <Footer />
         </div>
     );
 }
