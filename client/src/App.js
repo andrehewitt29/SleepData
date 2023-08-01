@@ -15,7 +15,6 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Settings from "./pages/Settings";
 import SignUp from "./pages/SignUp";
 import TermsAndConditions from "./pages/TermsAndConditions";
-import Protected from './components/Protected';
 import Header from './pages/Header';
 import Footer from './pages/Footer';
 import './style.css';
@@ -43,9 +42,9 @@ function App(){
       setBackendData(data)
     }
   )
-  }, [])
+  }, []);
 
-  return(
+  return (
     <div>
     <Header />
     <br />
@@ -53,14 +52,7 @@ function App(){
     <Routes>
     <Route index element={<Home/>}/>
     <Route path="/About" element={<About/>}/>
-    <Route
-    path="/Account"
-    element={
-    <Protected isLoggedIn={true}>
-        <Account />
-      </Protected>
-    }
-    />
+    <Route path="/Account" element={<Account />}/>
     <Route path="/ContactUs" element={<ContactUs/>}/>
     <Route path="/DataForm" element={<DataForm/>}/>
     <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
@@ -109,7 +101,7 @@ function App(){
     //  </Protected>
    // }
   ///>
-  )
+  );
 }
 
 export default App
