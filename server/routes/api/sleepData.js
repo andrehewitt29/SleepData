@@ -12,7 +12,7 @@ router.post('/add', async (req, res) => {
     const data = req.body;
     await userData.add({ data });
     // res.send({ msg: data});
-    res.send({ msg: auth.currentUser});
+    res.send('Success');
 });
 
 //dummy statement DELTE BEFORE PRODUCTION LIVE
