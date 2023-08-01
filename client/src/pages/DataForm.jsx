@@ -12,7 +12,7 @@ function DataForm() {
     
         const headers = { 'Content-Type': 'application/json' }
         
-        fetch('http://localhost:5000/api/sleepData/testUser', {
+        fetch('http://localhost:5000/api/sleepData/add', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(
