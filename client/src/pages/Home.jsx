@@ -3,6 +3,7 @@ import placeholdImg from '../img/card_placeholder.png';
 import dogImg from '../img/sleepingDog.jpg';
 import pieChart from '../img/pie_graph_icon.png';
 import peopleIcon from '../img/people_icon.png';
+import bookicon from '../img/book_template.jpg';
 
 function Home() {
     return (
@@ -62,6 +63,16 @@ function Home() {
                     </div>
                 </div>
                 <div class="sub-box"><img id="dogtag" src={dogImg}/></div>
+            </div>
+            <div class="two-box" id="flip-h">
+                <div class="sub-box" id="align-center">
+                    <h2>Sleep Beyond your Dreams</h2>
+                    <p class="cube-text">What might bought you here, is this book that provides advice on how important both your mental and physical health is affected by your sleeping pattern.</p>
+                    <a id="buy" href="#">Buy</a>
+                </div>
+                <div class="cube-div">
+                    <img src={bookicon} class="cube-img" />
+                </div>
             </div>
         </div>
     );
