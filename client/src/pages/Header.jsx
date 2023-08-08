@@ -1,6 +1,7 @@
 import React from "react";
 import logo from '../img/LifespanTrustLogo.png';
 import {auth} from "../firebase";
+import { Squash as Hamburger } from 'hamburger-react';
 
 function Header() {
     if (auth.currentUser != null) {
@@ -8,15 +9,26 @@ function Header() {
     
         return (
             <header id="topbar">
-                <ul id="leftHeader">
+                <ul id="leftHeader" style={{position:"absolute", padding: "1vh"}}>
+                    <img id="logo" src={logo} alt="" style={{position:"absolute"}}/>
+                </ul>
+                <ul id="rightHeader" style={{position:"absolute", right: 0, padding: "3vh"}}>
+                    <Hamburger color="black" onToggle={toggled => {
+                        if (toggled) {
+                            // open a menu
+                            document.getElementById("burgerContents").hidden = false;                          
+                        } else {
+                            // close a menu
+                            document.getElementById("burgerContents").hidden = true;
+                        }
+                        }} />
+                </ul>
+                <div id="burgerContents" hidden style={{zIndex: "1", backgroundColor: "white", marginTop: "100px", position:"absolute", right: 0, padding: "10px"}}>
                     <a href="Home" class="headlink" id="home"><li>Home</li></a>
                     <a href="About" class="headlink" id="about"><li>About</li></a>
-                </ul>
-                <img id="logo" src={logo} alt=""/>
-                <ul id="rightHeader">
-                    <a href="Account" class="headlink" id="account"><li>{userName}</li></a>
+                    <a href="Account" class="headlink" id="account"><li>My Account</li></a>
                     <a href="Home" class="headlink" id="logout" onClick={() => auth.signOut()}><li>Log Out</li></a>
-                </ul>
+                </div>
             </header>
         );
     }

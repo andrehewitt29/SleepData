@@ -45,7 +45,7 @@ function SignUp() {
                             <input type="password" class="form-control" id="InputPassword" onChange={(e) =>setPassword(e.target.value)}/>
                         </div>
                         <br />
-                        <label style={{color: "#333333"}}>By signing up to our website, you agree to our <a href="TermsAndConditions" style={{textDecoration: "inherit"}}>Terms and Conditions</a> and <a href="PrivacyPolicy" style={{textDecoration: "inherit"}}>Privacy Policy</a>.</label>
+                        <label>By signing up to our website, you agree to our <a href="TermsAndConditions" style={{textDecoration: "inherit"}}>Terms and Conditions</a> and <a href="PrivacyPolicy" style={{textDecoration: "inherit"}}>Privacy Policy</a>.</label>
                         <br/>
                         <br/>
                         <button type="submit" class="btn btn-primary">Create Account </button>
