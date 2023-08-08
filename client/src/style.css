@@ -40,6 +40,7 @@
     font-weight: bold;
     text-align: center;
     text-decoration: none;
+    padding: 25px;
     color: #000000;
     font-size: 1.2em;
 }
@@ -198,7 +199,6 @@
 
 /* About Page */
 #about-page {
-    background-color: #202020;
     width: 50%;
     margin: 0 auto 0 auto;
     color: #fff;
@@ -253,15 +253,75 @@ footer {
     margin: auto 5% auto 4px;
 }
 
+#burgerContents {
+    z-index: 1;
+    background-color: white;
+    margin-top: 100px;
+    position: absolute;
+    right: 0;
+    padding: 10px;
+}
+
+#burgerContents > a {
+    list-style-type: none;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.2em;
+}
+
+.form-background {
+    background-color: #333333;
+    padding: 4%;
+    border-radius: 10px;
+    box-shadow: 2px 4px 4px #000000;
+}
+
+.form-title {
+    text-align: center;
+    color: #dddddd;
+}
+
+.form-link-default {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.form-link {
+    text-decoration: inherit;
+}
+
 .inputAlignHeight > div > input, .inputAlignHeight > div > select {
     float: right;
     line-height: 100%;
     border-radius: 5px;
 }
 
-.form-background {
-    background-color: #333333;
-    padding: 2%;
-    border-radius: 10px;
-    box-shadow: 2px 4px 4px #000000;
+.error-page {
+    padding: 15vh;
+    text-align: center;
+}
+
+.error-page > h2 {
+    font-size: 100px;
+}
+
+.container-fluid > h1 {
+    font-weight: bold;
+    text-align: center;
+}
+
+.account-form {
+    min-height: 250px;
+    padding: 25px;
+}
+
+.centered {
+    text-align: center;
+}
+
+#settingsSubmitButton, #dataFormSubmitButton {
+    float: none;
+    padding: 10px;
 }

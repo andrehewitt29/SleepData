@@ -3,10 +3,11 @@ import React from 'react';
 function TermsAndConditions() {
     return (
         <div class="container-fluid">
-            <h1 style={{textAlign: "center"}}>Terms and Conditions</h1>
+            <h1>Terms and Conditions</h1>
             <div class="row">
                 <div class="col-md-2" />
                 <div class="col-md-8">
+                <div class="form-background">
                     <p>Welcome to Lifespan Trust!
                     <br />
                     <br />
@@ -97,7 +98,7 @@ function TermsAndConditions() {
                     <p>We shall not be hold responsible for any content that appears on your Website. You agree to protect and defend us against all claims that is rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</p>
                     <br />
                     <h2>Your Privacy:</h2>
-                    <p>Please read <a href="PrivacyPolicy" style={{textDecoration: "inherit"}}>Privacy Policy</a></p>
+                    <p>Please read <a href="PrivacyPolicy" class="form-link">Privacy Policy</a></p>
                     <br />
                     <h2>Reservation of Rights:</h2>
                     <p>We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amen these terms and conditions and it's linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.</p>
@@ -120,7 +121,8 @@ function TermsAndConditions() {
                     <br />
                     <br />
                     As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
-                    <br />
+                </div>
+                <br />
                 </div>
                 <div class="col-md-2" />
             </div>

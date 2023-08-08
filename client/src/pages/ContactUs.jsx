@@ -18,11 +18,11 @@ export default function ContactUs(){
 
     return (
         <div class="container-fluid">
+            <h1>Contact Us</h1>
             <div class="row">
                 <div class="col-md-3" />
-                <div class="col-md-6" style={{textAlign: "center"}}>
-                    <h1>Contact Us</h1>
-                    <form onSubmit={sendEmail}>
+                <div class="col-md-6 centered">
+                    <form class="form-background" onSubmit={sendEmail}>
                         <input type="text" className="form-control" placeholder="Your Name" name="name"/>
                         <input type="email" className="form-control" placeholder="Your Email Address" name="email"/>
                         <input type="text" className="form-control" placeholder="Subject" name="subject"/>

@@ -21,21 +21,13 @@ function SignUp() {
         });
     }
 
-    if (auth.currentUser != null) {
-        return (
-            <div class="container-fluid">
-                <h1 style={{textAlign: "center"}}>You are already logged in!</h1>
-            </div>
-        );
-    }
-
     return (
         <div class="container-fluid">
-            <h1 style={{textAlign: "center"}}>Sign Up</h1>
-            <div class="row" style={{minHeight: "250px", padding:"25px"}}>
+            <h1>Sign Up</h1>
+            <div class="row account-form">
                 <div class="col-md-4"/>
                 <div class="col-md-4">
-                    <form onSubmit={signup}>
+                    <form class="form-background" onSubmit={signup}>
                         <div class="form-group">
                             <label for="InputEmail">Email address</label>
                             <input type="email" class="form-control" id="InputEmail" onChange={(e) =>setEmail(e.target.value)}/>
@@ -45,7 +37,7 @@ function SignUp() {
                             <input type="password" class="form-control" id="InputPassword" onChange={(e) =>setPassword(e.target.value)}/>
                         </div>
                         <br />
-                        <label>By signing up to our website, you agree to our <a href="TermsAndConditions" style={{textDecoration: "inherit"}}>Terms and Conditions</a> and <a href="PrivacyPolicy" style={{textDecoration: "inherit"}}>Privacy Policy</a>.</label>
+                        <label>By signing up to our website, you agree to our <a href="TermsAndConditions" class="form-link">Terms and Conditions</a> and <a href="PrivacyPolicy" class="form-link">Privacy Policy</a>.</label>
                         <br/>
                         <br/>
                         <button type="submit" class="btn btn-primary">Create Account </button>

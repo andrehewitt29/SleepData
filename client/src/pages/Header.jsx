@@ -5,29 +5,22 @@ import { Squash as Hamburger } from 'hamburger-react';
 
 function Header() {
     if (auth.currentUser != null) {
-        var userName = auth.currentUser.email;
-    
         return (
-            <header id="topbar">
+            <header id="topbar" onLoad={() => {document.getElementById("burgerContents").hidden = true;}}>
                 <ul id="leftHeader" style={{position:"absolute", padding: "1vh"}}>
                     <img id="logo" src={logo} alt="" style={{position:"absolute"}}/>
                 </ul>
                 <ul id="rightHeader" style={{position:"absolute", right: 0, padding: "3vh"}}>
-                    <Hamburger color="black" onToggle={toggled => {
-                        if (toggled) {
-                            // open a menu
-                            document.getElementById("burgerContents").hidden = false;                          
-                        } else {
-                            // close a menu
-                            document.getElementById("burgerContents").hidden = true;
-                        }
-                        }} />
+                    <Hamburger color="black" onToggle={toggled => {document.getElementById("burgerContents").hidden = !toggled;}} />
                 </ul>
-                <div id="burgerContents" hidden style={{zIndex: "1", backgroundColor: "white", marginTop: "100px", position:"absolute", right: 0, padding: "10px"}}>
-                    <a href="Home" class="headlink" id="home"><li>Home</li></a><br />
-                    <a href="About" class="headlink" id="about"><li>About</li></a><br />
-                    <a href="Account" class="headlink" id="account"><li>My Account</li></a><br />
-                    <a href="Home" class="headlink" id="logout" onClick={() => auth.signOut()}><li>Log Out</li></a>
+                <div id="burgerContents" hidden>
+                    <a href="Account" id="account"><li>My Sleep Data</li></a><br />
+                    <a href="Settings" id="settings"><li>Settings</li></a><br />
+                    <a href="DataForm" id="dataForm"><li>Add/Modify Data</li></a><br />
+                    <a href="Payment" id="payment"><li>Payment</li></a><br />
+                    <a href="RequestMeeting" id="requestmeeting"><li>Request a Meeting</li></a><br />
+                    <a href="About" id="about"><li>About</li></a><br />
+                    <a href="Home" id="logout" onClick={() => auth.signOut()}><li>Log Out</li></a>
                 </div>
             </header>
         );
