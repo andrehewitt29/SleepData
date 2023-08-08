@@ -38,7 +38,6 @@
 .headlink {
     list-style-type: none;
     font-weight: bold;
-    padding: 25px;
     text-align: center;
     text-decoration: none;
     color: #000000;
@@ -265,9 +264,4 @@ footer {
     padding: 2%;
     border-radius: 10px;
     box-shadow: 2px 4px 4px #000000;
-}
-
-.form-title {
-    text-align: "center";
-    color: "#dddddd";
 }

@@ -24,9 +24,9 @@ function Header() {
                         }} />
                 </ul>
                 <div id="burgerContents" hidden style={{zIndex: "1", backgroundColor: "white", marginTop: "100px", position:"absolute", right: 0, padding: "10px"}}>
-                    <a href="Home" class="headlink" id="home"><li>Home</li></a>
-                    <a href="About" class="headlink" id="about"><li>About</li></a>
-                    <a href="Account" class="headlink" id="account"><li>My Account</li></a>
+                    <a href="Home" class="headlink" id="home"><li>Home</li></a><br />
+                    <a href="About" class="headlink" id="about"><li>About</li></a><br />
+                    <a href="Account" class="headlink" id="account"><li>My Account</li></a><br />
                     <a href="Home" class="headlink" id="logout" onClick={() => auth.signOut()}><li>Log Out</li></a>
                 </div>
             </header>
