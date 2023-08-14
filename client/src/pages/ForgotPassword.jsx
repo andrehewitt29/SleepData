@@ -23,8 +23,8 @@ export default function ForgotPassword(){
 
     return (
         <div class="container-fluid">
-            <h1 style={{textAlign: "center"}}>Forgotten Password</h1>
-            <div class="row" style={{minHeight: "150px", padding:"25px"}}>
+            <h1>Forgotten Password</h1>
+            <div class="row account-form">
                 <div class="col-md-4"/>
                 <div class="col-md-4">
                     <form id = "inputForm">
