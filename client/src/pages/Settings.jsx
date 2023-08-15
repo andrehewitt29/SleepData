@@ -4,7 +4,6 @@ function Settings() {
     return (
         <div class="container-fluid">
             <h1>Account Settings</h1>
-            <br />
             <div class="row">
                 <div class="col-md-3" />
                 <div class="col-md-6">
