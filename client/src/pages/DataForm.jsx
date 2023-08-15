@@ -8,8 +8,6 @@ function DataForm() {
     const formRef = useRef();
 
     function SubmitClicked(event){//when the submit button is clicked send all form data aswell as signed in user id to the backend
-        event.preventDefault();
-    
         const headers = { 'Content-Type': 'application/json' }
         
         fetch('http://localhost:5000/api/sleepData/add', {
