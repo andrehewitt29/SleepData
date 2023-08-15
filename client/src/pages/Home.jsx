@@ -27,7 +27,7 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <div class="sub-box"><img class="imgtag" src={dogImg} alt='Dog'/></div>
+                <div class="sub-box"><img class="imgtag" style={{borderRadius: "0"}} src={dogImg} alt='Dog'/></div>
             </div>
             <br />
             <div class="two-box">
