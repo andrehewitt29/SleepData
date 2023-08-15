@@ -12,18 +12,18 @@ function Home() {
                 <div class="sub-box" id="two-section">
                     <div class="title-box">
                         <h1>The Importance of Sleep</h1>
-                        <p>Try to maintain that cozy lifestyle by giving you enough shuteye to provide you many benefits!</p>
+                        <p>Trying to maintain a healthy lifestyle is difficult. But giving yourself enough sleep can provide many benefits!</p>
                         <a class="home-btns" href="SignUp" style={{backgroundColor: "#0C67AD"}}>Sign Up</a>
                         <br />
                     </div>
                     <div id="description-box" class="row">
                         <div class="col-md-6">
                             <img src={pieChart} alt='Pie'/>
-                            <p>Scores can help track your records monthly and automatically generate statistics and graphs for your comparisons</p>
+                            <p>Scores can help you track your monthly sleep health and automatically generate statistics to guide you along your sleep journey.</p>
                         </div>
                         <div class="col-md-6">
                             <img src={peopleIcon} alt='People'/>
-                            <p>By signing up an account, you can join online meetings <span id="highlight">live</span> with the book writer Brian McKeown and his associates.</p>
+                            <p>By creating an account, you can join online meetings <span id="highlight">live</span> with the author "Brian McKeown" and his associates.</p>
                         </div>
                     </div>
                 </div>
