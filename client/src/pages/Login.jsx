@@ -30,21 +30,13 @@ function Login() {
         });
     }
 
-    if (auth.currentUser != null) {
-        return (
-            <div class="container-fluid">
-                <h1 style={{textAlign: "center"}}>You are already logged in!</h1>
-            </div>
-        );
-    }
-
     return (
         <div class="container-fluid">
-            <h1 style={{textAlign: "center"}}>Login</h1>
-            <div class="row" style={{minHeight: "250px", padding:"25px"}}>
+            <h1>Login</h1>
+            <div class="row account-form">
                 <div class="col-md-4"/>
                 <div class="col-md-4">
-                    <form onSubmit={signIn}>
+                    <form class="form-background" onSubmit={signIn}>
                         <div class="form-group">
                             <label for="InputEmail">Email address</label>
                             <input type="email" class="form-control" id="InputEmail" onChange={(e) =>setEmail(e.target.value)}/>
