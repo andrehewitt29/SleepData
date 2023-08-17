@@ -1,6 +1,65 @@
-import React from 'react';
+import {React, useRef} from 'react';
+import {auth} from "../firebase";
+
+
+
 
 function DataForm() {
+    const formRef = useRef();
+
+    function SubmitClicked(event){//when the submit button is clicked send all form data aswell as signed in user id to the backend
+        const headers = { 'Content-Type': 'application/json' }
+        
+        fetch('http://localhost:5000/api/sleepData/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(
+                {userData: auth.currentUser,
+                formData: {
+                    readValue: formRef.current.readValue.value,
+                    readNonFictionValue: formRef.current.readNonFictionValue.value,
+                    readEnjoymentValue: formRef.current.readEnjoymentValue.value,
+                    luckValue: formRef.current.luckValue.value,
+                    dyslexicValue: formRef.current.dyslexicValue.value,
+                    selfFocusValue: formRef.current.selfFocusValue.value,
+                    wellbeingValue: formRef.current.wellbeingValue.value,
+                    stressValue: formRef.current.stressValue.value,
+                    sleepValue: formRef.current.sleepValue.value,
+                    sleepHourValue: formRef.current.sleepHourValue.value,
+                    fallAsleepValue: formRef.current.fallAsleepValue.value,
+                    awakenValue: formRef.current.awakenValue.value,
+                    chronotypeValue: formRef.current.chronotypeValue.value,
+                    snoreValue: formRef.current.snoreValue.value,
+                    partnerSnoreValue: formRef.current.partnerSnoreValue.value,
+                    petValue: formRef.current.petValue.value,
+                    addictiveValue: formRef.current.addictiveValue.value,
+                    viaOneValue: formRef.current.viaOneValue.value,
+                    viaBestTwoValue: formRef.current.viaBestTwoValue.value,
+                    viaBestThreeValue: formRef.current.viaBestThreeValue.value,
+                    viaBestFourValue: formRef.current.viaBestFourValue.value,
+                    viaBestFiveValue: formRef.current.viaBestFiveValue.value,
+                    viaWorstFiveValue: formRef.current.viaWorstFiveValue.value,
+                    viaWorstFourValue: formRef.current.viaWorstFourValue.value,
+                    viaWorstThreefValue: formRef.current.viaWorstThreefValue.value,
+                    viaWorstTwoValue: formRef.current.viaWorstTwoValue.value,
+                    viaWorstOneValue: formRef.current.viaWorstOneValue.value,
+                    gritValue: formRef.current.gritValue.value,
+                    gritPercentage: formRef.current.gritPercentage.value,
+                    physicalTouchPercentage: formRef.current.physicalTouchPercentage.value,
+                    qualityTimePercentage: formRef.current.qualityTimePercentage.value,
+                    wordsOfAffirmationPercentage: formRef.current.wordsOfAffirmationPercentage.value,
+                    actsOfServicePercentage: formRef.current.actsOfServicePercentage.value,
+                    receivingGiftsPercentage: formRef.current.receivingGiftsPercentage.value,
+                    exerciseValue: formRef.current.exerciseValue.value,
+                    fitnessValue: formRef.current.fitnessValue.value,
+                    coffeeValue: formRef.current.coffeeValue.value,
+                    coffeeDateValue: formRef.current.coffeeDateValue.value,
+                    alcoholValue: formRef.current.alcoholValue.value
+                }}
+                )
+        })
+    }
+    
     var curr = new Date();
     curr.setDate(curr.getDate());
     var date = curr.toISOString().substring(0,10);
@@ -16,7 +75,7 @@ function DataForm() {
             <div class="row">
                 <div class="col-md-3" />
                 <div class="col-md-6">
-                    <form class="inputAlignHeight" style={{lineHeight: "200%"}}>
+                    <form class="inputAlignHeight" style={{lineHeight: "200%"} } ref={formRef} onSubmit={SubmitClicked}>
                     <div class="form-background">
                         <h5 class="form-title"><strong>General Questions:</strong></h5>
                         <label>How many books do you read each week?</label><input id="readValue" type='number' max={70} min={0}></input><br />

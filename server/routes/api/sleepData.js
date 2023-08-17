@@ -9,10 +9,19 @@ router.get('/', async (req,res) => {
 });
 
 router.post('/add', async (req, res) => {
-    const data = req.body;
-    await userData.add({ data });
+    const body = req.body;
+    const data = body.formData;
+    const time = Date.now().toString();
+    await userData.doc("Users").collection(body.userData.uid).doc(time).set(data);
     res.send({ msg: data});
 });
 
+//dummy statement DELTE BEFORE PRODUCTION LIVE
+router.post('/testUser', async (req, res) => {
+    const data = req.body;
+    console.log(data.userData.uid);
+    console.log(data.formData);
+    res.send(data);
+});
 
 module.exports = router;
