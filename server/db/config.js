@@ -1,6 +1,8 @@
 const firebase = require("firebase-admin");
 const env = require("dotenv").config().parsed;
 
+var collection = "Users";
+
 var serviceAccount = require("../rnd-sleep-data-project-test-firebase-adminsdk-w1e0m-cb72d8ea51.json");
 
 const firebaseConfig = {
@@ -18,6 +20,7 @@ firebase.initializeApp({
     credential: firebase.credential.cert(serviceAccount),
     databaseURL: "https://rnd-sleep-data-project-test-default-rtdb.firebaseio.com"
 });
+
 const db = firebase.firestore();
-const data = db.collection("test_data");
+const data = db.collection(collection);
 module.exports= data;
