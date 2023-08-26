@@ -1,11 +1,11 @@
 import React from 'react';
 
-function PasswordReset() {
+function RequestMeeting() {
     return (
         <div class="container-fluid">
-            <h1>Password Reset</h1>
+            <h1>Request Meeting</h1>
         </div>
     );
 }
 
-export default PasswordReset;
+export default RequestMeeting;

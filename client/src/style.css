@@ -3,7 +3,6 @@
 :root {
     --content-color: #202020;
     --article-text: #fff;
-    --heading-color: #3BA9FB;
 }
 
 /* Global Styling */
@@ -18,6 +17,8 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: var(--content-color);
+    color: white;
 }
 
 /* Header */
@@ -26,6 +27,7 @@
     display: flex;
     height: 12vh;
     min-height: 100px;
+    background-color: white;
 }
 
 #topbar ul {
@@ -36,11 +38,11 @@
 .headlink {
     list-style-type: none;
     font-weight: bold;
-    padding: 25px;
     text-align: center;
     text-decoration: none;
+    padding: 25px;
     color: #000000;
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 
 #selected {
@@ -57,17 +59,16 @@
 #index-page {
     background-color: var(--content-color);
     color: var(--article-text);
-    height: 100%;
-    padding: 5% 0;
 }
 
 .two-box {
     display: flex;
     width: 70%;
     margin: 3% auto 0 auto;
+    /* height: 100px; */
 }
 
-.sub-box, #title-box {
+.sub-box, .title-box {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -77,17 +78,16 @@
     margin: auto;
 }
 
-#title-box h1 {
-    color: var(--heading-color);
+.title-box h1 {
+    color: #3BA9FB;
     font-size: 2.5rem;
 }
 
-#title-box p {
+.title-box p {
     font-size: 1.5rem;
 }
 
-#signup-btn {
-    background-color: #0C67AD;
+.home-btns {
     color: var(--article-text);
     text-decoration: none;
     border-radius: 20px;
@@ -118,60 +118,19 @@
     width: 45%;
 }
 
-#dogtag {
+
+.imgtag {
     display: block;
     margin: auto;
     width: 75%;
     box-shadow: 0 0 20px #000;
+    border-radius: 15%;
 }
 
 #highlight {
     text-transform: uppercase;
     font-weight: bold;
     color: #ff6161;
-}
-
-/* index - second section */
-
-#flip-h {
-    flex-direction: row-reverse;
-}
-
-.sub-box h2
-{
-    color: var(--heading-color);
-}
-
-.cube-img {
-    border-radius: 50px;
-    width: 90%;
-    margin: auto;
-}
-
-#buy {
-    background-color: #B7661C;
-    color: var(--article-text);
-    border-radius: 20px;
-    width: 40%;
-    padding: 10px 0;
-    text-decoration: none;
-    font-size: 1.35em;
-    margin: 4% auto auto auto;
-}
-
-.cube-div {
-    width: 50%;
-}
-
-#align-center {
-    text-align: center;
-    height: 50%;
-    margin: auto;
-}
-
-.cube-text {
-    width: 50%;
-    margin: 0 auto;
 }
 
 /* Main */
@@ -239,7 +198,6 @@
 
 /* About Page */
 #about-page {
-    background-color: #202020;
     width: 50%;
     margin: 0 auto 0 auto;
     color: #fff;
@@ -294,7 +252,76 @@ footer {
     margin: auto 5% auto 4px;
 }
 
-.inputAlignHeight > input, .inputAlignHeight > select {
+#burgerContents {
+    z-index: 1;
+    background-color: white;
+    margin-top: 100px;
+    position: absolute;
+    right: 0;
+    padding: 10px;
+}
+
+#burgerContents > a {
+    list-style-type: none;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.2em;
+}
+
+.form-background {
+    background-color: #333333;
+    padding: 4%;
+    border-radius: 10px;
+    box-shadow: 2px 4px 4px #000000;
+}
+
+.form-title {
+    text-align: center;
+    color: #dddddd;
+}
+
+.form-link-default {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.form-link {
+    text-decoration: inherit;
+}
+
+.inputAlignHeight > div > input, .inputAlignHeight > div > select, .inputAlignHeight > p {
     float: right;
     line-height: 100%;
+    border-radius: 5px;
+}
+
+.error-page {
+    padding: 15vh;
+    text-align: center;
+}
+
+.error-page > h2 {
+    font-size: 100px;
+}
+
+.container-fluid > h1 {
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 1%;
+}
+
+.account-form {
+    min-height: 250px;
+    padding: 25px;
+}
+
+.centered {
+    text-align: center;
+}
+
+#settingsSubmitButton, #dataFormSubmitButton {
+    float: none;
+    padding: 10px;
 }

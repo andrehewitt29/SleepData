@@ -1,6 +1,7 @@
 # SleepData
 Research And Development Project
 ## How to start the project
+Download Node.js: https://nodejs.org/en/download
 ### Client Side
 cd client
 
@@ -8,7 +9,7 @@ SleepData\client> npm install react-scripts --save</br>
 SleepData\client> npm start
 SleepData\client> npm i firebase
 SleepData\client> npm install @emailjs/browser
-
+SleepData\client> npm install react-bootstrap bootstrap
 ### Server Side
 cd..
 cd server

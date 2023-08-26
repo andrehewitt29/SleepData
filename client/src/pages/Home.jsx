@@ -1,79 +1,53 @@
 import React from 'react';
-import placeholdImg from '../img/card_placeholder.png';
 import dogImg from '../img/sleepingDog.jpg';
 import pieChart from '../img/pie_graph_icon.png';
 import peopleIcon from '../img/people_icon.png';
-import bookicon from '../img/book_template.jpg';
+import bookImg from '../img/homeBook.png';
+import deskImg from '../img/homeDesk.png';
 
 function Home() {
     return (
-        // <div class="container-fluid">
-        //     <div id="starter-page">
-        //         <div id="starter-paragraph">
-        //             <h1>Quote of the Month</h1>
-        //             <p>"The greatest blessings of mankind are within us and within our reach. A wise man is content with his lot, whatever it may be, without wishing for what he has not."</p>
-        //             <p id="quote">- Seneca</p>
-        //         </div>
-        //     </div>
-        
-        //     <div id="second-section">
-        //         <h1 id="card-title">Sleep can affect your...</h1>
-        //         <div id="group-cards">
-        //             <div class="card">
-        //                 <img src={placeholdImg} alt=""/>
-        //                 <div class="card-paragraph">
-        //                     <h1>Mental Health</h1>
-        //                     <p>Lack of sleep leads to irratation, aniexty and depression. However having enough sleep shows the opposite of that! Happiness and fulfilment.</p>
-        //                 </div>
-        //             </div>
-        //             <div class="card">
-        //                 <img src={placeholdImg} alt=""/>
-        //                 <div class="card-paragraph">
-        //                     <h1>Education Factor</h1>
-        //                     <p>"The hardest people to sell the importance of sleep to, are students." Getting burnout from studying to finish an assessment is such a terrible feeling. Ensure that mental health is more important than studying.</p>
-        //                 </div>
-        //             </div>
-        //             <div class="card">
-        //                 <img src={placeholdImg} alt=""/>
-        //                 <div class="card-paragraph">
-        //                     <h1>Decision Making</h1>
-        //                     <p>Poor sleep habits and schedules might affect your daily life decisions including when dealing with your business.</p>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>
         <div id="index-page">
             <div class="two-box">
                 <div class="sub-box" id="two-section">
-                    <div id="title-box">
+                    <div class="title-box">
                         <h1>The Importance of Sleep</h1>
-                        <p>Try to maintain that cozy lifestyle by giving you enough shuteye to provide you many benefits!</p>
-                        <a id="signup-btn" href="SignUp">Sign Up</a>
+                        <p>Trying to maintain a healthy lifestyle is difficult. But giving yourself enough sleep can provide many benefits!</p>
+                        <a class="home-btns" href="SignUp" style={{backgroundColor: "#0C67AD"}}>Sign Up</a>
+                        <br />
                     </div>
-                    <div id="description-box">
-                        <div>
-                            <img src={pieChart}/>
-                            <p>Scores can help track your records monthly and automatically generate statistics and graphs for your comparisons</p>
+                    <div id="description-box" class="row">
+                        <div class="col-md-6">
+                            <img src={pieChart} alt='Pie'/>
+                            <p>Scores can help you track your monthly sleep health and automatically generate statistics to guide you along your sleep journey.</p>
                         </div>
-                        <div>
-                            <img src={peopleIcon}/>
-                            <p>By signing up an account, you can join online meetings <span id="highlight">live</span> with the book writer Brian McKeown and his associates.</p>
+                        <div class="col-md-6">
+                            <img src={peopleIcon} alt='People'/>
+                            <p>By creating an account, you can join online meetings <span id="highlight">live</span> with the author "Brian McKeown" and his associates.</p>
                         </div>
                     </div>
                 </div>
-                <div class="sub-box"><img id="dogtag" src={dogImg}/></div>
+                <div class="sub-box"><img class="imgtag" style={{borderRadius: "0"}} src={dogImg} alt='Dog'/></div>
             </div>
-            <div class="two-box" id="flip-h">
-                <div class="sub-box" id="align-center">
-                    <h2>Sleep Beyond your Dreams</h2>
-                    <p class="cube-text">What might bought you here, is this book that provides advice on how important both your mental and physical health is affected by your sleeping pattern.</p>
-                    <a id="buy" href="#">Buy</a>
-                </div>
-                <div class="cube-div">
-                    <img src={bookicon} class="cube-img" />
+            <br />
+            <div class="two-box">
+                <div class="sub-box"><img class="imgtag" src={bookImg} alt='Book'/></div>
+                <div class="sub-box title-box">
+                    <h1>Sleep Beyond your Dreams</h1>
+                    <p>The book that might have brought you here; "Sleep Beyond your Dreams", provides in-depth wisdom on the importance of sleep towards your mental and physical health, and gives professional advice on how you can help yourself through improving your sleep patterns.</p>
+                    <a href="#" class="home-btns" style={{backgroundColor: "#CC8811"}}>Buy</a>
                 </div>
             </div>
+            <br />
+            <div class="two-box">
+                <div class="sub-box title-box" style={{width: "100%"}}>
+                    <h1>The Questionnaire</h1>
+                    <p>Take a free online quiz at our sister website to find out your sleep score today!</p>
+                    <a href="http://www.lifespantrust.com/sleep-quiz/" class="home-btns" style={{backgroundColor: "#771188"}}>Quiz</a>
+                </div>
+                <div class="sub-box"><img class="imgtag" src={deskImg} alt='Desk'/></div>
+            </div>
+            <br />
         </div>
     );
 }
