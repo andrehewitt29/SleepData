@@ -10,7 +10,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import NoPage from "./pages/NoPage";
 import PasswordReset from "./pages/PasswordReset";
-import Payment from "./pages/Payment";
+import PersonalData from "./pages/PersonalData";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import RequestMeeting from "./pages/RequestMeeting";
 import Settings from "./pages/Settings";
@@ -51,11 +51,12 @@ function App(){
   if (auth.currentUser != null) {
     return (
       <div>
+        <div class="topbar" style={{position: "static"}}/>
         <Header />
         <br />
         <BrowserRouter>
           <Routes>
-            <Route index element={<Home/>}/>
+            <Route index element={<Account/>}/>
             <Route path="/About" element={<About/>}/>
             <Route path="/Account" element={<Account />}/>
             <Route path="/ContactUs" element={<ContactUs/>}/>
@@ -64,7 +65,7 @@ function App(){
             <Route path="/Home" element={<Account/>}/>
             <Route path="/Login" element={<AlreadyLoggedIn/>}/>
             <Route path="/PasswordReset" element={<AlreadyLoggedIn/>}/>
-            <Route path="/Payment" element={<Payment/>}/>
+            <Route path="/PersonalData" element={<PersonalData/>}/>
             <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>}/>
             <Route path="/RequestMeeting" element={<RequestMeeting/>}/>
             <Route path="/Settings" element={<Settings/>}/>
@@ -82,6 +83,7 @@ function App(){
   // If not logged in:
   return (
     <div>
+      <div class="topbar" style={{position: "static"}}/>
       <Header />
       <br />
       <BrowserRouter>
@@ -95,7 +97,7 @@ function App(){
           <Route path="/Home" element={<Home/>}/>
           <Route path="/Login" element={<Login/>}/>
           <Route path="/PasswordReset" element={<PasswordReset/>}/>
-          <Route path="/Payment" element={<NotLoggedIn/>}/>
+          <Route path="/PersonalData" element={<NotLoggedIn/>}/>
           <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>}/>
           <Route path="/RequestMeeting" element={<NotLoggedIn/>}/>
           <Route path="/Settings" element={<NotLoggedIn/>}/>
