@@ -20,6 +20,7 @@ import Header from './pages/Header';
 import Footer from './pages/Footer';
 import NotLoggedIn from './pages/NotLoggedIn';
 import AlreadyLoggedIn from './pages/AlreadyLoggedIn';
+import Reminder from './pages/Reminder'
 import './style.css';
 
 function App(){
@@ -101,6 +102,7 @@ function App(){
           <Route path="/Settings" element={<NotLoggedIn/>}/>
           <Route path="/SignUp" element={<SignUp/>}/>
           <Route path="/TermsAndConditions" element={<TermsAndConditions/>}/>
+          <Route path="/Reminder" element={<Reminder/>}/>
           <Route path="/*" element={<NoPage/>}/>
         </Routes>
       </BrowserRouter>
