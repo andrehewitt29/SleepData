@@ -23,14 +23,17 @@
 
 /* Header */
 
-#topbar {
+.topbar {
     display: flex;
     height: 12vh;
     min-height: 100px;
     background-color: white;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
 }
 
-#topbar ul {
+.topbar ul {
     display: flex;
     margin: auto auto;
 }
@@ -42,7 +45,11 @@
     text-decoration: none;
     padding: 25px;
     color: #000000;
-    font-size: 1.2em;
+    font-size: 1.5em;
+}
+
+.headlink:hover {
+    color: #0073c9;
 }
 
 #selected {
@@ -59,7 +66,6 @@
 #index-page {
     background-color: var(--content-color);
     color: var(--article-text);
-    height: 100rem;
 }
 
 .two-box {
@@ -69,7 +75,7 @@
     /* height: 100px; */
 }
 
-.sub-box, #title-box {
+.sub-box, .title-box {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -79,17 +85,16 @@
     margin: auto;
 }
 
-#title-box h1 {
+.title-box h1 {
     color: #3BA9FB;
     font-size: 2.5rem;
 }
 
-#title-box p {
+.title-box p {
     font-size: 1.5rem;
 }
 
-#signup-btn {
-    background-color: #0C67AD;
+.home-btns {
     color: var(--article-text);
     text-decoration: none;
     border-radius: 20px;
@@ -121,11 +126,12 @@
 }
 
 
-#dogtag {
+.imgtag {
     display: block;
     margin: auto;
     width: 75%;
     box-shadow: 0 0 20px #000;
+    border-radius: 15%;
 }
 
 #highlight {
@@ -269,6 +275,11 @@ footer {
     text-decoration: none;
     color: #000000;
     font-size: 1.2em;
+    
+}
+
+#burgerContents > a:hover {
+    color: #0073c9;
 }
 
 .form-background {
@@ -284,7 +295,7 @@ footer {
 }
 
 .form-link-default {
-    color: inherit;
+    color: #3BA9FB;
     text-decoration: inherit;
 }
 
@@ -292,7 +303,7 @@ footer {
     text-decoration: inherit;
 }
 
-.inputAlignHeight > div > input, .inputAlignHeight > div > select {
+.inputAlignHeight > div > input, .inputAlignHeight > div > select, .inputAlignHeight > p {
     float: right;
     line-height: 100%;
     border-radius: 5px;
@@ -310,6 +321,7 @@ footer {
 .container-fluid > h1 {
     font-weight: bold;
     text-align: center;
+    padding-bottom: 1%;
 }
 
 .account-form {
@@ -324,4 +336,14 @@ footer {
 #settingsSubmitButton, #dataFormSubmitButton {
     float: none;
     padding: 10px;
+}
+
+.nav-tabs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-item {
+    flex-grow: 1;
+    text-align: center;
 }

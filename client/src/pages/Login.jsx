@@ -32,23 +32,25 @@ function Login() {
 
     return (
         <div class="container-fluid">
-            <h1>Login</h1>
             <div class="row account-form">
                 <div class="col-md-4"/>
                 <div class="col-md-4">
                     <form class="form-background" onSubmit={signIn}>
+                        <h3>Login</h3>
                         <div class="form-group">
-                            <label for="InputEmail">Email address</label>
+                            <label for="InputEmail">Email</label>
                             <input type="email" class="form-control" id="InputEmail" onChange={(e) =>setEmail(e.target.value)}/>
                         </div>
+                        <br />
                         <div class="form-group">
                             <label for="InputPassword">Password</label>
                             <input type="password" class="form-control" id="InputPassword" onChange={(e) =>setPassword(e.target.value)}/>
                             <label id="popup" style={{ display: 'none' }}>{loginErrors}</label>
                         </div>
+                        <br />
+                        <button type="submit" class="btn btn-primary" style={{width: "100%"}}>Login</button>
+                        <p />
                         <h6><a href="ForgotPassword" id="forgotpasswordbutton" style={{textDecoration: "inherit"}}>Forgot Password?</a></h6>
-                        <br/>
-                        <button type="submit" class="btn btn-primary">Login</button>
                     </form>
                 </div>
                 <div class="col-md-4"/>
