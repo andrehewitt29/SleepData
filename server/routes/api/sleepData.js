@@ -69,10 +69,11 @@ async function deleteUserCollection(uid, batchSize) {
   }
   
   async function deleteQueryBatch(query, resolve) {
+    
     const snapshot = await query.get();
-  
+    
     const batchSize = snapshot.size;
-    console.log(batchSize);
+    
     if (batchSize == 0) {
       // When there are no documents left, we are done
       resolve();
@@ -89,7 +90,7 @@ async function deleteUserCollection(uid, batchSize) {
     // Recurse on the next process tick, to avoid
     // exploding the stack.
     process.nextTick(() => {
-      deleteQueryBatch(db, query, resolve);
+      deleteQueryBatch(query, resolve);
     });
   }
   
