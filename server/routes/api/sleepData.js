@@ -27,7 +27,7 @@ router.get('/', async (req,res) => {
 });
 
 router.post('/add', async (req, res) => {
-    const userData = db.collection("Users").doc("Users").collection(body.userData.uid);
+    const userData = db.collection("Users").doc("Users").collection(req.body.userData.uid);
     const body = req.body;
     const data = body.formData;
     const time = Date.now().toString();
