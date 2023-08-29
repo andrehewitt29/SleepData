@@ -36,11 +36,63 @@ router.post('/add', async (req, res) => {
 });
 
 //deletes data based on user id and timedate
-router.post('/remove{}',async (req, res) => {
-    const body = req.body;
-    const data = body.formData;
-    
-    res.send({ msg: data});
+router.post('/removeUser',async (req, res) => {
+    if (Object.keys(req.body).length > 0){
+        deleteUserCollection(req.body.uid, 200);//the number is how much is being deleted
+        res.send("Done");
+    }
+    else{
+        res.send("Error: No Input Data");
+    }
 });
+
+//deletes data based on user id and timedate
+router.post('/remove{}',async (req, res) => {
+    if (Object.keys(req.body).length > 0){
+        // const userData = db.collection("Users").doc("Users").collection(req.body.uid);
+        // const response = await userData.delete();
+        // const list = snapshot.docs.map((doc)=>doc.data());
+        res.send(list);
+    }
+    else{
+        res.send("Error: No Input Data");
+    }
+});
+
+async function deleteUserCollection(uid, batchSize) {
+    const collectionRef = db.collection("Users").doc("Users").collection(uid);
+    const query = collectionRef.orderBy('__name__').limit(batchSize);
+  
+    return new Promise((resolve, reject) => {
+      deleteQueryBatch(query, resolve).catch(reject);
+    });
+  }
+  
+  async function deleteQueryBatch(query, resolve) {
+    
+    const snapshot = await query.get();
+    
+    const batchSize = snapshot.size;
+    
+    if (batchSize == 0) {
+      // When there are no documents left, we are done
+      resolve();
+      return;
+    }
+  
+    // Delete documents in a batch
+    const batch = db.batch();
+    snapshot.docs.forEach((doc) => {
+      batch.delete(doc.ref);
+    });
+    await batch.commit();
+  
+    // Recurse on the next process tick, to avoid
+    // exploding the stack.
+    process.nextTick(() => {
+      deleteQueryBatch(query, resolve);
+    });
+  }
+  
 
 module.exports = router;
