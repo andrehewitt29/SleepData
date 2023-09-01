@@ -23,14 +23,17 @@
 
 /* Header */
 
-#topbar {
+.topbar {
     display: flex;
     height: 12vh;
     min-height: 100px;
     background-color: white;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
 }
 
-#topbar ul {
+.topbar ul {
     display: flex;
     margin: auto auto;
 }
@@ -43,6 +46,10 @@
     padding: 25px;
     color: #000000;
     font-size: 1.5em;
+}
+
+.headlink:hover {
+    color: #0073c9;
 }
 
 #selected {
@@ -268,6 +275,11 @@ footer {
     text-decoration: none;
     color: #000000;
     font-size: 1.2em;
+    
+}
+
+#burgerContents > a:hover {
+    color: #0073c9;
 }
 
 .form-background {
@@ -283,7 +295,7 @@ footer {
 }
 
 .form-link-default {
-    color: inherit;
+    color: #3BA9FB;
     text-decoration: inherit;
 }
 
@@ -324,4 +336,14 @@ footer {
 #settingsSubmitButton, #dataFormSubmitButton {
     float: none;
     padding: 10px;
+}
+
+.nav-tabs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-item {
+    flex-grow: 1;
+    text-align: center;
 }
