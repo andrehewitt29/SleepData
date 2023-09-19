@@ -4,6 +4,19 @@ import {auth} from "../firebase";
 import { Squash as Hamburger } from 'hamburger-react';
 
 function Header() {
+    if (auth.currentUser == "admin_uid") {
+        return (
+            <header class="topbar">
+                <ul id="leftHeader" style={{position:"absolute", padding: "1vh"}}>
+                    <img id="logo" src={logo} alt="" style={{position: "absolute"}}/>
+                </ul>
+                <ul id="rightHeader" style={{position:"absolute", right: 0, padding: "1vh"}}>
+                    <a href="Home" class="headlink" id="logout" onClick={() => auth.signOut()}><li>Log Out</li></a>
+                </ul>
+            </header>
+        );
+    }
+
     if (auth.currentUser != null) {
         return (
             <header class="topbar" onLoad={() => {document.getElementById("burgerContents").hidden = true;}}>
@@ -26,6 +39,25 @@ function Header() {
         );
     }
 
+    if (window.innerWidth < 770) {
+        return (
+            <header class="topbar" onLoad={() => {document.getElementById("burgerContents").hidden = true;}}>
+                <ul id="leftHeader" style={{position:"absolute", padding: "1vh"}}>
+                    <img id="logo" src={logo} alt="" style={{position:"absolute"}}/>
+                </ul>
+                <ul id="rightHeader" style={{position:"absolute", right: 0, padding: "4vh"}}>
+                    <Hamburger color="black" onToggle={toggled => {document.getElementById("burgerContents").hidden = !toggled;}} />
+                </ul>
+                <div id="burgerContents" hidden>
+                    <a href="Home" class="headlink" id="home"><li>Home</li></a><br />
+                    <a href="About" class="headlink" id="about"><li>About</li></a><br />
+                    <a href="SignUp" class="headlink" id="signup"><li>Sign Up</li></a><br />
+                    <a href="Login" class="headlink" id="login"><li>Login</li></a><br />
+                </div>
+            </header>
+        );
+    }
+    
     return (
         <header class="topbar">
             <ul id="leftHeader" style={{position:"absolute", padding: "1vh"}}>
