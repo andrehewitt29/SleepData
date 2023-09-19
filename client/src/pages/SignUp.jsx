@@ -8,7 +8,6 @@ function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const formRef = useRef();
-    const headers = { 'Content-Type': 'application/json' };
 
     const signup = (e) =>{
         e.preventDefault();

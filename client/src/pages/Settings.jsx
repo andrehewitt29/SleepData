@@ -2,11 +2,11 @@ import {React, useRef} from 'react';
 import {auth} from "../firebase";
 
 function Settings() {
+    // Used to quickly reference the form
     const formRef = useRef();
 
+    // Loads and shows the user's data
     async function loadData() {
-        const headers = { 'Content-Type': 'application/json' }
-        
         var dataJson = await fetch('http://localhost:5000/api/sleepData/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
@@ -26,9 +26,8 @@ function Settings() {
         document.getElementById("districtValue").value = dataList[0].districtValue;
     }
 
-    function SubmitClicked(event){//when the submit button is clicked send all form data aswell as signed in user id to the backend
-        const headers = { 'Content-Type': 'application/json' }
-        
+    // When the submit button is clicked, send all form data as well as the signed in user ID to the backend
+    function SubmitClicked() {
         fetch('http://localhost:5000/api/sleepData/add', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
