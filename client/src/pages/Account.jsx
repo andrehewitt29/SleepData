@@ -13,19 +13,24 @@ function Account() {
         document.getElementById("ex1").children[currentTab-1].children[0].classList.add("active")
     }
 
-    function loadData() {
+    async function loadData() {
         const headers = { 'Content-Type': 'application/json' }
         
-        var list = fetch('http://localhost:5000/api/sleepData/', {
+        var dataJson = await fetch('http://localhost:5000/api/sleepData/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(
-                {"uid": auth.currentUser}
+                {"user": auth.currentUser}
             )}
         )
+        var dataList = "";
 
-        console.log(list);
+        await dataJson.json().then(result => dataList = result);
+
+        console.log(dataList[0]);
     }
+
+    
 
     return (
         <div class="container-fluid">
