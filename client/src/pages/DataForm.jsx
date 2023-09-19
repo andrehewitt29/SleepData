@@ -1,9 +1,6 @@
 import {React, useRef} from 'react';
 import {auth} from "../firebase";
 
-
-
-
 function DataForm() {
     const formRef = useRef();
 
@@ -16,6 +13,7 @@ function DataForm() {
             body: JSON.stringify(
                 {userData: auth.currentUser,
                 formData: {
+                    userInputDate: document.getElementById("userInputDate").value,
                     readValue: formRef.current.readValue.value,
                     readNonFictionValue: formRef.current.readNonFictionValue.value,
                     readEnjoymentValue: formRef.current.readEnjoymentValue.value,
@@ -31,16 +29,16 @@ function DataForm() {
                     partnerSnoreValue: formRef.current.partnerSnoreValue.value,
                     petValue: formRef.current.petValue.value,
                     addictiveValue: formRef.current.addictiveValue.value,
-                    viaOneValue: formRef.current.viaOneValue.value,
+                    viaBestOneValue: formRef.current.viaBestOneValue.value,
                     viaBestTwoValue: formRef.current.viaBestTwoValue.value,
                     viaBestThreeValue: formRef.current.viaBestThreeValue.value,
                     viaBestFourValue: formRef.current.viaBestFourValue.value,
                     viaBestFiveValue: formRef.current.viaBestFiveValue.value,
-                    viaWorstFiveValue: formRef.current.viaWorstFiveValue.value,
-                    viaWorstFourValue: formRef.current.viaWorstFourValue.value,
-                    viaWorstThreefValue: formRef.current.viaWorstThreefValue.value,
-                    viaWorstTwoValue: formRef.current.viaWorstTwoValue.value,
-                    viaWorstOneValue: formRef.current.viaWorstOneValue.value,
+                    viaLowestFiveValue: formRef.current.viaLowestFiveValue.value,
+                    viaLowestFourValue: formRef.current.viaLowestFourValue.value,
+                    viaLowestThreefValue: formRef.current.viaLowestThreefValue.value,
+                    viaLowestTwoValue: formRef.current.viaLowestTwoValue.value,
+                    viaLowestOneValue: formRef.current.viaLowestOneValue.value,
                     gritValue: formRef.current.gritValue.value,
                     gritPercentage: formRef.current.gritPercentage.value,
                     physicalTouchPercentage: formRef.current.physicalTouchPercentage.value,
@@ -50,8 +48,8 @@ function DataForm() {
                     receivingGiftsPercentage: formRef.current.receivingGiftsPercentage.value,
                     exerciseValue: formRef.current.exerciseValue.value,
                     fitnessValue: formRef.current.fitnessValue.value,
-                    coffeeValue: formRef.current.coffeeValue.value,
-                    coffeeDateValue: formRef.current.coffeeDateValue.value,
+                    caffeinatedValue: formRef.current.caffeinatedValue.value,
+                    caffeinatedDateValue: formRef.current.caffeinatedDateValue.value,
                     alcoholValue: formRef.current.alcoholValue.value
                 }}
                 )
@@ -95,16 +93,16 @@ function DataForm() {
                     <div class="form-background">
                         <h5 class="form-title"><strong>Via Strengths:</strong></h5>
                         <h6 class="centered"><a href="https://www.authentichappiness.sas.upenn.edu/questionnaires/survey-character-strengths" title="Click here to find out your VIA Strengths!" class="form-link-default" rel="noreferrer" target="_blank">Click here to do the VIA Strength Quiz!</a></h6>
-                        <label>Your Best VIA Strength</label><input id="viaOneValue"></input><hr style={{margin: "0%"}} />
+                        <label>Your Best VIA Strength</label><input id="viaBestOneValue"></input><hr style={{margin: "0%"}} />
                         <label>Your 2nd Best VIA Strength</label><input id="viaBestTwoValue"></input><hr style={{margin: "0%"}} />
                         <label>Your 3rd Best VIA Strength</label><input id="viaBestThreeValue"></input><hr style={{margin: "0%"}} />
                         <label>Your 4th Best VIA Strength</label><input id="viaBestFourValue"></input><hr style={{margin: "0%"}} />
                         <label>Your 5th Best VIA Strength</label><input id="viaBestFiveValue"></input><hr style={{margin: "0%"}} />
-                        <label>Your 5th Lowest VIA Strength</label><input id="viaWorstFiveValue"></input><hr style={{margin: "0%"}} />
-                        <label>Your 4th Lowest VIA Strength</label><input id="viaWorstFourValue"></input><hr style={{margin: "0%"}} />
-                        <label>Your 3rd Lowest VIA Strength</label><input id="viaWorstThreefValue"></input><hr style={{margin: "0%"}} />
-                        <label>Your 2nd Lowest VIA Strength</label><input id="viaWorstTwoValue"></input><hr style={{margin: "0%"}} />
-                        <label>Your Lowest VIA Strength</label><input id="viaWorstOneValue"></input><hr style={{margin: "0%"}} />
+                        <label>Your 5th Lowest VIA Strength</label><input id="viaLowestFiveValue"></input><hr style={{margin: "0%"}} />
+                        <label>Your 4th Lowest VIA Strength</label><input id="viaLowestFourValue"></input><hr style={{margin: "0%"}} />
+                        <label>Your 3rd Lowest VIA Strength</label><input id="viaLowestThreefValue"></input><hr style={{margin: "0%"}} />
+                        <label>Your 2nd Lowest VIA Strength</label><input id="viaLowestTwoValue"></input><hr style={{margin: "0%"}} />
+                        <label>Your Lowest VIA Strength</label><input id="viaLowestOneValue"></input><hr style={{margin: "0%"}} />
                     </div>
                     <br />
                     <div class="form-background">
@@ -132,8 +130,8 @@ function DataForm() {
                     <br />
                     <div class="form-background">
                         <h5 class="form-title"><strong>Consumption Questions:</strong></h5>
-                        <label>How many caffeinated drinks do you consume each day?</label><input id="coffeeValue" type='number' max={50} min={0} defaultValue={1}></input><hr style={{margin: "0%"}} />
-                        <label>When did you last drink a caffeinated beverage?</label><input id="coffeeDateValue" type='date'></input><hr style={{margin: "0%"}} />
+                        <label>How many caffeinated drinks do you consume each day?</label><input id="caffeinatedValue" type='number' max={50} min={0} defaultValue={1}></input><hr style={{margin: "0%"}} />
+                        <label>When did you last drink a caffeinated beverage?</label><input id="caffeinatedDateValue" type='date'></input><hr style={{margin: "0%"}} />
                         <label>How many days each week do you drink alcohol?</label><input id="alcoholValue" type='number' max={7} min={0} defaultValue={0}></input><hr style={{margin: "0%"}} />
                     </div>
                     <br />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import {React, useRef, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { auth } from "../firebase";
 import { AuthCredential, getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -7,12 +7,30 @@ function SignUp() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const formRef = useRef();
+    const headers = { 'Content-Type': 'application/json' };
 
     const signup = (e) =>{
         e.preventDefault();
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            console.log(userCredential);       
+            console.log(userCredential);
+        
+            fetch('http://localhost:5000/api/sleepData/add', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify(
+                    {userData: auth.currentUser,
+                    formData: {
+                        firstNameValue: formRef.current.InputFirstName.value,
+                        lastNameValue: formRef.current.InputLastName.value,
+                        dateOfBirthValue: formRef.current.InputDateOfBirth.value,
+                        countryValue: formRef.current.InputCountry.value,
+                        districtValue: formRef.current.InputDistrict.value
+                    }}
+                    )
+            })
+
             alert("Account with the email (" + userCredential.user.email + ") " + "was successfully created");  
             navigate("/Account");
         }).catch((error) => {
@@ -26,7 +44,7 @@ function SignUp() {
             <div class="row account-form">
                 <div class="col-md-4"/>
                 <div class="col-md-4">
-                    <form class="form-background" onSubmit={signup}>
+                    <form class="form-background" ref={formRef} onSubmit={signup}>
                         <h3>Sign Up</h3>
                         <div class="form-group">
                             <label for="InputEmail">Email address</label>
@@ -46,7 +64,7 @@ function SignUp() {
                         </div>
                         <div class="form-group">
                             <label for="InputDateOfBirth">Date of Birth</label>
-                            <input required class="form-control" id="InputDateOfBirth"/>
+                            <input required class="form-control" type="date" id="InputDateOfBirth"/>
                         </div>
                         <div class="form-group">
                             <label for="InputCountry">Country</label>

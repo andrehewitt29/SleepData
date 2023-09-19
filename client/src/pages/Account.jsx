@@ -27,10 +27,12 @@ function Account() {
 
         await dataJson.json().then(result => dataList = result);
 
-        console.log(dataList[0]);
+        document.getElementById("accountName").innerText = dataList[0].FirstName + " " + dataList[0].LastName;
+        document.getElementById("accountDate").innerText = dataList[dataList.length-1].userInputDate;
+        document.getElementById("accountWellbeingValue").innerText = dataList[dataList.length-1].WellbeingValue;
+        document.getElementById("accountStressValue").innerText = dataList[dataList.length-1].StressValue;
+        document.getElementById("accountSleepValue").innerText = dataList[dataList.length-1].SleepValue;
     }
-
-    
 
     return (
         <div class="container-fluid">
