@@ -14,9 +14,9 @@ firebase.initializeApp({
 const db = firebase.firestore();
 
 //gets all data for a user
-router.get('/', async (req,res) => {
+router.post('/', async (req,res) => {
     if (Object.keys(req.body).length > 0){
-        const userData = db.collection("Users").doc("Users").collection(req.body.uid);
+        const userData = db.collection("Users").doc("Users").collection(req.body.user.uid);
         const snapshot = await userData.get();
         const list = snapshot.docs.map((doc)=>doc.data());
         res.send(list);
