@@ -19,6 +19,11 @@ Discord: Project-repo</br>
 
 SleepData\server> npm i express</br>
 SleepData\server> npm i nodemon -D</br>
+SleepData\server> npm install --save-dev http-proxy-middleware
 SleepData\server> npm run Dev
+
+### Email Server Side
+SleepData\emailserver> npm run dev</br>
+
 ### Node.js version
 v18.16.0
