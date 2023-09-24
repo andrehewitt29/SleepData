@@ -42,6 +42,24 @@ router.post('/add', async (req, res) => {
     res.send({ msg: data});
 });
 
+router.post('/addPersonal', async (req, res) => {
+  const userData = db.collection("UserPersonal").doc("Users").collection(req.body.userData.uid);
+  const body = req.body;
+  const data = body.personalData;
+  
+  await userData.doc("PersonalData").set(data);
+  res.send({ msg: data});
+});
+
+router.post('/addSettings', async (req, res) => {
+  const userData = db.collection("UserSettings").doc("Users").collection(req.body.userData.uid);
+  const body = req.body;
+  const data = body.personalData;
+  
+  await userData.doc("Settings").set(data);
+  res.send({ msg: data});
+});
+
 //deletes data based on user id and timedate
 router.post('/removeUser',async (req, res) => {
     if (Object.keys(req.body).length > 0){
