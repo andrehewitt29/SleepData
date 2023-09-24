@@ -21,6 +21,7 @@ import RequestMeeting from "./pages/RequestMeeting";
 import Settings from "./pages/Settings";
 import SignUp from "./pages/SignUp";
 import TermsAndConditions from "./pages/TermsAndConditions";
+import Reminder from './pages/Reminder'
 import './style.css';
 
 function App(){
@@ -123,6 +124,7 @@ function App(){
           <Route path="/Settings" element={<NotLoggedIn/>}/>
           <Route path="/SignUp" element={<SignUp/>}/>
           <Route path="/TermsAndConditions" element={<TermsAndConditions/>}/>
+          <Route path="/Reminder" element={<Reminder/>}/>
           <Route path="/*" element={<NoPage/>}/>
         </Routes>
       </BrowserRouter>
