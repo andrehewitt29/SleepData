@@ -3,12 +3,17 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {auth} from "./firebase";
 import About from "./pages/About";
 import Account from "./pages/Account";
+import Admin from "./pages/Admin";
+import AlreadyLoggedIn from './pages/AlreadyLoggedIn';
 import ContactUs from "./pages/ContactUs";
 import DataForm from "./pages/DataForm";
+import Footer from './pages/Footer';
 import ForgotPassword from "./pages/ForgotPassword";
+import Header from './pages/Header';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import NoPage from "./pages/NoPage";
+import NotLoggedIn from './pages/NotLoggedIn';
 import PasswordReset from "./pages/PasswordReset";
 import PersonalData from "./pages/PersonalData";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -16,10 +21,7 @@ import RequestMeeting from "./pages/RequestMeeting";
 import Settings from "./pages/Settings";
 import SignUp from "./pages/SignUp";
 import TermsAndConditions from "./pages/TermsAndConditions";
-import Header from './pages/Header';
-import Footer from './pages/Footer';
-import NotLoggedIn from './pages/NotLoggedIn';
-import AlreadyLoggedIn from './pages/AlreadyLoggedIn';
+import Reminder from './pages/Reminder'
 import './style.css';
 
 function App(){
@@ -46,6 +48,25 @@ function App(){
     }
   )
   }, []);
+
+  // If logged in as Admin:
+  if (auth.currentUser == "admin_uid") {
+    return (
+      <div>
+        <div class="topbar" style={{position: "static"}}/>
+        <Header />
+        <br />
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Admin/>}/>
+            <Route path="/*" element={<Admin/>}/>
+          </Routes>
+        </BrowserRouter>
+        <br />
+        <Footer />
+    </div>
+    );
+  }
 
   // If logged in:
   if (auth.currentUser != null) {
@@ -103,6 +124,7 @@ function App(){
           <Route path="/Settings" element={<NotLoggedIn/>}/>
           <Route path="/SignUp" element={<SignUp/>}/>
           <Route path="/TermsAndConditions" element={<TermsAndConditions/>}/>
+          <Route path="/Reminder" element={<Reminder/>}/>
           <Route path="/*" element={<NoPage/>}/>
         </Routes>
       </BrowserRouter>

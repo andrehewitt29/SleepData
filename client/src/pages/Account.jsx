@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import profilePicture from '../img/profilePicture.png';
 import placeholdImg from '../img/dataSummaryGraph.png';
+import { auth } from '../firebase';
 
 function Account() {
     var currentTab = 1;
@@ -12,9 +13,28 @@ function Account() {
         document.getElementById("ex1").children[currentTab-1].children[0].classList.add("active")
     }
 
+    async function loadData() {
+        const headers = { 'Content-Type': 'application/json' }
+        
+        var dataJson = await fetch('http://localhost:5000/api/sleepData/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(
+                {"user": auth.currentUser}
+            )}
+        )
+        var dataList = "";
+
+        await dataJson.json().then(result => dataList = result);
+
+        console.log(dataList[0]);
+    }
+
+    
+
     return (
         <div class="container-fluid">
-            <h1>Your Account and Sleep Data</h1>
+            <h1 onLoad={loadData()}>Your Account and Sleep Data</h1>
             <div class="row">
                 <div class="col-md-2" />
                 <div class="col-md-8">

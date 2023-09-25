@@ -11,17 +11,7 @@ function RequestMeeting() {
             <div class="row">
                 <div class="col-md-3" />
                 <div class="col-md-6">
-                    <form class="inputAlignHeight" style={{lineHeight: "200%"} }>
-                    <div class="form-background">
-                        <label>Meeting Date:</label><input id="bookingDate" type='date' defaultValue={date} max={70} min={date}></input><br />
-                        <label>Meeting Time</label><input id="bookingTime" type='time'></input><br />
-                        <label>Councilor:</label><input id="readEnjoymentValue" type='number' max={10} min={0} defaultValue={5}></input><br />
-                    </div>
-                    <br />
-                    <div class="centered">
-                        <input type='submit' id="meetingSubmitButton" className="btn btn-primary" value="Done"></input><br />
-                    </div>
-                    </form>
+                    <iframe src="https://hspjburmixkasmrnqf.youcanbook.me/?embed=true" id="ycbm" style={{width: "100%", minHeight: "550px", border: "0px", backgroundColor: "transparent"}} frameborder="0" allowtransparency="true" />
                 </div>
                 <div class="col-md-3" />
             </div>
