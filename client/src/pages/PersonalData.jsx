@@ -7,7 +7,7 @@ function PersonalData() {
 
     // When the submit button is clicked, send all form data as well as the signed in user ID to the backend
     function SubmitClicked() {
-        fetch('http://localhost:5000/api/sleepData/add', {
+        fetch('http://localhost:5000/api/sleepData/addPersonal', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(
