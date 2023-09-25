@@ -29,9 +29,9 @@ function Account() {
 
         document.getElementById("accountName").innerText = dataList[0].firstNameValue + " " + dataList[0].lastNameValue;
         document.getElementById("accountDate").innerText = dataList[dataList.length-1].userInputDate;
-        document.getElementById("accountWellbeingValue").innerText = dataList[dataList.length-1].WellbeingValue;
-        document.getElementById("accountStressValue").innerText = dataList[dataList.length-1].StressValue;
-        document.getElementById("accountSleepValue").innerText = dataList[dataList.length-1].SleepValue;
+        document.getElementById("accountWellbeingValue").innerText = dataList[dataList.length-1].wellbeingValue;
+        document.getElementById("accountStressValue").innerText = dataList[dataList.length-1].stressValue;
+        document.getElementById("accountSleepValue").innerText = dataList[dataList.length-1].sleepValue;
     }
 
     return (
