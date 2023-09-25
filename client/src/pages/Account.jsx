@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import profilePicture from '../img/profilePicture.png';
 import placeholdImg from '../img/dataSummaryGraph.png';
 import { auth } from '../firebase';
 
 function Account() {
+
+    // Switches graph tabs
     var currentTab = 1;
     function switchActiveTab(num) {
         document.getElementById("ex1-content").children[currentTab-1].classList.remove("active");
@@ -13,9 +14,8 @@ function Account() {
         document.getElementById("ex1").children[currentTab-1].children[0].classList.add("active")
     }
 
+    // Loads and shows the user's data
     async function loadData() {
-        const headers = { 'Content-Type': 'application/json' }
-        
         var dataJson = await fetch('http://localhost:5000/api/sleepData/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
@@ -27,10 +27,12 @@ function Account() {
 
         await dataJson.json().then(result => dataList = result);
 
-        console.log(dataList[0]);
+        document.getElementById("accountName").innerText = dataList[0].firstNameValue + " " + dataList[0].lastNameValue;
+        document.getElementById("accountDate").innerText = dataList[dataList.length-1].userInputDate;
+        document.getElementById("accountWellbeingValue").innerText = dataList[dataList.length-1].WellbeingValue;
+        document.getElementById("accountStressValue").innerText = dataList[dataList.length-1].StressValue;
+        document.getElementById("accountSleepValue").innerText = dataList[dataList.length-1].SleepValue;
     }
-
-    
 
     return (
         <div class="container-fluid">
