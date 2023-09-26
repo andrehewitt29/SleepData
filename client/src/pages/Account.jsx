@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import placeholdImg from '../img/dataSummaryGraph.png';
 import { auth } from '../firebase';
-
+import Line from '../components/LineGraph';
 function Account() {
 
     // Switches graph tabs
@@ -71,7 +71,7 @@ function Account() {
                     <div class="tab-content" id="ex1-content">
                         <div class="tab-pane fade show active" id="ex1-tabs-1">
                             <h1 class="centered">Average Wellbeing Score Over Time</h1>
-                            <img src={placeholdImg} alt="" style={{maxWidth: "100%"}}/>
+                            <Line/>
                         </div>
                         <div class="tab-pane fade show" id="ex1-tabs-2">
                             <h1 class="centered">Average Stress Score Over Time</h1>
