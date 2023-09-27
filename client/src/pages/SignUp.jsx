@@ -1,7 +1,7 @@
 import {React, useRef, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { auth } from "../firebase";
-import { AuthCredential, getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { AuthCredential, getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 
 function SignUp() {
     const navigate = useNavigate();
@@ -14,7 +14,7 @@ function SignUp() {
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             console.log(userCredential);
-        
+        sendEmailVerification(auth.currentUser)
             fetch('http://localhost:5000/api/sleepData/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
@@ -30,10 +30,10 @@ function SignUp() {
                     )
             })
 
-            alert("Account with the email (" + userCredential.user.email + ") " + "was successfully created");  
+            alert("Account with the email (" + userCredential.user.email + ") " + "was successfully created. \nPlease Check your email to verify the account.");  
             navigate("/Account");
         }).catch((error) => {
-            alert(error);
+            alert("Your email alreday been register. Please go to login page to reset your password.");
             console.log(error);
         });
     }
