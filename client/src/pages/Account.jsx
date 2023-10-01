@@ -1,9 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import placeholdImg from '../img/dataSummaryGraph.png';
 import { auth } from '../firebase';
-import Line from '../components/LineGraph';
-function Account() {
 
+import Line from '../components/LineGraph';
+//const db = auth.firebase.firestore();
+//const collectionRef = db.collection('Users/Users/' + auth.currentUser.getIdToken());
+
+function Account() {
+    
+const [sleep, setSleep] = useState("");
+const [wellbeing, setWellbeing] = useState("");
+const [stress, setStress] = useState("");
+const [inputDate, setinputDate] = useState("");
+const [dataLoaded, setDataLoaded] = useState(false);
+
+  // Call loadData when the component mounts
+  useEffect(() => {
+    loadData();
+}, []);
     // Switches graph tabs
     var currentTab = 1;
     function switchActiveTab(num) {
@@ -32,11 +46,33 @@ function Account() {
         document.getElementById("accountWellbeingValue").innerText = dataList[dataList.length-1].wellbeingValue;
         document.getElementById("accountStressValue").innerText = dataList[dataList.length-1].stressValue;
         document.getElementById("accountSleepValue").innerText = dataList[dataList.length-1].sleepValue;
-    }
+          //console.log("this" + dataList[dataList.length-1].sleepValue);
+          const sleepValues = dataList.map((item) => item.sleepValue);
+          const wellbeingValues = dataList.map((item) => item.wellbeingValue);
+          const stressValues = dataList.map((item) => item.stressValue);
+          const inputDate = dataList.map((item) => item.userInputDate);
+          setSleep(sleepValues);
+          setStress(stressValues);
+          setWellbeing(wellbeingValues);
+          setinputDate(inputDate);
+            setDataLoaded(true);
+        
+    }  
 
     return (
         <div class="container-fluid">
-            <h1 onLoad={loadData()}>Your Account and Sleep Data</h1>
+         <h1>Your Account and Sleep Data</h1>
+
+         {dataLoaded ? (
+        <>
+          <div>Sleep: {sleep.join(', ')}</div>
+          <div>Stress: {stress.join(', ')}</div>
+          <div>Wellbeing: {wellbeing.join(', ')}</div>
+          <div>Wellbeing: {inputDate.join(', ')}</div>
+        </>
+      ) : (
+        <p>Loading data...</p>
+      )}
             <div class="row">
                 <div class="col-md-2" />
                 <div class="col-md-8">
@@ -71,15 +107,18 @@ function Account() {
                     <div class="tab-content" id="ex1-content">
                         <div class="tab-pane fade show active" id="ex1-tabs-1">
                             <h1 class="centered">Average Wellbeing Score Over Time</h1>
+                
+                            <div>{auth.currentUser.uid}</div>
                             <Line/>
                         </div>
                         <div class="tab-pane fade show" id="ex1-tabs-2">
                             <h1 class="centered">Average Stress Score Over Time</h1>
+                            <Line/>
                             <img src={placeholdImg} alt="" style={{maxWidth: "100%"}}/>
                         </div>
                         <div class="tab-pane fade show" id="ex1-tabs-3">
                             <h1 class="centered">Average Sleep Score Over Time</h1>
-                            <img src={placeholdImg} alt="" style={{maxWidth: "100%"}}/>
+                            <Line/>
                         </div>
                     </div>
                     <hr style={{color: "#FFFF88", borderWidth: "5px", opacity: "1"}}/>
