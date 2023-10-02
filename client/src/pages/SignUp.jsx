@@ -15,7 +15,7 @@ function SignUp() {
         .then((userCredential) => {
             console.log(userCredential);
         
-            fetch('http://localhost:5000/api/sleepData/addPersonal', {
+            fetch('http://localhost:5000/api/sleepData/addSettings', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(

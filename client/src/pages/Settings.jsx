@@ -7,7 +7,7 @@ function Settings() {
 
     // Loads and shows the user's data
     async function loadData() {
-        var dataJson = await fetch('http://localhost:5000/api/sleepData/Personal', {
+        var dataJson = await fetch('http://localhost:5000/api/sleepData/settings', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(

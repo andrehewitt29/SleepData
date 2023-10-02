@@ -27,18 +27,18 @@ function Account() {
 
         await dataJson.json().then(result => dataList = result);
 
-        var personalDataJson = await fetch('http://localhost:5000/api/sleepData/Personal', {
+        var settingsDataJson = await fetch('http://localhost:5000/api/sleepData/settings', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(
                 {"user": auth.currentUser}
             )}
         )
-        var personalDataList = "";
+        var settingsDataList = "";
 
-        await personalDataJson.json().then(result => personalDataList = result);
+        await settingsDataJson.json().then(result => settingsDataList = result);
 
-        document.getElementById("accountName").innerText = checkExistsSettings("firstNameValue", personalDataList) + " " + checkExistsSettings("lastNameValue", personalDataList);
+        document.getElementById("accountName").innerText = checkExistsSettings("firstNameValue", settingsDataList) + " " + checkExistsSettings("lastNameValue", settingsDataList);
         document.getElementById("accountDate").innerText = checkExistsData("userInputDate", dataList);
         document.getElementById("accountWellbeingValue").innerText = checkExistsData("wellbeingValue", dataList);
         document.getElementById("accountStressValue").innerText = checkExistsData("stressValue", dataList);
