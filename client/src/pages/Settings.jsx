@@ -50,7 +50,7 @@ function Settings() {
                 body: JSON.stringify(
                     {userData: auth.currentUser,
                     formData: {
-                        emailValue: formRef.current.emailValue.value,
+                        //emailValue: formRef.current.emailValue.value,
                         //passwordValue: formRef.current.passwordValue.value,
                         firstNameValue: formRef.current.firstNameValue.value,
                         lastNameValue: formRef.current.lastNameValue.value,
