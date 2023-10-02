@@ -30,15 +30,8 @@ router.post('/add', async (req, res) => {
     const userData = db.collection("Users").doc("Users").collection(req.body.userData.uid);
     const body = req.body;
     const data = body.formData;
-    //make a new date object
-    const time = new Date();
-    //set the time parts to 0 as they arnt needed
-    time.setHours(0);
-    time.setMinutes(0);
-    time.setSeconds(0);
-    time.setMilliseconds(0);
     
-    await userData.doc(time.toDateString()).set(data);
+    await userData.doc(body.formData.userInputDate).set(data);
     res.send({ msg: data});
 });
 
