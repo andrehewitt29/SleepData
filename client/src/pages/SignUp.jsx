@@ -15,12 +15,12 @@ function SignUp() {
         .then((userCredential) => {
             console.log(userCredential);
         
-            fetch('http://localhost:5000/api/sleepData/add', {
+            fetch('http://localhost:5000/api/sleepData/addPersonal', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(
                     {userData: auth.currentUser,
-                    formData: {
+                        personalData: {
                         firstNameValue: formRef.current.InputFirstName.value,
                         lastNameValue: formRef.current.InputLastName.value,
                         dateOfBirthValue: formRef.current.InputDateOfBirth.value,
