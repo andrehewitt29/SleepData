@@ -50,10 +50,10 @@ function SignUp() {
                 )
             })
 
-            alert("Account with the email (" + userCredential.user.email + ") " + "was successfully created. \nPlease Check your email to verify the account.");  
+            alert("Your account with the email (" + userCredential.user.email + ") " + "was successfully created. \nPlease Check your email to verify the account.");    
             navigate("/Account");
         }).catch((error) => {
-            alert("Your email alreday been register. Please go to login page to reset your password.");
+            alert("Your email has already been registered. Please go to the login page to access your account.");
             console.log(error);
         });
     }

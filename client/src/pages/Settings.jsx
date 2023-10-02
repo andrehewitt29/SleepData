@@ -28,7 +28,7 @@ function Settings() {
     }
 
     async function SubmitClicked() {
-        if (await verifyPassword("update")) {
+        if (await verifyPassword()) {
             await fetch('http://localhost:5000/api/sleepData/addSettings', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
@@ -71,7 +71,7 @@ function Settings() {
         }
     }
 
-    async function verifyPassword(action) {
+    async function verifyPassword() {
         var returnValue;
 
         var credential = EmailAuthProvider.credential(
@@ -81,16 +81,6 @@ function Settings() {
         
         await reauthenticateWithCredential(auth.currentUser, credential).then(function() {
             // User re-authenticated.
-            if (action == "delete") {
-                fetch('http://localhost:5000/api/sleepData/removeUser', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json'},
-                body: JSON.stringify(
-                    {userData: auth.currentUser}
-                    )
-                });
-            }
-            
             returnValue = true;
         }).catch(function(error) {
             const errorCode = error.code;
@@ -105,6 +95,22 @@ function Settings() {
         });
 
         return returnValue;
+    }
+
+    async function deleteAccount() {
+        if (await verifyPassword()) {
+            await fetch('http://localhost:5000/api/sleepData/removeUser', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(
+                {userData: auth.currentUser}
+            )
+            });
+            
+            showNotice("Account Deleted!");
+            setTimeout(auth.signOut(), 1000);
+            setTimeout(document.getElementById("logo").click(), 1000);
+        }
     }
 
     function showNotice(text) {
@@ -136,7 +142,7 @@ function Settings() {
                     <label>Enter current password to confirm changes: </label><input required type="password" id="changePasswordValue"></input><br />
                     <br />
                     <div>
-                        <button class="btn btn-danger" onClick={() => verifyPassword("delete")}>Delete Account?</button>
+                        <button class="btn btn-danger" onClick={() => deleteAccount()}>Delete Account?</button>
                     </div>
                     <label id="notice" hidden />
                     </div>
