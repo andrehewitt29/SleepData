@@ -10,7 +10,7 @@ export default function ForgotPassword(){
         const auth = getAuth();
         sendPasswordResetEmail(auth, email)
         .then(()=>{
-            document.getElementById('test').innerHTML = "Reset Password Email have been sented, Check your email.";
+            document.getElementById('test').innerHTML = "The reset Password Email has been sent, Please check your email to reset your password.";
             console.log('email sented');
         })
         .catch((error) =>{
