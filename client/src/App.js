@@ -37,7 +37,7 @@ function App(){
     }
   });
 
-  const [backendData, setBackendData] = useState([{}]);
+/*  const [backendData, setBackendData] = useState([{}]);
 
   useEffect(() => {
   fetch("/api").then(
@@ -47,7 +47,7 @@ function App(){
       setBackendData(data)
     }
   )
-  }, []);
+  }, []);*/
 
   // If logged in as Admin:
   if (auth.currentUser == "admin_uid") {
