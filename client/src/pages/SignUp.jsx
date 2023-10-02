@@ -20,7 +20,7 @@ function SignUp() {
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(
                     {userData: auth.currentUser,
-                        personalData: {
+                    formData: {
                         firstNameValue: formRef.current.InputFirstName.value,
                         lastNameValue: formRef.current.InputLastName.value,
                         dateOfBirthValue: formRef.current.InputDateOfBirth.value,
@@ -28,6 +28,26 @@ function SignUp() {
                         districtValue: formRef.current.InputDistrict.value
                     }}
                     )
+            })
+
+            fetch('http://localhost:5000/api/sleepData/addPersonal', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(
+                {userData: auth.currentUser,
+                formData: {
+                    phoneValue: "Neither",
+                    heightValue: "",
+                    waistValue: "",
+                    weightValue: "",
+                    bodyMassIndexValue: "",
+                    bodyFatPercentageValue: "",
+                    maxHeartRateVariabilityValue: "",
+                    dyslexicValue: "",
+                    selfFocusValue: ""
+                    //changePasswordValue: formRef.current.changePasswordValue.value
+                }}
+                )
             })
 
             alert("Account with the email (" + userCredential.user.email + ") " + "was successfully created. \nPlease Check your email to verify the account.");  

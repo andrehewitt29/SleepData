@@ -65,7 +65,7 @@ router.post('/addPersonal', async (req, res) => {
   console.log(req.body);
   const userData = db.collection("UserPersonal").doc("Users").collection(req.body.userData.uid);
   const body = req.body;
-  const data = body.personalData;
+  const data = body.formData;
   
   await userData.doc("PersonalData").set(data);
   res.send({ msg: data});
@@ -74,7 +74,7 @@ router.post('/addPersonal', async (req, res) => {
 router.post('/addSettings', async (req, res) => {
   const userData = db.collection("UserSettings").doc("Users").collection(req.body.userData.uid);
   const body = req.body;
-  const data = body.personalData;
+  const data = body.formData;
   
   await userData.doc("Settings").set(data);
   res.send({ msg: data});
