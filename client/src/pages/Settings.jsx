@@ -97,7 +97,7 @@ function Settings() {
                     <div>
                         <button class="btn btn-danger" onClick={() => verifyPassword("delete")}>Delete Account?</button>
                     </div>
-                    <label id="notice" style={{float: "none", width: "100%", textAlign: "center", fontSize: "20px"}} hidden>Settings Updated!<br/></label>
+                    <label id="notice" hidden>Settings Updated!<br/></label>
                     </div>
                     <br />
                     <div class="centered">

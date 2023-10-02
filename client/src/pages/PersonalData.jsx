@@ -90,7 +90,7 @@ function PersonalData() {
                     <label>Self-Focus Score <a class="btn btn-primary" style={{lineHeight: "100%"}} title="The Self-Focus Quiz can be found in Brian McKeown's book, 'Sleep Beyond Your Dreams'" onClick={() => alert("The Self-Focus Quiz can be found in Brian McKeown's book, 'Sleep Beyond Your Dreams'")}>i</a></label><input id="selfFocusValue" type='number' max={40} min={0} defaultValue={0}></input><hr style={{margin: "0%"}} />
                     <br />
                     <label>Enter current password to confirm changes: </label><input type="password" id="changePasswordValue"></input><br />
-                    <label id="notice" style={{float: "none", width: "100%", textAlign: "center", fontSize: "20px"}} hidden><br />Personal Data Updated!<br/></label>
+                    <label id="notice" hidden><br />Personal Data Updated!<br/></label>
                     </div>
                     <br />
                     <div class="centered">
