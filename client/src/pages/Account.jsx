@@ -1,146 +1,246 @@
-import React, { useEffect, useState } from 'react';
-import placeholdImg from '../img/dataSummaryGraph.png';
-import { auth } from '../firebase';
+import React, { useEffect, useState } from "react";
+import placeholdImg from "../img/dataSummaryGraph.png";
+import { auth } from "../firebase";
 
-import Line from '../components/LineGraph';
+import Line from "../components/LineGraph";
 //const db = auth.firebase.firestore();
 //const collectionRef = db.collection('Users/Users/' + auth.currentUser.getIdToken());
 
 function Account() {
-    
-const [sleep, setSleep] = useState("");
-const [wellbeing, setWellbeing] = useState("");
-const [stress, setStress] = useState("");
-const [inputDate, setinputDate] = useState("");
-const [dataLoaded, setDataLoaded] = useState(false);
+  const [sleep, setSleep] = useState("");
+  const [wellbeing, setWellbeing] = useState("");
+  const [stress, setStress] = useState("");
+  const [inputDate, setinputDate] = useState("");
+  const [dataLoaded, setDataLoaded] = useState(false);
 
   // Call loadData when the component mounts
   useEffect(() => {
     loadData();
-}, []);
-    // Switches graph tabs
-    var currentTab = 1;
-    function switchActiveTab(num) {
-        document.getElementById("ex1-content").children[currentTab-1].classList.remove("active");
-        document.getElementById("ex1").children[currentTab-1].children[0].classList.remove("active");
-        currentTab = num;
-        document.getElementById("ex1-content").children[currentTab-1].classList.add("active");
-        document.getElementById("ex1").children[currentTab-1].children[0].classList.add("active")
-    }
+  }, []);
+  // Switches graph tabs
+  var currentTab = 1;
+  function switchActiveTab(num) {
+    document
+      .getElementById("ex1-content")
+      .children[currentTab - 1].classList.remove("active");
+    document
+      .getElementById("ex1")
+      .children[currentTab - 1].children[0].classList.remove("active");
+    currentTab = num;
+    document
+      .getElementById("ex1-content")
+      .children[currentTab - 1].classList.add("active");
+    document
+      .getElementById("ex1")
+      .children[currentTab - 1].children[0].classList.add("active");
+  }
 
-    // Loads and shows the user's data
-    async function loadData() {
-        var dataJson = await fetch('http://localhost:5000/api/sleepData/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify(
-                {"user": auth.currentUser}
-            )}
-        )
-        var dataList = "";
+  // Loads and shows the user's data
+  async function loadData() {
+    var dataJson = await fetch("http://localhost:5000/api/sleepData/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user: auth.currentUser }),
+    });
+    var dataList = "";
 
-        await dataJson.json().then(result => dataList = result);
+    await dataJson.json().then((result) => (dataList = result));
 
-        document.getElementById("accountName").innerText = dataList[0].firstNameValue + " " + dataList[0].lastNameValue;
-        document.getElementById("accountDate").innerText = dataList[dataList.length-1].userInputDate;
-        document.getElementById("accountWellbeingValue").innerText = dataList[dataList.length-1].wellbeingValue;
-        document.getElementById("accountStressValue").innerText = dataList[dataList.length-1].stressValue;
-        document.getElementById("accountSleepValue").innerText = dataList[dataList.length-1].sleepValue;
-          //console.log("this" + dataList[dataList.length-1].sleepValue);
-          const sleepValues = dataList.map((item) => item.sleepValue);
-          const wellbeingValues = dataList.map((item) => item.wellbeingValue);
-          const stressValues = dataList.map((item) => item.stressValue);
-          const inputDate = dataList.map((item) => item.userInputDate);
-          setSleep(sleepValues);
-          setStress(stressValues);
-          setWellbeing(wellbeingValues);
-          setinputDate(inputDate);
-            setDataLoaded(true);
-        
-    }  
+    document.getElementById("accountName").innerText =
+      dataList[0].firstNameValue + " " + dataList[0].lastNameValue;
+    document.getElementById("accountDate").innerText =
+      dataList[dataList.length - 1].userInputDate;
+    document.getElementById("accountWellbeingValue").innerText =
+      dataList[dataList.length - 1].wellbeingValue;
+    document.getElementById("accountStressValue").innerText =
+      dataList[dataList.length - 1].stressValue;
+    document.getElementById("accountSleepValue").innerText =
+      dataList[dataList.length - 1].sleepValue;
+    //console.log("this" + dataList[dataList.length-1].sleepValue);
+    const sleepValues = dataList.map((item) => item.sleepValue);
+    const wellbeingValues = dataList.map((item) => item.wellbeingValue);
+    const stressValues = dataList.map((item) => item.stressValue);
+    const inputDate = dataList.map((item) => item.userInputDate);
+    setSleep(sleepValues);
+    setStress(stressValues);
+    setWellbeing(wellbeingValues);
+    setinputDate(inputDate);
+    setDataLoaded(true);
+  }
+  //  {dataLoaded ? (
+  //  <>
+  //   <div>Sleep: {sleep.join(', ')}</div>
+  //   <div>Stress: {stress.join(', ')}</div>
+  //  <div>Wellbeing: {wellbeing.join(', ')}</div>
+  //     <div>Wellbeing: {inputDate.join(', ')}</div>
+  //    </>
+  //  ) : (
+  //   <p>Loading data...</p>
+  //)}
+  return (
+    <div class="container-fluid">
+      <h1>Your Account and Sleep Data</h1>
 
-    return (
-        <div class="container-fluid">
-         <h1>Your Account and Sleep Data</h1>
-
-         {dataLoaded ? (
-        <>
-          <div>Sleep: {sleep.join(', ')}</div>
-          <div>Stress: {stress.join(', ')}</div>
-          <div>Wellbeing: {wellbeing.join(', ')}</div>
-          <div>Wellbeing: {inputDate.join(', ')}</div>
-        </>
-      ) : (
-        <p>Loading data...</p>
-      )}
-            <div class="row">
-                <div class="col-md-2" />
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h3 id='accountName'>[Name]</h3>
-                        </div>
-                        <div class="col-md-8">
-                            <a href='Settings' class='btn btn-primary' style={{float: "right"}}>Edit Settings</a>
-                            <a href='PersonalData' class='btn btn-primary' style={{float: "right"}}>Edit Personal Data</a>
-                            <a href='DataForm' class='btn btn-primary' style={{float: "right"}}>Add/Modify Sleep Data</a>
-                        </div>
-                    </div>
-                    <hr style={{color: "#FFFF88", borderWidth: "5px", opacity: "1"}}/>
-                    <ul class="nav nav-tabs mb-3" id="ex1" style={{border: "none"}}>
-                        <li class="nav-item">
-                            <a class="nav-link active" id="ex1-tab-1" href="javascript:void(0);" onClick={() => switchActiveTab(1)}>
-                                Wellbeing
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="ex1-tab-2" href="javascript:void(0);" onClick={() => switchActiveTab(2)}>
-                                Stress
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="ex1-tab-3" href="javascript:void(0);" onClick={() => switchActiveTab(3)}>
-                                Sleep
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="ex1-content">
-                        <div class="tab-pane fade show active" id="ex1-tabs-1">
-                            <h1 class="centered">Average Wellbeing Score Over Time</h1>
-                
-                            <div>{auth.currentUser.uid}</div>
-                            <Line Data = {wellbeing} inputDates = {inputDate}/>
-                        </div>
-                        <div class="tab-pane fade show" id="ex1-tabs-2">
-                            <h1 class="centered">Average Stress Score Over Time</h1>
-                            <Line Data = {stress} inputDates = {inputDate}/>
-                            
-                        </div>
-                        <div class="tab-pane fade show" id="ex1-tabs-3">
-                            <h1 class="centered">Average Sleep Score Over Time</h1>
-                            <Line Data = {sleep} inputDates = {inputDate}/>
-                        </div>
-                    </div>
-                    <hr style={{color: "#FFFF88", borderWidth: "5px", opacity: "1"}}/>
-                    <div>
-                        <div class="form-background" style={{border: "solid", borderColor: "#1077FF", borderWidth: "2px", backgroundColor: "var(--content-color)"}}>
-                            <p class='centered' style={{fontWeight: "bold", height: "5vh", fontSize: "30px"}}>Recent Form Submission</p>
-                            <hr style={{borderColor: "#1077FF", opacity: "1", height: "1px", margin: "0px", padding: "0px"}}/>
-                            <p id="accountDate" class='centered' style={{fontSize: "18px", height: "3vh"}}>[Date]</p>
-                            <div id="recentFormSubmissionContent" class="inputAlignHeight" style={{lineHeight: "200%"}}>
-                                <label>Wellbeing Score</label><p id="accountWellbeingValue" style={{float: "right"}}>[Value]</p><br />
-                                <label>Stress Score</label><p id="accountStressValue" style={{float: "right"}}>[Value]</p><br />
-                                <label>Sleep Score</label><p id="accountSleepValue" style={{float: "right"}}>[Value]</p><br />
-                            </div>
-                            <p class='centered' style={{fontWeight: "bold", height: "3vh", fontSize: "18px"}}>. . .</p>
-                            <a href='DataForm'><button class='btn btn-primary' style={{backgroundColor: "var(--content-color)", padding:"0px", borderRadius: "10px", fontSize: "18px", width: "100%"}}>Show More</button></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2" />
+      <div class="row">
+        <div class="col-md-2" />
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-4">
+              <h3 id="accountName">[Name]</h3>
             </div>
+            <div class="col-md-8">
+              <a
+                href="Settings"
+                class="btn btn-primary"
+                style={{ float: "right" }}
+              >
+                Edit Settings
+              </a>
+              <a
+                href="PersonalData"
+                class="btn btn-primary"
+                style={{ float: "right" }}
+              >
+                Edit Personal Data
+              </a>
+              <a
+                href="DataForm"
+                class="btn btn-primary"
+                style={{ float: "right" }}
+              >
+                Add/Modify Sleep Data
+              </a>
+            </div>
+          </div>
+          <hr style={{ color: "#FFFF88", borderWidth: "5px", opacity: "1" }} />
+          <ul class="nav nav-tabs mb-3" id="ex1" style={{ border: "none" }}>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="ex1-tab-1"
+                href="javascript:void(0);"
+                onClick={() => switchActiveTab(1)}
+              >
+                Wellbeing
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="ex1-tab-2"
+                href="javascript:void(0);"
+                onClick={() => switchActiveTab(2)}
+              >
+                Stress
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="ex1-tab-3"
+                href="javascript:void(0);"
+                onClick={() => switchActiveTab(3)}
+              >
+                Sleep
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content" id="ex1-content">
+            <div class="tab-pane fade show active" id="ex1-tabs-1">
+              <h1 class="centered">Average Wellbeing Score Over Time</h1>
+
+              <Line Data={wellbeing} inputDates={inputDate} />
+            </div>
+            <div class="tab-pane fade show" id="ex1-tabs-2">
+              <h1 class="centered">Average Stress Score Over Time</h1>
+              <Line Data={stress} inputDates={inputDate} />
+            </div>
+            <div class="tab-pane fade show" id="ex1-tabs-3">
+              <h1 class="centered">Average Sleep Score Over Time</h1>
+              <Line Data={sleep} inputDates={inputDate} />
+            </div>
+          </div>
+          <hr style={{ color: "#FFFF88", borderWidth: "5px", opacity: "1" }} />
+          <div>
+            <div
+              class="form-background"
+              style={{
+                border: "solid",
+                borderColor: "#1077FF",
+                borderWidth: "2px",
+                backgroundColor: "var(--content-color)",
+              }}
+            >
+              <p
+                class="centered"
+                style={{ fontWeight: "bold", height: "5vh", fontSize: "30px" }}
+              >
+                Recent Form Submission
+              </p>
+              <hr
+                style={{
+                  borderColor: "#1077FF",
+                  opacity: "1",
+                  height: "1px",
+                  margin: "0px",
+                  padding: "0px",
+                }}
+              />
+              <p
+                id="accountDate"
+                class="centered"
+                style={{ fontSize: "18px", height: "3vh" }}
+              >
+                [Date]
+              </p>
+              <div
+                id="recentFormSubmissionContent"
+                class="inputAlignHeight"
+                style={{ lineHeight: "200%" }}
+              >
+                <label>Wellbeing Score</label>
+                <p id="accountWellbeingValue" style={{ float: "right" }}>
+                  [Value]
+                </p>
+                <br />
+                <label>Stress Score</label>
+                <p id="accountStressValue" style={{ float: "right" }}>
+                  [Value]
+                </p>
+                <br />
+                <label>Sleep Score</label>
+                <p id="accountSleepValue" style={{ float: "right" }}>
+                  [Value]
+                </p>
+                <br />
+              </div>
+              <p
+                class="centered"
+                style={{ fontWeight: "bold", height: "3vh", fontSize: "18px" }}
+              >
+                . . .
+              </p>
+              <a href="DataForm">
+                <button
+                  class="btn btn-primary"
+                  style={{
+                    backgroundColor: "var(--content-color)",
+                    padding: "0px",
+                    borderRadius: "10px",
+                    fontSize: "18px",
+                    width: "100%",
+                  }}
+                >
+                  Show More
+                </button>
+              </a>
+            </div>
+          </div>
         </div>
-    );
+        <div class="col-md-2" />
+      </div>
+    </div>
+  );
 }
 
 export default Account;
