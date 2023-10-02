@@ -20,7 +20,7 @@ function SignUp() {
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(
                     {userData: auth.currentUser,
-                        personalData: {
+                    formData: {
                         firstNameValue: formRef.current.InputFirstName.value,
                         lastNameValue: formRef.current.InputLastName.value,
                         dateOfBirthValue: formRef.current.InputDateOfBirth.value,
@@ -30,10 +30,30 @@ function SignUp() {
                     )
             })
 
-            alert("Account with the email (" + userCredential.user.email + ") " + "was successfully created. \nPlease Check your email to verify the account.");  
+            fetch('http://localhost:5000/api/sleepData/addPersonal', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(
+                {userData: auth.currentUser,
+                formData: {
+                    phoneValue: "Neither",
+                    heightValue: "",
+                    waistValue: "",
+                    weightValue: "",
+                    bodyMassIndexValue: "",
+                    bodyFatPercentageValue: "",
+                    maxHeartRateVariabilityValue: "",
+                    dyslexicValue: "",
+                    selfFocusValue: ""
+                    //changePasswordValue: formRef.current.changePasswordValue.value
+                }}
+                )
+            })
+
+            alert("Your account with the email (" + userCredential.user.email + ") " + "was successfully created. \nPlease Check your email to verify the account.");    
             navigate("/Account");
         }).catch((error) => {
-            alert("Your email alreday been register. Please go to login page to reset your password.");
+            alert("Your email has already been registered. Please go to the login page to access your account.");
             console.log(error);
         });
     }
