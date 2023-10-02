@@ -26,6 +26,32 @@ router.post('/', async (req,res) => {
     }
 });
 
+//gets all personal data for a user
+router.post('/personal', async (req,res) => {
+  if (Object.keys(req.body).length > 0){
+      const userData = db.collection("UserPersonal").doc("Users").collection(req.body.user.uid);
+      const snapshot = await userData.get();
+      const list = snapshot.docs.map((doc)=>doc.data());
+      res.send(list);
+  }
+  else{
+      res.send("Error: No Input Data");
+  }
+});
+
+//gets all personal data for a user
+router.post('/settings', async (req,res) => {
+  if (Object.keys(req.body).length > 0){
+      const userData = db.collection("UserSettings").doc("Users").collection(req.body.user.uid);
+      const snapshot = await userData.get();
+      const list = snapshot.docs.map((doc)=>doc.data());
+      res.send(list);
+  }
+  else{
+      res.send("Error: No Input Data");
+  }
+});
+
 router.post('/add', async (req, res) => {
     const userData = db.collection("Users").doc("Users").collection(req.body.userData.uid);
     const body = req.body;
@@ -36,6 +62,7 @@ router.post('/add', async (req, res) => {
 });
 
 router.post('/addPersonal', async (req, res) => {
+  console.log(req.body);
   const userData = db.collection("UserPersonal").doc("Users").collection(req.body.userData.uid);
   const body = req.body;
   const data = body.personalData;
