@@ -109,16 +109,16 @@ const [dataLoaded, setDataLoaded] = useState(false);
                             <h1 class="centered">Average Wellbeing Score Over Time</h1>
                 
                             <div>{auth.currentUser.uid}</div>
-                            <Line/>
+                            <Line Data = {wellbeing} inputDates = {inputDate}/>
                         </div>
                         <div class="tab-pane fade show" id="ex1-tabs-2">
                             <h1 class="centered">Average Stress Score Over Time</h1>
-                            <Line/>
-                            <img src={placeholdImg} alt="" style={{maxWidth: "100%"}}/>
+                            <Line Data = {stress} inputDates = {inputDate}/>
+                            
                         </div>
                         <div class="tab-pane fade show" id="ex1-tabs-3">
                             <h1 class="centered">Average Sleep Score Over Time</h1>
-                            <Line/>
+                            <Line Data = {sleep} inputDates = {inputDate}/>
                         </div>
                     </div>
                     <hr style={{color: "#FFFF88", borderWidth: "5px", opacity: "1"}}/>
