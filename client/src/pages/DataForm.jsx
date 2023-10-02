@@ -64,7 +64,7 @@ function DataForm() {
         <div class="container-fluid">
             <h1>Sleep Data Form</h1>
             <div class="centered">
-                <label>Sleep Data Input Date: <input id="userInputDate" style={{borderRadius: "5px"}} type='date' ></input></label>
+                <label>Sleep Data Input Date: <input id="userInputDate" style={{borderRadius: "5px"}} type='date' defaultValue={date}></input></label>
             </div>
             <br />
             <div class="row">

@@ -36,7 +36,7 @@ function LineGraph({ Data, inputDates }) {
             x: inputDates[index], // Map sleep data to x and y values
             y: value,
           }))}
-          interpolation="natural" // Adjust the interpolation type as needed
+          //interpolation="natural" // Adjust the interpolation type as needed
           style={{
             data: { stroke: 'blue' }, // Adjust the line color
           }}
