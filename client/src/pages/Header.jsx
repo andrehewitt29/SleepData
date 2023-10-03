@@ -4,20 +4,22 @@ import {auth} from "../firebase";
 import { Squash as Hamburger } from 'hamburger-react';
 
 function Header() {
-    if (auth.currentUser == "admin_uid") {
-        return (
-            <header class="topbar">
-                <ul id="leftHeader" style={{position:"absolute", padding: "1vh"}}>
-                <a href="Admin"><img id="logo" src={logo} alt="" style={{position: "absolute"}}/></a>
-                </ul>
-                <ul id="rightHeader" style={{position:"absolute", right: 0, padding: "1vh"}}>
-                    <a href="Home" class="headlink" id="logout" onClick={() => auth.signOut()}><li>Log Out</li></a>
-                </ul>
-            </header>
-        );
-    }
-
     if (auth.currentUser != null) {
+        if (auth.currentUser.uid == "E3113lutLFfVBcSrQlFJMx9Krti1") {
+            return (
+                <header class="topbar">
+                    <ul id="leftHeader" style={{position:"absolute", padding: "1vh"}}>
+                    <a href="Admin"><img id="logo" src={logo} alt="" style={{position: "absolute"}}/></a>
+                    </ul>
+                    <ul id="rightHeader" style={{position:"absolute", right: 0, padding: "1vh"}}>
+                        <a href="Admin" class="headlink" id="Search"><li>Search</li></a>
+                        <a href="Settings" class="headlink" id="settings"><li>Settings</li></a>
+                        <a href="Home" class="headlink" id="logout" onClick={() => auth.signOut()}><li>Log Out</li></a>
+                    </ul>
+                </header>
+            );
+        }
+    
         return (
             <header class="topbar" onLoad={() => {document.getElementById("burgerContents").hidden = true;}}>
                 <ul id="leftHeader" style={{position:"absolute", padding: "1vh"}}>
