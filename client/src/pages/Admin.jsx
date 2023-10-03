@@ -5,22 +5,24 @@ import { auth } from '../firebase';
 function Admin() {
 
     async function loadUserData(){
-        var dataJson = await fetch('http://localhost:5000/api/sleepData/AllUserData', {
+        var UIDDataJson = await fetch('http://localhost:5000/api/sleepData/AllUserUID', {
         method: 'POST',
         headers: { 'Content-Type' : 'application/json'}}
         )
-        var dataList = "";
-        await dataJson.json().then(result => dataList = result);
+        var UIDList = "";
+        await UIDDataJson.json().then(result => UIDList = result);
 
-        var dataJson = await fetch('http://localhost:5000/api/sleepData/Settings', {
+        console.log(UIDList);
+
+        var dataJson = await fetch('http://localhost:5000/api/sleepData/', {
         method: 'POST',
         headers: { 'Content-Type' : 'application/json'},
         body: JSON.stringify(
             {"user": auth.currentUser}
         )}
         )
-        var settingsDataList = "";
-        await dataJson.json().then(result => settingsDataList = result);
+        var dataList = "";
+        await dataJson.json().then(result => dataList = result);
     }
 
     return (

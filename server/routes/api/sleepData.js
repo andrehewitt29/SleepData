@@ -13,22 +13,10 @@ firebase.initializeApp({
 
 const db = firebase.firestore();
 
-// Gets all users data for admin page
-router.post('/AllUserData', async (req,res) => {
-  const userData = db.collection("Users").doc("Users");
-  const snapshot = await userData.get();
-
-  // const list = snapshot.docs.map((doc)=>doc.data());
-  // res.send(list);
+// Gets all users UID for admin page
+router.post('/AllUserUID', async (req,res) => {
   const collections = await db.collection("UserSettings").doc("Users").listCollections()
-  collections.forEach(collection => {
-  console.log('Found subcollection with id:', collection.id);
-  });
-
-  // const list = snapshot.docs.map((doc)=>doc.data());
-  // res.send(list);
-
-  res.send("Error: No Input Data");
+  res.send(collections);
 });
 
 //gets all data for a user
