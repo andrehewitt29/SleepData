@@ -1,6 +1,6 @@
 import {React, useRef} from 'react';
 import {auth} from "../firebase";
-import {EmailAuthProvider, reauthenticateWithCredential, updateEmail, updatePassword} from "firebase/auth";
+import {EmailAuthProvider, reauthenticateWithCredential, updateEmail, updatePassword, getAuth, deleteUser} from "firebase/auth";
 
 function Settings() {
     // Used to quickly reference the form
@@ -107,6 +107,15 @@ function Settings() {
             )
             });
             
+            const user = auth.currentUser;
+
+            deleteUser(user).then(() => {
+            // User deleted.
+            }).catch((error) => {
+            // An error ocurred
+            // ...
+            });
+
             showNotice("Account Deleted!");
             setTimeout(auth.signOut(), 1000);
             setTimeout(document.getElementById("logo").click(), 1000);
