@@ -49,7 +49,8 @@ function SignUp() {
                 }}
                 )
             })
-            sendEmailVerification(auth.currentUser);    
+
+            sendEmailVerification(auth.currentUser);
             alert("Your account with the email (" + userCredential.user.email + ") " + "was successfully created. \nPlease Check your email to verify the account.");    
             navigate("/Account");   
         }).catch((error) => {

@@ -1,6 +1,6 @@
 import {React, useRef} from 'react';
 import {auth} from "../firebase";
-import {EmailAuthProvider, reauthenticateWithCredential, updateEmail, updatePassword, getAuth, deleteUser} from "firebase/auth";
+import {EmailAuthProvider, reauthenticateWithCredential, updateEmail, updatePassword, deleteUser, sendEmailVerification} from "firebase/auth";
 
 function Settings() {
     // Used to quickly reference the form
@@ -50,6 +50,7 @@ function Settings() {
             if (auth.currentUser.email != document.getElementById("emailValue").value && document.getElementById("emailValue").value != "") {
                 await updateEmail(auth.currentUser, document.getElementById("emailValue").value).then(() => {
                     // Email updated!
+                    sendEmailVerification(auth.currentUser);
                     console.log("Email Update Successful");
                 }).catch((error) => {
                     // An error ocurred
