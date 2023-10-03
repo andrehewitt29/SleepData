@@ -7,10 +7,7 @@ function Admin() {
     async function loadUserData(){
         var dataJson = await fetch('http://localhost:5000/api/sleepData/AllUserData', {
         method: 'POST',
-        headers: { 'Content-Type' : 'application/json'},
-        body: JSON.stringify(
-            {"user": auth.currentUser}
-        )}
+        headers: { 'Content-Type' : 'application/json'}}
         )
         var dataList = "";
         await dataJson.json().then(result => dataList = result);
