@@ -49,27 +49,28 @@ function App(){
   )
   }, []);*/
 
-  // If logged in as Admin:
-  if (auth.currentUser == "admin_uid") {
-    return (
-      <div>
-        <div class="topbar" style={{position: "static"}}/>
-        <Header />
-        <br />
-        <BrowserRouter>
-          <Routes>
-            <Route index element={<Admin/>}/>
-            <Route path="/*" element={<Admin/>}/>
-          </Routes>
-        </BrowserRouter>
-        <br />
-        <Footer />
-    </div>
-    );
-  }
-
   // If logged in:
   if (auth.currentUser != null) {
+    // If logged in as Admin:
+    if (auth.currentUser.uid == "E3113lutLFfVBcSrQlFJMx9Krti1") {
+      return (
+        <div>
+          <div class="topbar" style={{position: "static"}}/>
+          <Header />
+          <br />
+          <BrowserRouter>
+            <Routes>
+              <Route index element={<Admin/>}/>
+              <Route path="/Settings" element={<Settings/>}/>
+              <Route path="/*" element={<Admin/>}/>
+            </Routes>
+          </BrowserRouter>
+          <br />
+          <Footer />
+      </div>
+      );
+    }
+
     return (
       <div>
         <div class="topbar" style={{position: "static"}}/>
