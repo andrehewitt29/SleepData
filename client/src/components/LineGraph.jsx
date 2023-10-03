@@ -10,10 +10,10 @@ import {
 function LineGraph({ Data, inputDates }) {
   // Check if Data is an array before using map
 
-  if (!Array.isArray(Data)) {
-    // Handle the case where Data is not an array
+  if (!Array.isArray(Data) || !Array.isArray(inputDates)) {
     return <div>No Valid Data To Display</div>;
   }
+
   return (
     <div style={{ width: `${100}%`, height: `${100}%` }}>
       <h2>Line Graph</h2>
@@ -45,7 +45,7 @@ function LineGraph({ Data, inputDates }) {
         />
         <VictoryLine
           data={Data.sort((value, index) => ({
-            x: inputDates[index], // Map sleep data to x and y values
+            x: inputDates[index], // Assuming inputDates is an array
             y: value,
           }))}
           //interpolation="natural" // Adjust the interpolation type as needed
