@@ -17,8 +17,16 @@ const db = firebase.firestore();
 router.post('/AllUserData', async (req,res) => {
   const userData = db.collection("Users").doc("Users");
   const snapshot = await userData.get();
-  const list = snapshot.docs.map((doc)=>doc.data());
-  res.send(list);
+
+  // const list = snapshot.docs.map((doc)=>doc.data());
+  // res.send(list);
+  const collections = await db.collection("UserSettings").doc("Users").listCollections()
+  collections.forEach(collection => {
+  console.log('Found subcollection with id:', collection.id);
+  });
+
+  // const list = snapshot.docs.map((doc)=>doc.data());
+  // res.send(list);
 
   res.send("Error: No Input Data");
 });
