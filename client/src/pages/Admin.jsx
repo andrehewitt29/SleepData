@@ -5,7 +5,7 @@ import { auth } from '../firebase';
 function Admin() {
 
     async function loadUserData(){
-        var dataJson = await fetch('http://localhost:5000/api/sleepData/admin', {
+        var dataJson = await fetch('http://localhost:5000/api/sleepData/AllUserData', {
         method: 'POST',
         headers: { 'Content-Type' : 'application/json'},
         body: JSON.stringify(
@@ -13,34 +13,27 @@ function Admin() {
         )}
         )
         var dataList = "";
+        await dataJson.json().then(result => dataList = result);
 
-        await dataJson.json().then(result => dataList = result)
-
-            document.getElementById("test").innerText = checkExistsData("wellbeingValue", dataList);
-    }
-
-    function checkExistsData(data, dataList){
-        if (dataList.length > 0){
-            if (data in dataList[dataList.length-1]){
-                return dataList[dataList.length-1][data];
-            }
-            else{
-                return "Undefined";
-            }
-        }
-        else{
-            return "Undefined";
-        }
+        var dataJson = await fetch('http://localhost:5000/api/sleepData/Settings', {
+        method: 'POST',
+        headers: { 'Content-Type' : 'application/json'},
+        body: JSON.stringify(
+            {"user": auth.currentUser}
+        )}
+        )
+        var settingsDataList = "";
+        await dataJson.json().then(result => settingsDataList = result);
     }
 
     return (
         <div class="container-fluid">
             <h1>Search for Users</h1>
             <div class="form-background">
-                <input id="userNameInput"></input><input id="userNameSearch" class="btn btn-primary" type="button" value="Search"></input>
+                <input id="userNameInput" /><input id="userNameSearch" class="btn btn-primary" type="button" value="Search" onClick={loadUserData}/>
             </div>
             <br />
-            <p id= 'test'></p>
+            <table id='results'></table>
         </div>
     );
 }

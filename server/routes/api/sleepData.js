@@ -13,6 +13,19 @@ firebase.initializeApp({
 
 const db = firebase.firestore();
 
+// Gets all users data for admin page
+router.post('/AllUserData', async (req,res) => {
+  if (Object.keys(req.body).length > 0){
+      const userData = db.collection("Users").doc("Users");
+      const snapshot = await userData.get();
+      const list = snapshot.docs.map((doc)=>doc.data());
+      res.send(list);
+  }
+  else{
+      res.send("Error: No Input Data");
+  }
+});
+
 //gets all data for a user
 router.post('/', async (req,res) => {
     if (Object.keys(req.body).length > 0){
@@ -51,20 +64,6 @@ router.post('/settings', async (req,res) => {
       res.send("Error: No Input Data");
   }
 });
-
-//get user data from admin page
-router.post('/admin', async (req,res) => {
-  if (Object.keys(req.body).length > 0){
-      const userData = db.collection("UserSettings").doc("Users").collection(req.body.user);
-      const snapshot = await userData.get();
-      const list = snapshot.docs.map((doc)=>doc.data());
-      res.send(list);
-  }
-  else{
-      res.send("Error: No Input Data");
-  }
-});
-
 
 router.post('/add', async (req, res) => {
     const userData = db.collection("Users").doc("Users").collection(req.body.userData.uid);
