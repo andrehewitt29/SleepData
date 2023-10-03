@@ -44,7 +44,7 @@ function LineGraph({ Data, inputDates }) {
           // Add your configuration for the y-axis here
         />
         <VictoryLine
-          data={Data.map((value, index) => ({
+          data={Data.sort((value, index) => ({
             x: inputDates[index], // Map sleep data to x and y values
             y: value,
           }))}
