@@ -3,7 +3,7 @@ const router = express.Router();
 // const userData = require("../../db/config");
 const firebase = require("firebase-admin");
 
-var serviceAccount = require("../../rnd-sleep-data-project-test-firebase-adminsdk-w1e0m-cb72d8ea51.json");
+var serviceAccount = "rnd-sleep-data-project-test-firebase-adminsdk-w1e0m-cb72d8ea51.json";
 
 // Initialize Firebase
 firebase.initializeApp({

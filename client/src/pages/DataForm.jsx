@@ -52,7 +52,7 @@ function DataForm() {
                     caffeinatedDateValue: formRef.current.caffeinatedDateValue.value,
                     alcoholValue: formRef.current.alcoholValue.value
                 }}
-                )
+            )
         })
     }
 
