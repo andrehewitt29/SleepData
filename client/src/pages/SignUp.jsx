@@ -49,9 +49,9 @@ function SignUp() {
                 }}
                 )
             })
-
+            sendEmailVerification(auth.currentUser);    
             alert("Your account with the email (" + userCredential.user.email + ") " + "was successfully created. \nPlease Check your email to verify the account.");    
-            navigate("/Account");
+            navigate("/Account");   
         }).catch((error) => {
             alert("Your email has already been registered. Please go to the login page to access your account.");
             console.log(error);
