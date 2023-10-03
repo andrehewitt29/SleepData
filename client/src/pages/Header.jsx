@@ -9,7 +9,7 @@ function Header() {
             return (
                 <header class="topbar">
                     <ul id="leftHeader" style={{position:"absolute", padding: "1vh"}}>
-                    <a href="Admin"><img id="logo" src={logo} alt="" style={{position: "absolute"}}/></a>
+                    <a href="Home"><img id="logo" src={logo} alt="" style={{position: "absolute"}}/></a>
                     </ul>
                     <ul id="rightHeader" style={{position:"absolute", right: 0, padding: "1vh"}}>
                         <a href="Admin" class="headlink" id="Search"><li>Search</li></a>
@@ -23,7 +23,7 @@ function Header() {
         return (
             <header class="topbar" onLoad={() => {document.getElementById("burgerContents").hidden = true;}}>
                 <ul id="leftHeader" style={{position:"absolute", padding: "1vh"}}>
-                    <a href="Account"><img id="logo" src={logo} alt="" style={{position:"absolute"}}/></a>
+                    <a href="Home"><img id="logo" src={logo} alt="" style={{position:"absolute"}}/></a>
                 </ul>
                 <ul id="rightHeader" style={{position:"absolute", right: 0, padding: "4vh"}}>
                     <Hamburger color="black" onToggle={toggled => {document.getElementById("burgerContents").hidden = !toggled;}} />
