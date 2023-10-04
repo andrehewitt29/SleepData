@@ -14,12 +14,17 @@ function LineGraph({ Data, inputDates }) {
     return <div>No Valid Data To Display</div>;
   }
 
+  var newData = Data.map((value, index) => ({
+    x: inputDates[index], // Assuming inputDates is an array
+    y: parseFloat(value),
+  }));
+
   return (
     <div style={{ width: `${100}%`, height: `${100}%` }}>
       <h2>Line Graph</h2>
       <VictoryChart
         theme={VictoryTheme.material}
-        width={1000} // Set the width to make it wider
+        width={800} // Set the width to make it wider
         height={400} // Set the height to make it taller
       >
         <VictoryAxis
@@ -44,13 +49,15 @@ function LineGraph({ Data, inputDates }) {
           // Add your configuration for the y-axis here
         />
         <VictoryLine
-          data={Data.sort((value, index) => ({
-            x: inputDates[index], // Assuming inputDates is an array
-            y: value,
-          }))}
+          x="x"
+          y="y"
+          data={newData}
+          sortKey="x"
+          //newData.sort((a, b) => new Date(a.x) - new Date(b.x));
+
           //interpolation="natural" // Adjust the interpolation type as needed
           style={{
-            data: { stroke: "orange", strokeWidth: 6 }, // Adjust the line color
+            data: { stroke: "orange", strokeWidth: 5 }, // Adjust the line color
           }}
         />
       </VictoryChart>
