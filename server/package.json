@@ -19,6 +19,7 @@
     "firebase-admin": "^11.8.0"
   },
   "devDependencies": {
+    "http-proxy-middleware": "^2.0.6",
     "nodemon": "^2.0.22"
   }
 }

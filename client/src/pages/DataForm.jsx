@@ -55,6 +55,63 @@ function DataForm() {
                 )
         })
     }
+
+    // Loads and shows the user's data
+    async function loadData() {
+        var dataJson = await fetch('http://localhost:5000/api/sleepData/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(
+                {"user": auth.currentUser}
+            )}
+        )
+        var dataList = "";
+
+        await dataJson.json().then(result => dataList = result);
+
+        // Find the data with same date
+        dataList.forEach(element => {
+            if (element.userInputDate == document.getElementById("userInputDate").value) {
+                document.getElementById("readValue").value = element.readValue;
+                document.getElementById("readNonFictionValue").value = element.readNonFictionValue;
+                document.getElementById("readEnjoymentValue").value = element.readEnjoymentValue;
+                document.getElementById("luckValue").value = element.luckValue;
+                document.getElementById("wellbeingValue").value = element.wellbeingValue;
+                document.getElementById("stressValue").value = element.stressValue;
+                document.getElementById("sleepValue").value = element.sleepValue;
+                document.getElementById("sleepHourValue").value = element.sleepHourValue;
+                document.getElementById("fallAsleepValue").value = element.fallAsleepValue;
+                document.getElementById("awakenValue").value = element.awakenValue;
+                document.getElementById("chronotypeValue").value = element.chronotypeValue;
+                document.getElementById("snoreValue").value = element.snoreValue;
+                document.getElementById("partnerSnoreValue").value = element.partnerSnoreValue;
+                document.getElementById("petValue").value = element.petValue;
+                document.getElementById("addictiveValue").value = element.addictiveValue;
+                document.getElementById("viaBestOneValue").value = element.viaBestOneValue;
+                document.getElementById("viaBestTwoValue").value = element.viaBestTwoValue;
+                document.getElementById("viaBestThreeValue").value = element.viaBestThreeValue;
+                document.getElementById("viaBestFourValue").value = element.viaBestFourValue;
+                document.getElementById("viaBestFiveValue").value = element.viaBestFiveValue;
+                document.getElementById("viaLowestFiveValue").value = element.viaLowestFiveValue;
+                document.getElementById("viaLowestFourValue").value = element.viaLowestFourValue;
+                document.getElementById("viaLowestThreefValue").value = element.viaLowestThreefValue;
+                document.getElementById("viaLowestTwoValue").value = element.viaLowestTwoValue;
+                document.getElementById("viaLowestOneValue").value = element.viaLowestOneValue;
+                document.getElementById("gritValue").value = element.gritValue;
+                document.getElementById("gritPercentage").value = element.gritPercentage;
+                document.getElementById("physicalTouchPercentage").value = element.physicalTouchPercentage;
+                document.getElementById("qualityTimePercentage").value = element.qualityTimePercentage;
+                document.getElementById("wordsOfAffirmationPercentage").value = element.wordsOfAffirmationPercentage;
+                document.getElementById("actsOfServicePercentage").value = element.actsOfServicePercentage;
+                document.getElementById("receivingGiftsPercentage").value = element.receivingGiftsPercentage;
+                document.getElementById("exerciseValue").value = element.exerciseValue;
+                document.getElementById("fitnessValue").value = element.fitnessValue;
+                document.getElementById("caffeinatedValue").value = element.caffeinatedValue;
+                document.getElementById("caffeinatedDateValue").value = element.caffeinatedDateValue;
+                document.getElementById("alcoholValue").value = element.alcoholValue;
+            }
+        });
+    }
     
     var curr = new Date();
     curr.setDate(curr.getDate());
@@ -62,9 +119,9 @@ function DataForm() {
 
     return (
         <div class="container-fluid">
-            <h1>Sleep Data Form</h1>
+            <h1 onLoad={loadData()}>Sleep Data Form</h1>
             <div class="centered">
-                <label>Sleep Data Input Date: <input id="userInputDate" style={{borderRadius: "5px"}} type='date' defaultValue={date}></input></label>
+                <label>Sleep Data Input Date: <input id="userInputDate" style={{borderRadius: "5px"}} type='date' defaultValue={date} onChange={() => loadData()}></input></label>
             </div>
             <br />
             <div class="row">

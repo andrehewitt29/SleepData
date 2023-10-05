@@ -27,11 +27,45 @@ function Account() {
 
         await dataJson.json().then(result => dataList = result);
 
-        document.getElementById("accountName").innerText = dataList[0].firstNameValue + " " + dataList[0].lastNameValue;
-        document.getElementById("accountDate").innerText = dataList[dataList.length-1].userInputDate;
-        document.getElementById("accountWellbeingValue").innerText = dataList[dataList.length-1].wellbeingValue;
-        document.getElementById("accountStressValue").innerText = dataList[dataList.length-1].stressValue;
-        document.getElementById("accountSleepValue").innerText = dataList[dataList.length-1].sleepValue;
+        var settingsDataJson = await fetch('http://localhost:5000/api/sleepData/settings', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify(
+                {"user": auth.currentUser}
+            )}
+        )
+        var settingsDataList = "";
+
+        await settingsDataJson.json().then(result => settingsDataList = result);
+
+        document.getElementById("accountName").innerText = checkExistsSettings("firstNameValue", settingsDataList) + " " + checkExistsSettings("lastNameValue", settingsDataList);
+        document.getElementById("accountDate").innerText = checkExistsData("userInputDate", dataList);
+        document.getElementById("accountWellbeingValue").innerText = checkExistsData("wellbeingValue", dataList);
+        document.getElementById("accountStressValue").innerText = checkExistsData("stressValue", dataList);
+        document.getElementById("accountSleepValue").innerText = checkExistsData("sleepValue", dataList);
+    }
+
+    function checkExistsSettings(data, dataList){
+        if (data in dataList[0]){
+            return dataList[0][data];
+        }
+        else{
+            return "Undefined";
+        }
+    }
+
+    function checkExistsData(data, dataList){
+        if (dataList.length > 0){
+            if (data in dataList[dataList.length-1]){
+                return dataList[dataList.length-1][data];
+            }
+            else{
+                return "Undefined";
+            }
+        }
+        else{
+            return "Undefined";
+        }
     }
 
     return (

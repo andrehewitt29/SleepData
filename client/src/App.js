@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {auth} from "./firebase";
 import About from "./pages/About";
 import Account from "./pages/Account";
+import AccountCreated from "./pages/AccountCreated";
 import Admin from "./pages/Admin";
 import AlreadyLoggedIn from './pages/AlreadyLoggedIn';
 import ContactUs from "./pages/ContactUs";
@@ -37,7 +38,7 @@ function App(){
     }
   });
 
-  const [backendData, setBackendData] = useState([{}]);
+/*  const [backendData, setBackendData] = useState([{}]);
 
   useEffect(() => {
   fetch("/api").then(
@@ -47,29 +48,30 @@ function App(){
       setBackendData(data)
     }
   )
-  }, []);
-
-  // If logged in as Admin:
-  if (auth.currentUser == "admin_uid") {
-    return (
-      <div>
-        <div class="topbar" style={{position: "static"}}/>
-        <Header />
-        <br />
-        <BrowserRouter>
-          <Routes>
-            <Route index element={<Admin/>}/>
-            <Route path="/*" element={<Admin/>}/>
-          </Routes>
-        </BrowserRouter>
-        <br />
-        <Footer />
-    </div>
-    );
-  }
+  }, []);*/
 
   // If logged in:
   if (auth.currentUser != null) {
+    // If logged in as Admin:
+    if (auth.currentUser.uid == "E3113lutLFfVBcSrQlFJMx9Krti1") {
+      return (
+        <div>
+          <div class="topbar" style={{position: "static"}}/>
+          <Header />
+          <br />
+          <BrowserRouter>
+            <Routes>
+              <Route index element={<Admin/>}/>
+              <Route path="/Settings" element={<Settings/>}/>
+              <Route path="/*" element={<Admin/>}/>
+            </Routes>
+          </BrowserRouter>
+          <br />
+          <Footer />
+      </div>
+      );
+    }
+
     return (
       <div>
         <div class="topbar" style={{position: "static"}}/>
@@ -90,7 +92,7 @@ function App(){
             <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>}/>
             <Route path="/RequestMeeting" element={<RequestMeeting/>}/>
             <Route path="/Settings" element={<Settings/>}/>
-            <Route path="/SignUp" element={<AlreadyLoggedIn/>}/>
+            <Route path="/SignUp" element={<AccountCreated/>}/>
             <Route path="/TermsAndConditions" element={<TermsAndConditions/>}/>
             <Route path="/*" element={<NoPage/>}/>
           </Routes>
