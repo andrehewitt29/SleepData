@@ -9,13 +9,13 @@ function SignUp() {
     const [password, setPassword] = useState("");
     const formRef = useRef();
 
-    const signup = (e) =>{
-        e.preventDefault();
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+    const signup = async (e) =>{
+        try {
+            e.preventDefault();
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             console.log(userCredential);
         
-            fetch('http://localhost:5000/api/sleepData/addSettings', {
+            await fetch('http://localhost:5000/api/sleepData/addSettings', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(
@@ -30,7 +30,7 @@ function SignUp() {
                     )
             })
 
-            fetch('http://localhost:5000/api/sleepData/addPersonal', {
+            await fetch('http://localhost:5000/api/sleepData/addPersonal', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(
@@ -52,12 +52,12 @@ function SignUp() {
 
             sendEmailVerification(auth.currentUser);
             alert("Your account with the email (" + userCredential.user.email + ") " + "was successfully created. \nPlease Check your email to verify the account.");    
-            navigate("/Account");   
-        }).catch((error) => {
+            navigate("/Account");
+        } catch(error) {
             alert("Your email has already been registered. Please go to the login page to access your account.");
             console.log(error);
-        });
-    }
+        }
+    };
 
     return (
         <div class="container-fluid">

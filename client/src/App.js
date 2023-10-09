@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {auth} from "./firebase";
 import About from "./pages/About";
 import Account from "./pages/Account";
+import AccountCreated from "./pages/AccountCreated";
 import Admin from "./pages/Admin";
 import AlreadyLoggedIn from './pages/AlreadyLoggedIn';
 import ContactUs from "./pages/ContactUs";
@@ -91,7 +92,7 @@ function App(){
             <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>}/>
             <Route path="/RequestMeeting" element={<RequestMeeting/>}/>
             <Route path="/Settings" element={<Settings/>}/>
-            <Route path="/SignUp" element={<AlreadyLoggedIn/>}/>
+            <Route path="/SignUp" element={<AccountCreated/>}/>
             <Route path="/TermsAndConditions" element={<TermsAndConditions/>}/>
             <Route path="/*" element={<NoPage/>}/>
           </Routes>

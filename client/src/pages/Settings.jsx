@@ -110,16 +110,9 @@ function Settings() {
             
             const user = auth.currentUser;
 
-            deleteUser(user).then(() => {
-            // User deleted.
-            }).catch((error) => {
-            // An error ocurred
-            // ...
-            });
-
-            showNotice("Account Deleted!");
-            setTimeout(auth.signOut(), 1000);
-            setTimeout(document.getElementById("logo").click(), 1000);
+            await deleteUser(user);
+            await auth.signOut();
+            document.getElementById("logo").click();
         }
     }
 
