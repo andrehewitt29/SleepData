@@ -359,6 +359,16 @@ footer {
     float: right;
 }
 
+#userValueInput {
+    width: 80%;
+    height: 38px;
+}
+
+#userValueSearch {
+    width: 10%;
+    float: right;
+}
+
 #notice {
     float: none;
     width: 100%;

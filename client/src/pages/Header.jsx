@@ -12,7 +12,8 @@ function Header() {
                     <a href="Home"><img id="logo" src={logo} alt="" style={{position: "absolute"}}/></a>
                     </ul>
                     <ul id="rightHeader" style={{position:"absolute", right: 0, padding: "1vh"}}>
-                        <a href="Admin" class="headlink" id="Search"><li>Search</li></a>
+                        <a href="Admin" class="headlink" id="Search"><li>User Search</li></a>
+                        <a href="AdminSearchByValue" class="headlink" id="Search"><li>Value Search</li></a>
                         <a href="Settings" class="headlink" id="settings"><li>Settings</li></a>
                         <a href="Home" class="headlink" id="logout" onClick={() => auth.signOut()}><li>Log Out</li></a>
                     </ul>
