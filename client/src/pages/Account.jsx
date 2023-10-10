@@ -1,8 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import placeholdImg from '../img/dataSummaryGraph.png';
 import { auth } from '../firebase';
+import Line from "../components/LineGraph";
 
 function Account() {
+  const [sleep, setSleep] = useState("");
+  const [wellbeing, setWellbeing] = useState("");
+  const [stress, setStress] = useState("");
+  const [inputDate, setinputDate] = useState("");
+  const [dataLoaded, setDataLoaded] = useState(false);
 
     // Switches graph tabs
     var currentTab = 1;
@@ -43,6 +49,16 @@ function Account() {
         document.getElementById("accountWellbeingValue").innerText = checkExistsData("wellbeingValue", dataList);
         document.getElementById("accountStressValue").innerText = checkExistsData("stressValue", dataList);
         document.getElementById("accountSleepValue").innerText = checkExistsData("sleepValue", dataList);
+
+        const sleepValues = dataList.map((item) => checkExistsData("sleepValue", dataList));
+        const wellbeingValues = dataList.map((item) => checkExistsData("wellbeingValue", dataList));
+        const stressValues = dataList.map((item) => checkExistsData("stressValue", dataList));
+        const inputDate = dataList.map((item) =>  checkExistsData("userInputDate", dataList));
+        setSleep(sleepValues);
+        setStress(stressValues);
+        setWellbeing(wellbeingValues);
+        setinputDate(inputDate);
+        setDataLoaded(true);
     }
 
     function checkExistsSettings(data, dataList){
@@ -89,6 +105,7 @@ function Account() {
                         <li class="nav-item">
                             <a class="nav-link active" id="ex1-tab-1" href="javascript:void(0);" onClick={() => switchActiveTab(1)}>
                                 Wellbeing
+                                
                             </a>
                         </li>
                         <li class="nav-item">
@@ -105,15 +122,16 @@ function Account() {
                     <div class="tab-content" id="ex1-content">
                         <div class="tab-pane fade show active" id="ex1-tabs-1">
                             <h1 class="centered">Average Wellbeing Score Over Time</h1>
-                            <img src={placeholdImg} alt="" style={{maxWidth: "100%"}}/>
+                            <Line Data={wellbeing} inputDates={inputDate} />
+                         
                         </div>
                         <div class="tab-pane fade show" id="ex1-tabs-2">
                             <h1 class="centered">Average Stress Score Over Time</h1>
-                            <img src={placeholdImg} alt="" style={{maxWidth: "100%"}}/>
+                            <Line Data={stress} inputDates={inputDate} />
                         </div>
                         <div class="tab-pane fade show" id="ex1-tabs-3">
                             <h1 class="centered">Average Sleep Score Over Time</h1>
-                            <img src={placeholdImg} alt="" style={{maxWidth: "100%"}}/>
+                            <Line Data={sleep} inputDates={inputDate} />
                         </div>
                     </div>
                     <hr style={{color: "#FFFF88", borderWidth: "5px", opacity: "1"}}/>
