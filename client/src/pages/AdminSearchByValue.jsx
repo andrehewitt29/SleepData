@@ -38,6 +38,8 @@ function SearchByValue() {
                 tableContents = tableContents + "<tr><td>" + settingsDataList[0].firstNameValue + " " + settingsDataList[0].lastNameValue + "</td><td>" + UIDList[i]._queryOptions.collectionId + "</td><td>" + dataList[a].userInputDate + "</td><td>" + dataList[a][input] + "</td></tr>"
             }
         }
+        console.log(settingsDataJson);
+        console.log(settingsDataList);
 
         document.getElementById("results").innerHTML = tableContents;
     }
