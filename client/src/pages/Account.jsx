@@ -50,15 +50,24 @@ function Account() {
         document.getElementById("accountStressValue").innerText = checkExistsData("stressValue", dataList);
         document.getElementById("accountSleepValue").innerText = checkExistsData("sleepValue", dataList);
 
-        const sleepValues = dataList.map((item) => checkExistsData("sleepValue", dataList));
-        const wellbeingValues = dataList.map((item) => checkExistsData("wellbeingValue", dataList));
-        const stressValues = dataList.map((item) => checkExistsData("stressValue", dataList));
-        const inputDate = dataList.map((item) =>  checkExistsData("userInputDate", dataList));
-        setSleep(sleepValues);
-        setStress(stressValues);
-        setWellbeing(wellbeingValues);
-        setinputDate(inputDate);
-        setDataLoaded(true);
+        //const sleepValues = dataList.map((item) => checkExistsData("sleepValue", dataList));
+        //const wellbeingValues = dataList.map((item) => checkExistsData("wellbeingValue", dataList));
+        //const stressValues = dataList.map((item) => checkExistsData("stressValue", dataList));
+        //const inputDate = dataList.map((item) =>  checkExistsData("userInputDate", dataList));
+  
+             
+        if (Array.isArray(dataList) && dataList.length > 0) {
+            // Your code here
+            const sleepValues = dataList.map((item) => item.sleepValue);
+            const wellbeingValues = dataList.map((item) => item.wellbeingValue);
+            const stressValues = dataList.map((item) => item.stressValue);
+            const inputDate = dataList.map((item) => item.userInputDate);
+            setSleep(sleepValues);
+            setStress(stressValues);
+            setWellbeing(wellbeingValues);
+            setinputDate(inputDate);
+            setDataLoaded(true);
+          } 
     }
 
     function checkExistsSettings(data, dataList){
