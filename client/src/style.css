@@ -359,6 +359,16 @@ footer {
     float: right;
 }
 
+#userFirstNameInput {
+    width: 40%;
+    height: 38px;
+}
+
+#userLastNameInput {
+    width: 40%;
+    height: 38px;
+}
+
 #userValueInput {
     width: 80%;
     height: 38px;
@@ -374,4 +384,26 @@ footer {
     width: 100%;
     text-align: center;
     font-size: 20px;
+}
+
+#info {
+    text-align: center;
+    width: 100%;
+}
+
+#results {
+    word-wrap: break-word;
+    table-layout: fixed;
+    width: 100%;
+}
+
+#results > tbody > tr > th {
+    border: solid;
+    border-style: double;
+}
+
+#results > tbody > tr > td {
+    border: solid;
+    border-style: double;
+    padding: 1vh;
 }

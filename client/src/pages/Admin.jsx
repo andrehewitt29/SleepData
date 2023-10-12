@@ -1,5 +1,4 @@
 import React from 'react';
-import "../table.css";
 
 function Admin() {
     var dataList = "";
@@ -104,9 +103,8 @@ function Admin() {
         "<th>Caffeinated Each Day</th>"+
         "<th>Last Caffeinated Date</th>"+
         "<th>Alcohol Day</th>"+
-        "<th></th>"+
-        "<th></th>"+
         "</tr>";
+        var initialTableContents = tableContents;
         var firstNameInput = document.getElementById("userFirstNameInput").value;
         var lastNameInput = document.getElementById("userLastNameInput").value;
 
@@ -121,9 +119,9 @@ function Admin() {
             )
         var nameList = "";
         await UIDDataJson.json().then(result => nameList = result);
-        document.getElementById("info").innerHTML = "First Name: "+firstNameInput + " Last Name: "+ lastNameInput+ "</br>Searching, Please wait around 5 seconds! </br> After 5 seconds, Please use other keyword to search again.";
+        document.getElementById("info").innerHTML = "<br />Loading...";
             
-           if(nameList[0].firstNameValue === firstNameInput && nameList[0].lastNameValue === lastNameInput)
+           if((nameList[0].firstNameValue === firstNameInput && nameList[0].lastNameValue === lastNameInput) || (nameList[0].firstNameValue === firstNameInput && lastNameInput == "") || (nameList[0].lastNameValue === lastNameInput && firstNameInput == ""))
             { 
             //Use the UID to get all details
             var dataJson = await fetch('http://localhost:5000/api/sleepData/getWithUid', {
@@ -154,9 +152,14 @@ function Admin() {
             dataList[x][fitnessValue] + "</td><td>"+ dataList[x][caffeinatedValue] + "</td><td>"+ dataList[x][caffeinatedDateValue] + "</td><td>"+ 
             dataList[x][alcoholValue] + "</tr>";
         }
+
         //Refersh Page show table and run finish
-        document.getElementById("results").innerHTML = tableContents;
-        document.getElementById("info").innerHTML = "Search Complete, Please check the result on the table. </br> If table does not show any details or the table does not exists. Please use other keyword to search again!";
+        if (tableContents != initialTableContents) {
+            document.getElementById("results").innerHTML = tableContents;
+        } else {
+            document.getElementById("results").innerHTML = "<hr><th>No Results!</th></hr>";
+        }
+        document.getElementById("info").innerHTML = "";
     }
     }
 
@@ -167,10 +170,10 @@ function Admin() {
                 <input id="userFirstNameInput" placeholder='First Name'/>
                 <input id="userLastNameInput" placeholder='Last Name'/>
                 <input id="userNameSearch" class="btn btn-primary" type="button" value="Search" onClick={loadUserUID}/>
-                <p id= "info"></p>
+                <strong><h1 id= "info" ></h1></strong>
             </div>
             <br />
-            <table id='results' className='table'></table>
+            <table id='results'></table>
         </div>
     );
 }
