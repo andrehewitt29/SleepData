@@ -8,7 +8,7 @@ function SearchByValue() {
         if (input != "") {
             document.getElementById("info").innerHTML = "<br />Loading...";
 
-            var tableContents = "<tr><td>Name</td><td>User ID</td><td>Date Submitted</td><td>Value</td></tr>";
+            var tableContents = "<tr><th>Name</th><th>User ID</th><th>Date Submitted</th><th>Value</th></tr>";
             
 
             var UIDDataJson = await fetch('http://localhost:5000/api/sleepData/AllUserUID', {
@@ -44,7 +44,7 @@ function SearchByValue() {
                 }
             }
 
-            document.getElementById("results").innerHTML = tableContents;
+            document.getElementById("resultsSBV").innerHTML = tableContents;
             document.getElementById("info").innerHTML = "";
             document.getElementById("resultsBlock").hidden = false;
         }
@@ -58,8 +58,8 @@ function SearchByValue() {
                 <strong><h1 id= "info" ></h1></strong>
             </div>
             <br />
-            <div id="resultsBlock" class="form-background">
-                <table id='results'></table>
+            <div id="resultsBlock" class="form-background" hidden>
+                <table id='resultsSBV'></table>
             </div>
         </div>
     );

@@ -399,12 +399,13 @@ footer {
     overflow-x: scroll;
 }
 
-#results > tbody > tr > th {
-    border: solid;
-    border-style: double;
+#resultsSBV {
+    word-wrap: break-word;
+    table-layout: fixed;
+    min-width: 100%;
 }
 
-#results > tbody > tr > td {
+#results > tbody > tr > th, #resultsSBV > tbody > tr > th, #results > tbody > tr > td, #resultsSBV > tbody > tr > td {
     border: solid;
     border-style: double;
     padding: 1vh;
