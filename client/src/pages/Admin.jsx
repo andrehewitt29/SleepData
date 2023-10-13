@@ -167,7 +167,7 @@ function Admin() {
 
     return (
         <div class="container-fluid">
-            <h1>Search for Users</h1>
+            <h1>Search By Users</h1>
             <div class="form-background">
                 <input id="userFirstNameInput" placeholder='First Name'/>
                 <input id="userLastNameInput" placeholder='Last Name'/>
