@@ -5,7 +5,7 @@ import { auth } from '../firebase';
 function Admin() {
 
     async function loadUserData(){
-        var dataJson = await fetch('http://localhost:5000/api/sleepData/admin', {
+        var dataJson = await fetch('http://'+ process.env.REACT_APP_IP_ADDRESS +':5000/api/sleepData/admin', {
         method: 'POST',
         headers: { 'Content-Type' : 'application/json'},
         body: JSON.stringify(
