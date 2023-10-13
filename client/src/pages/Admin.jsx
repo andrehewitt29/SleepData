@@ -23,6 +23,8 @@ function Admin() {
 
     async function getNameData(uid)
     {
+        document.getElementById("info").innerHTML = "<br />Loading...";
+
         var userInputDate = "userInputDate";
         var addictiveValue = "addictiveValue";
         var readEnjoymentValue = "readEnjoymentValue";
@@ -119,10 +121,9 @@ function Admin() {
             )
         var nameList = "";
         await UIDDataJson.json().then(result => nameList = result);
-        document.getElementById("info").innerHTML = "<br />Loading...";
             
-           if((nameList[0].firstNameValue === firstNameInput && nameList[0].lastNameValue === lastNameInput) || (nameList[0].firstNameValue === firstNameInput && lastNameInput == "") || (nameList[0].lastNameValue === lastNameInput && firstNameInput == ""))
-            { 
+        if((nameList[0].firstNameValue === firstNameInput && nameList[0].lastNameValue === lastNameInput) || (nameList[0].firstNameValue === firstNameInput && lastNameInput == "") || (nameList[0].lastNameValue === lastNameInput && firstNameInput == ""))
+        { 
             //Use the UID to get all details
             var dataJson = await fetch('http://localhost:5000/api/sleepData/getWithUid', {
             method: 'POST',
@@ -132,35 +133,36 @@ function Admin() {
             )}
             )
         
-        await dataJson.json().then(result => dataList = result);
-            
-        //Add all the deatils to table
-        for(let x = 0; x < dataList.length; x++){
-            tableContents = tableContents+"<tr><td>" + firstNameInput + " " + lastNameInput +" </td><td>"+ dataList[x][userInputDate] + "</td><td>"+ 
-            dataList[x][readValue] + "</td><td>"+ dataList[x][readNonFictionValue] + "</td><td>"+ dataList[x][readEnjoymentValue] + "</td><td>"+ 
-            dataList[x][luckValue] + "</td><td>"+ dataList[x][wellbeingValue] + "</td><td>"+ dataList[x][stressValue] + "</td><td>"+ 
-            dataList[x][sleepValue] + "</td><td>"+ dataList[x][sleepHourValue] + "</td><td>"+ dataList[x][fallAsleepValue] + "</td><td>"+ 
-            dataList[x][awakenValue] + "</td><td>"+ dataList[x][chronotypeValue] + "</td><td>"+ dataList[x][exerciseValue] + "</td><td>"+ 
-            dataList[x][snoreValue] + "</td><td>"+  dataList[x][partnerSnoreValue] + "</td><td>"+ dataList[x][petValue] + "</td><td>"+ 
-            dataList[x][addictiveValue] + "</td><td>"+ dataList[x][viaBestOneValue] + "</td><td>"+ dataList[x][viaBestTwoValue] + "</td><td>"+ 
-            dataList[x][viaBestThreeValue] + "</td><td>"+ dataList[x][viaBestFourValue] + "</td><td>"+ dataList[x][viaBestFiveValue] + "</td><td>"+ 
-            dataList[x][viaLowestFiveValue] + "</td><td>"+ dataList[x][viaLowestFourValue] + "</td><td>"+ dataList[x][viaLowestThreefValue] + "</td><td>"+ 
-            dataList[x][viaLowestTwoValue] + "</td><td>"+  dataList[x][viaLowestOneValue] + "</td><td>"+ 
-            dataList[x][gritValue] + "</td><td>"+ dataList[x][gritPercentage] + "</td><td>"+ dataList[x][physicalTouchPercentage] + "</td><td>"+ 
-            dataList[x][qualityTimePercentage] + "</td><td>"+ dataList[x][wordsOfAffirmationPercentage] + "</td><td>"+ 
-            dataList[x][actsOfServicePercentage] + "</td><td>"+ dataList[x][receivingGiftsPercentage] + "</td><td>"+ dataList[x][exerciseValue] + "</td><td>"+ 
-            dataList[x][fitnessValue] + "</td><td>"+ dataList[x][caffeinatedValue] + "</td><td>"+ dataList[x][caffeinatedDateValue] + "</td><td>"+ 
-            dataList[x][alcoholValue] + "</tr>";
-        }
+            await dataJson.json().then(result => dataList = result);
+                
+            //Add all the deatils to table
+            for(let x = 0; x < dataList.length; x++){
+                tableContents = tableContents+"<tr><td>" + firstNameInput + " " + lastNameInput +" </td><td>"+ dataList[x][userInputDate] + "</td><td>"+ 
+                dataList[x][readValue] + "</td><td>"+ dataList[x][readNonFictionValue] + "</td><td>"+ dataList[x][readEnjoymentValue] + "</td><td>"+ 
+                dataList[x][luckValue] + "</td><td>"+ dataList[x][wellbeingValue] + "</td><td>"+ dataList[x][stressValue] + "</td><td>"+ 
+                dataList[x][sleepValue] + "</td><td>"+ dataList[x][sleepHourValue] + "</td><td>"+ dataList[x][fallAsleepValue] + "</td><td>"+ 
+                dataList[x][awakenValue] + "</td><td>"+ dataList[x][chronotypeValue] + "</td><td>"+ dataList[x][exerciseValue] + "</td><td>"+ 
+                dataList[x][snoreValue] + "</td><td>"+  dataList[x][partnerSnoreValue] + "</td><td>"+ dataList[x][petValue] + "</td><td>"+ 
+                dataList[x][addictiveValue] + "</td><td>"+ dataList[x][viaBestOneValue] + "</td><td>"+ dataList[x][viaBestTwoValue] + "</td><td>"+ 
+                dataList[x][viaBestThreeValue] + "</td><td>"+ dataList[x][viaBestFourValue] + "</td><td>"+ dataList[x][viaBestFiveValue] + "</td><td>"+ 
+                dataList[x][viaLowestFiveValue] + "</td><td>"+ dataList[x][viaLowestFourValue] + "</td><td>"+ dataList[x][viaLowestThreefValue] + "</td><td>"+ 
+                dataList[x][viaLowestTwoValue] + "</td><td>"+  dataList[x][viaLowestOneValue] + "</td><td>"+ 
+                dataList[x][gritValue] + "</td><td>"+ dataList[x][gritPercentage] + "</td><td>"+ dataList[x][physicalTouchPercentage] + "</td><td>"+ 
+                dataList[x][qualityTimePercentage] + "</td><td>"+ dataList[x][wordsOfAffirmationPercentage] + "</td><td>"+ 
+                dataList[x][actsOfServicePercentage] + "</td><td>"+ dataList[x][receivingGiftsPercentage] + "</td><td>"+ dataList[x][exerciseValue] + "</td><td>"+ 
+                dataList[x][fitnessValue] + "</td><td>"+ dataList[x][caffeinatedValue] + "</td><td>"+ dataList[x][caffeinatedDateValue] + "</td><td>"+ 
+                dataList[x][alcoholValue] + "</tr>";
+            }
 
-        //Refersh Page show table and run finish
-        if (tableContents != initialTableContents) {
-            document.getElementById("results").innerHTML = tableContents;
-        } else {
-            document.getElementById("results").innerHTML = "<hr><th>No Results!</th></hr>";
+            //Refersh Page show table and run finish
+            if (tableContents != initialTableContents) {
+                document.getElementById("results").innerHTML = tableContents;
+            } else {
+                document.getElementById("results").innerHTML = "<hr><th>No Results!</th></hr>";
+            }
         }
         document.getElementById("info").innerHTML = "";
-    }
+        document.getElementById("resultsBlock").hidden = false;
     }
 
     return (
@@ -173,7 +175,9 @@ function Admin() {
                 <strong><h1 id= "info" ></h1></strong>
             </div>
             <br />
-            <table id='results'></table>
+            <div id="resultsBlock" class="form-background" hidden>
+                <table id='results'></table>
+            </div>
         </div>
     );
 }

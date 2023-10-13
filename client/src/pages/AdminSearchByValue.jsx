@@ -3,9 +3,10 @@ import React from 'react';
 function SearchByValue() {
 
     async function loadUserData() {
+        document.getElementById("info").innerHTML = "<br />Loading...";
+
         var tableContents = "<tr><td>Name</td><td>User ID</td><td>Date Submitted</td><td>Value</td></tr>";
         var input = document.getElementById("userValueInput").value;
-        document.getElementById("info").innerHTML = "<br />Loading...";
 
         var UIDDataJson = await fetch('http://localhost:5000/api/sleepData/AllUserUID', {
         method: 'POST',
@@ -42,6 +43,7 @@ function SearchByValue() {
 
         document.getElementById("results").innerHTML = tableContents;
         document.getElementById("info").innerHTML = "";
+        document.getElementById("resultsBlock").hidden = false;
     }
 
     return (
@@ -52,7 +54,9 @@ function SearchByValue() {
                 <strong><h1 id= "info" ></h1></strong>
             </div>
             <br />
-            <table id='results'></table>
+            <div id="resultsBlock" class="form-background">
+                <table id='results'></table>
+            </div>
         </div>
     );
 }

@@ -188,7 +188,6 @@
     margin: 25px auto 0 auto;
     height: 40vh;
     background-color: #dedede;
-/*    padding: 0 25px;*/
 }
 
 .card img {
@@ -394,7 +393,10 @@ footer {
 #results {
     word-wrap: break-word;
     table-layout: fixed;
-    width: 100%;
+    min-width: 100%;
+    display: block;
+    height: auto;
+    overflow-x: scroll;
 }
 
 #results > tbody > tr > th {
