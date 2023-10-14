@@ -54,7 +54,7 @@ function SearchByValue() {
         <div class="container-fluid">
             <h1>Search By Value</h1>
             <div class="form-background">
-            <select id = "userValueInput" name='userValueInput' style={{color: "black", display: 'block'}}>
+            <select id = "userValueInput" name='userValueInput' style={{color: "black"}}>
                 <option disabled selected value> -- Select an Value -- </option>
                     <option value = "readValue">Read Value</option>
                     <option value = "readNonFictionValue">Read Non Fiction Value</option>
