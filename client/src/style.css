@@ -188,7 +188,6 @@
     margin: 25px auto 0 auto;
     height: 40vh;
     background-color: #dedede;
-/*    padding: 0 25px;*/
 }
 
 .card img {
@@ -359,9 +358,55 @@ footer {
     float: right;
 }
 
+#userFirstNameInput {
+    width: 40%;
+    height: 38px;
+}
+
+#userLastNameInput {
+    width: 40%;
+    height: 38px;
+}
+
+#userValueInput {
+    width: 80%;
+    height: 38px;
+}
+
+#userValueSearch {
+    width: 10%;
+    float: right;
+}
+
 #notice {
     float: none;
     width: 100%;
     text-align: center;
     font-size: 20px;
+}
+
+#info {
+    text-align: center;
+    width: 100%;
+}
+
+#results {
+    word-wrap: break-word;
+    table-layout: fixed;
+    min-width: 100%;
+    display: block;
+    height: auto;
+    overflow-x: scroll;
+}
+
+#resultsSBV {
+    word-wrap: break-word;
+    table-layout: fixed;
+    min-width: 100%;
+}
+
+#results > tbody > tr > th, #resultsSBV > tbody > tr > th, #results > tbody > tr > td, #resultsSBV > tbody > tr > td {
+    border: solid;
+    border-style: double;
+    padding: 1vh;
 }

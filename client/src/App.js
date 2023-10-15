@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Account from "./pages/Account";
 import AccountCreated from "./pages/AccountCreated";
 import Admin from "./pages/Admin";
+import AdminSearchByValue from "./pages/AdminSearchByValue";
 import AlreadyLoggedIn from './pages/AlreadyLoggedIn';
 import ContactUs from "./pages/ContactUs";
 import DataForm from "./pages/DataForm";
@@ -62,6 +63,7 @@ function App(){
           <BrowserRouter>
             <Routes>
               <Route index element={<Admin/>}/>
+              <Route path="AdminSearchByValue" element={<AdminSearchByValue/>}/>
               <Route path="/Settings" element={<Settings/>}/>
               <Route path="/*" element={<Admin/>}/>
             </Routes>
