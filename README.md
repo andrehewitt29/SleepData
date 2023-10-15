@@ -9,6 +9,7 @@ SleepData\client> npm install react-scripts --save</br>
 SleepData\client> npm i firebase</br>
 SleepData\client> npm install @emailjs/browser</br>
 SleepData\client> npm install react-bootstrap bootstrap</br>
+SleepData\client> npm install victory bootstrap</br>
 SleepData\client> npm start
 ### Server Side
 cd..
