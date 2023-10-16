@@ -30,7 +30,7 @@ app.post('/subscribe', (req, res) =>{
         url: 'https://us8.api.mailchimp.com/3.0/lists/3576522b16',
         method: 'POST',
         headers: {
-            Authorization: 'auth bcd90c415bd26776a9c707b50ec7b52b-us8'
+            Authorization: process.env.REACT_APP_EMAIL_AUTH
         },
         body: mcDataPost
     }
