@@ -56,7 +56,7 @@ function Account() {
         //const inputDate = dataList.map((item) =>  checkExistsData("userInputDate", dataList));
   
              
-        if (Array.isArray(dataList) && dataList.length > 0) {
+        if (Array.isArray(dataList) && dataList.length > 0 && !dataLoaded) {
             // Your code here
             const sleepValues = dataList.map((item) => item.sleepValue);
             const wellbeingValues = dataList.map((item) => item.wellbeingValue);
