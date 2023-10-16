@@ -54,7 +54,7 @@ function App(){
   // If logged in:
   if (isSignedIn == true) {
     // If logged in as Admin:
-    if (auth.currentUser.uid == "E3113lutLFfVBcSrQlFJMx9Krti1") {
+    if (auth.currentUser.uid == "TEy2XcxrV8T5yp2GjbtBx8WMPBl2") {
       return (
         <div>
           <div class="topbar" style={{position: "static"}}/>
