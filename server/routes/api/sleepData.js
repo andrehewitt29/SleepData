@@ -13,6 +13,12 @@ firebase.initializeApp({
 
 const db = firebase.firestore();
 
+// Gets all users UID for admin page
+router.post('/AllUserUID', async (req,res) => {
+  const collections = await db.collection("UserSettings").doc("Users").listCollections()
+  res.send(collections);
+});
+
 //gets all data for a user
 router.post('/', async (req,res) => {
     if (Object.keys(req.body).length > 0){
@@ -24,6 +30,19 @@ router.post('/', async (req,res) => {
     else{
         res.send("Error: No Input Data");
     }
+});
+
+//gets all data for a user
+router.post('/getWithUid', async (req,res) => {
+  if (Object.keys(req.body).length > 0){
+      const userData = db.collection("Users").doc("Users").collection(req.body.user);
+      const snapshot = await userData.get();
+      const list = snapshot.docs.map((doc)=>doc.data());
+      res.send(list);
+  }
+  else{
+      res.send("Error: No Input Data");
+  }
 });
 
 //gets all personal data for a user
@@ -43,6 +62,19 @@ router.post('/personal', async (req,res) => {
 router.post('/settings', async (req,res) => {
   if (Object.keys(req.body).length > 0){
       const userData = db.collection("UserSettings").doc("Users").collection(req.body.user.uid);
+      const snapshot = await userData.get();
+      const list = snapshot.docs.map((doc)=>doc.data());
+      res.send(list);
+  }
+  else{
+      res.send("Error: No Input Data");
+  }
+});
+
+//gets all personal data for a user
+router.post('/getSettingsWithUid', async (req,res) => {
+  if (Object.keys(req.body).length > 0){
+      const userData = db.collection("UserSettings").doc("Users").collection(req.body.user);
       const snapshot = await userData.get();
       const list = snapshot.docs.map((doc)=>doc.data());
       res.send(list);

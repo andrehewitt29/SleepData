@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Account from "./pages/Account";
 import AccountCreated from "./pages/AccountCreated";
 import Admin from "./pages/Admin";
+import AdminSearchByValue from "./pages/AdminSearchByValue";
 import AlreadyLoggedIn from './pages/AlreadyLoggedIn';
 import ContactUs from "./pages/ContactUs";
 import DataForm from "./pages/DataForm";
@@ -51,7 +52,7 @@ function App(){
   }, []);*/
 
   // If logged in:
-  if (auth.currentUser != null) {
+  if (isSignedIn == true) {
     // If logged in as Admin:
     if (auth.currentUser.uid == "E3113lutLFfVBcSrQlFJMx9Krti1") {
       return (
@@ -62,6 +63,7 @@ function App(){
           <BrowserRouter>
             <Routes>
               <Route index element={<Admin/>}/>
+              <Route path="AdminSearchByValue" element={<AdminSearchByValue/>}/>
               <Route path="/Settings" element={<Settings/>}/>
               <Route path="/*" element={<Admin/>}/>
             </Routes>
@@ -71,7 +73,6 @@ function App(){
       </div>
       );
     }
-
     return (
       <div>
         <div class="topbar" style={{position: "static"}}/>
@@ -102,38 +103,39 @@ function App(){
     </div>
     );
   }
-  
+  else if(isSignedIn == false){
   // If not logged in:
-  return (
-    <div>
-      <div class="topbar" style={{position: "static"}}/>
-      <Header />
-      <br />
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<Home/>}/>
-          <Route path="/About" element={<About/>}/>
-          <Route path="/Account" element={<NotLoggedIn />}/>
-          <Route path="/ContactUs" element={<ContactUs/>}/>
-          <Route path="/DataForm" element={<NotLoggedIn/>}/>
-          <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
-          <Route path="/Home" element={<Home/>}/>
-          <Route path="/Login" element={<Login/>}/>
-          <Route path="/PasswordReset" element={<PasswordReset/>}/>
-          <Route path="/PersonalData" element={<NotLoggedIn/>}/>
-          <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>}/>
-          <Route path="/RequestMeeting" element={<NotLoggedIn/>}/>
-          <Route path="/Settings" element={<NotLoggedIn/>}/>
-          <Route path="/SignUp" element={<SignUp/>}/>
-          <Route path="/TermsAndConditions" element={<TermsAndConditions/>}/>
-          <Route path="/Reminder" element={<Reminder/>}/>
-          <Route path="/*" element={<NoPage/>}/>
-        </Routes>
-      </BrowserRouter>
-      <br />
-      <Footer />
-  </div>
-  );
+    return (
+      <div>
+        <div class="topbar" style={{position: "static"}}/>
+        <Header />
+        <br />
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Home/>}/>
+            <Route path="/About" element={<About/>}/>
+            <Route path="/Account" element={<NotLoggedIn />}/>
+            <Route path="/ContactUs" element={<ContactUs/>}/>
+            <Route path="/DataForm" element={<NotLoggedIn/>}/>
+            <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
+            <Route path="/Home" element={<Home/>}/>
+            <Route path="/Login" element={<Login/>}/>
+            <Route path="/PasswordReset" element={<PasswordReset/>}/>
+            <Route path="/PersonalData" element={<NotLoggedIn/>}/>
+            <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>}/>
+            <Route path="/RequestMeeting" element={<NotLoggedIn/>}/>
+            <Route path="/Settings" element={<NotLoggedIn/>}/>
+            <Route path="/SignUp" element={<SignUp/>}/>
+            <Route path="/TermsAndConditions" element={<TermsAndConditions/>}/>
+            <Route path="/Reminder" element={<Reminder/>}/>
+            <Route path="/*" element={<NoPage/>}/>
+          </Routes>
+        </BrowserRouter>
+        <br />
+        <Footer />
+    </div>
+    );
+  }
 }
 
 export default App
