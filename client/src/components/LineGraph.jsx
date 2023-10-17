@@ -12,13 +12,12 @@ function LineGraph({ Data, inputDates }) {
 
   if (!Array.isArray(Data) || !Array.isArray(inputDates) || inputDates.length < 3) {
     if(inputDates.length < 3 && inputDates.length > 0){
-      return <div style={{fontSize: "30px", outline:"2px black", alignContent:"center"}}>Need more data to display a graph</div>;
+      return <div style={{fontSize: "25px",color:"red", textAlign:"center"}}>3 or more pieces of data are needed to display a line graph</div>;
     }else{
-      return <div style={{fontSize: "30px", outline:"2px black", alignContent: "center"}}>No Valid Data To Display</div>;
+      return <div style={{fontSize: "25px",color:"red",  textAlign:"center"}}>You do not have any data to display</div>;
     }
     
   }
-
   var newData = Data.map((value, index) => ({
     x: inputDates[index], // Assuming inputDates is an array
     y: parseFloat(value),
@@ -26,7 +25,6 @@ function LineGraph({ Data, inputDates }) {
 
   return (
     <div style={{ width: `${100}%`, height: `${100}%` }}>
-      <h2>Line Graph</h2>
       <VictoryChart
         theme={VictoryTheme.material}
         width={800} // Set the width to make it wider
