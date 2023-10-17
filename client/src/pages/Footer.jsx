@@ -10,6 +10,7 @@ function Footer() {
                 <a href='PrivacyPolicy'>Privacy Policy</a>
                 <a href='TermsAndConditions'>Terms and Conditions</a>
                 <a href='ContactUs'>Contact Us</a>
+                <a href='Reminder'>Subscribe</a>
             </div>
         </footer>
     );
