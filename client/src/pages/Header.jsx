@@ -5,7 +5,7 @@ import { Squash as Hamburger } from 'hamburger-react';
 
 function Header() {
     if (auth.currentUser != null) {
-        if (auth.currentUser.uid == "E3113lutLFfVBcSrQlFJMx9Krti1") {
+        if (auth.currentUser.uid == "TEy2XcxrV8T5yp2GjbtBx8WMPBl2") {
             return (
                 <header class="topbar">
                     <ul id="leftHeader" style={{position:"absolute", padding: "1vh"}}>
