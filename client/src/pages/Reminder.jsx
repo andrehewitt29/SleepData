@@ -18,8 +18,7 @@ export default function Reminder(){
             .then(res=> {
                 if(res.ok){
                     //Good
-                    document.getElementById("text").innerHTML = "Successfult Subsuribe";
-                    console.log("Test Success");
+                    document.getElementById("info").innerHTML = "Subsuribe Success";
                 }
                 else{
                     console.error(res.statusText);
@@ -27,9 +26,8 @@ export default function Reminder(){
             })
         }
         else{
-            document.getElementById("text").innerHTML = "Please insert Email";
+            document.getElementById("info").innerHTML = "Please insert Email";
         }
-        //emailAddress.target.reset();
     }
     return (
         <div class="container-fluid">
@@ -40,8 +38,8 @@ export default function Reminder(){
                     <form class="form-background" onSubmit={addSub}>
                         <input type="email" className="form-control" placeholder="Your Email Address" name="email" required onChange={e=> setEmail(e.target.value)}/>
                         <input type="submit" className="btn btn-primary" value="Subscribe Now"></input>
+                        <h1 id = "info"></h1>
                     </form>
-                    <p id = "text"></p>
                 </div>
                 
                 <div class="col-md-3" />
