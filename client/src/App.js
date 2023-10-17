@@ -95,6 +95,7 @@ function App(){
             <Route path="/Settings" element={<Settings/>}/>
             <Route path="/SignUp" element={<AccountCreated/>}/>
             <Route path="/TermsAndConditions" element={<TermsAndConditions/>}/>
+            <Route path="/Reminder" element={<Reminder/>}/>
             <Route path="/*" element={<NoPage/>}/>
           </Routes>
         </BrowserRouter>
