@@ -20,6 +20,16 @@ function Header() {
                 </header>
             );
         }
+
+        if (window.location.href.split("/").pop().toLowerCase() == "signup") {
+            return (
+                <header class="topbar">
+                    <ul id="leftHeader" style={{position:"absolute", padding: "1vh"}}>
+                        <a href="Home"><img id="logo" src={logo} alt="" style={{position:"absolute"}}/></a>
+                    </ul>
+                </header>
+            );
+        }
     
         return (
             <header class="topbar" onLoad={() => {document.getElementById("burgerContents").hidden = true;}}>

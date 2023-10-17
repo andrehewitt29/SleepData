@@ -13,7 +13,6 @@ function SignUp() {
         try {
             e.preventDefault();
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            console.log(userCredential);
         
             await fetch('http://'+ process.env.REACT_APP_IP_ADDRESS +':5000/api/sleepData/addSettings', {
                 method: 'POST',

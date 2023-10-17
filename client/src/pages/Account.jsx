@@ -75,7 +75,7 @@ function Account() {
             return dataList[0][data];
         }
         else{
-            return "Undefined";
+            return "N/A";
         }
     }
 
@@ -85,11 +85,11 @@ function Account() {
                 return dataList[dataList.length-1][data];
             }
             else{
-                return "Undefined";
+                return "N/A";
             }
         }
         else{
-            return "Undefined";
+            return "N/A";
         }
     }
 

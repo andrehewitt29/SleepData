@@ -2,13 +2,13 @@ import React from 'react';
 
 function Admin() {
     var dataList = "";
-    const fristNameArray = [];
+    const firstNameArray = [];
     const lastNameArray = [];
     const uidArray = [];
 
     async function loadUserUID(){
         //Reset all array
-        fristNameArray.length = 0;
+        firstNameArray.length = 0;
         lastNameArray.length = 0;
         uidArray.length = 0;
         //Get all the UID from db
@@ -44,7 +44,7 @@ function Admin() {
             //Push name to array easy to use
             for(var i =0; i< nameList.length; i++)
             {   
-                fristNameArray.push(nameList[i].firstNameValue);
+                firstNameArray.push(nameList[i].firstNameValue);
                 lastNameArray.push(nameList[i].lastNameValue);
             }
 
@@ -58,49 +58,47 @@ function Admin() {
         pushDataToTable();
     }
 
+    async function setHTMLData(inputUID, nameArrayNum) {
+        var tableContents = "";
+
+        //Use every UID to get every user details
+        var dataJson = await fetch('http://'+ process.env.REACT_APP_IP_ADDRESS +':5000/api/sleepData/getWithUid', {
+        method: 'POST',
+        headers: { 'Content-Type' : 'application/json'},
+        body: JSON.stringify(
+        {"user": inputUID}
+        )}
+        )
+        await dataJson.json().then(result => dataList = result);
+
+        for( var x = 0; x < dataList.length; x++)
+        {
+            //Because every call may return one or more than one datas 
+            //Need to check the varilabe length first to run though all data and push those data to tableContents
+            tableContents = tableContents+"<tr><td>" + firstNameArray[nameArrayNum] + " " + lastNameArray[nameArrayNum] +" </td><td>"+ dataList[x]["userInputDate"] + "</td><td>"+ 
+            dataList[x]["readValue"] + "</td><td>"+ dataList[x]["readNonFictionValue"] + "</td><td>"+ dataList[x]["readEnjoymentValue"] + "</td><td>"+ 
+            dataList[x]["luckValue"] + "</td><td>"+ dataList[x]["wellbeingValue"] + "</td><td>"+ dataList[x]["stressValue"] + "</td><td>"+ 
+            dataList[x]["sleepValue"] + "</td><td>"+ dataList[x]["sleepHourValue"] + "</td><td>"+ dataList[x]["fallAsleepValue"] + "</td><td>"+ 
+            dataList[x]["awakenValue"] + "</td><td>"+ dataList[x]["chronotypeValue"] + "</td><td>"+ dataList[x]["exerciseValue"] + "</td><td>"+ 
+            dataList[x]["snoreValue"] + "</td><td>"+  dataList[x]["partnerSnoreValue"] + "</td><td>"+ dataList[x]["petValue"] + "</td><td>"+ 
+            dataList[x]["addictiveValue"] + "</td><td>"+ dataList[x]["viaBestOneValue"] + "</td><td>"+ dataList[x]["viaBestTwoValue"] + "</td><td>"+ 
+            dataList[x]["viaBestThreeValue"] + "</td><td>"+ dataList[x]["viaBestFourValue"] + "</td><td>"+ dataList[x]["viaBestFiveValue"] + "</td><td>"+ 
+            dataList[x]["viaLowestFiveValue"] + "</td><td>"+ dataList[x]["viaLowestFourValue"] + "</td><td>"+ dataList[x]["viaLowestThreefValue"] + "</td><td>"+ 
+            dataList[x]["viaLowestTwoValue"] + "</td><td>"+  dataList[x]["viaLowestOneValue"] + "</td><td>"+ 
+            dataList[x]["gritValue"] + "</td><td>"+ dataList[x]["gritPercentage"] + "</td><td>"+ dataList[x]["physicalTouchPercentage"] + "</td><td>"+ 
+            dataList[x]["qualityTimePercentage"] + "</td><td>"+ dataList[x]["wordsOfAffirmationPercentage"] + "</td><td>"+ 
+            dataList[x]["actsOfServicePercentage"] + "</td><td>"+ dataList[x]["receivingGiftsPercentage"] + "</td><td>"+ dataList[x]["exerciseValue"] + "</td><td>"+ 
+            dataList[x]["fitnessValue"] + "</td><td>"+ dataList[x]["caffeinatedValue"] + "</td><td>"+ dataList[x]["caffeinatedDateValue"] + "</td><td>"+ 
+            dataList[x]["alcoholValue"] + "</tr>";
+        }
+
+        return tableContents;
+    }
+
     async function pushDataToTable(){
         //Get first name and last name from user input
         var firstNameInput = document.getElementById("userFirstNameInput").value;
         var lastNameInput = document.getElementById("userLastNameInput").value;
-
-        var userInputDate = "userInputDate";
-        var addictiveValue = "addictiveValue";
-        var readEnjoymentValue = "readEnjoymentValue";
-        var fitnessValue = "fitnessValue";
-        var chronotypeValue = "chronotypeValue";
-        var wellbeingValue = "wellbeingValue";
-        var sleepValue = "sleepValue";
-        var viaLowestOneValue = "viaLowestOneValue";
-        var viaLowestThreefValue = "viaLowestThreefValue";       
-        var fallAsleepValue = "fallAsleepValue";
-        var viaBestFourValue = "viaBestFourValue";
-        var luckValue = "luckValue";
-        var exerciseValue = "exerciseValue";
-        var readNonFictionValue = "readNonFictionValue";
-        var partnerSnoreValue = "partnerSnoreValue";
-        var snoreValue = "snoreValue";
-        var receivingGiftsPercentage = "receivingGiftsPercentage";
-        var readValue = "readValue";
-        var gritPercentage = "gritPercentage";
-        var physicalTouchPercentage = "physicalTouchPercentage";
-        var awakenValue = "awakenValue";
-        var gritValue = "gritValue";
-        var alcoholValue = "alcoholValue";
-        var actsOfServicePercentage = "actsOfServicePercentage";
-        var petValue = "petValue";
-        var viaLowestFourValue = "viaLowestFourValue";
-        var viaBestOneValue = "viaBestOneValue";
-        var caffeinatedDateValue = "caffeinatedDateValue";
-        var viaLowestFiveValue = "viaLowestFiveValue";
-        var viaLowestTwoValue = "viaLowestTwoValue";
-        var sleepHourValue = "sleepHourValue";
-        var viaBestThreeValue = "viaBestThreeValue";
-        var viaBestTwoValue = "viaBestTwoValue";
-        var viaBestFiveValue = "viaBestFiveValue";
-        var qualityTimePercentage = "qualityTimePercentage";
-        var caffeinatedValue = "caffeinatedValue";
-        var wordsOfAffirmationPercentage = "wordsOfAffirmationPercentage";
-        var stressValue = "stressValue";
 
         //First row
         var tableContents = "<tr><th>Name</th>"+
@@ -150,40 +148,10 @@ function Admin() {
        var runUIDSelection = -1;
         if(firstNameInput === "" && lastNameInput === "")
         {
-
             for(var y= 0 ; y < uidArray.length; y++)
             {
-             //Use every UID to get every user details
-            var dataJson = await fetch('http://localhost:5000/api/sleepData/getWithUid', {
-                method: 'POST',
-                headers: { 'Content-Type' : 'application/json'},
-                body: JSON.stringify(
-                {"user": uidArray[y]}
-                )}
-                )
-                runUIDSelection++;
-                await dataJson.json().then(result => dataList = result);
-
-                //Because every call may return one or more than one datas 
-                //Need to check the varilabe length first to run though all data and push those data to tableContents
-                for(var x = 0; x < dataList.length; x++)
-                {   
-                    tableContents = tableContents+"<tr><td>" + fristNameArray[runUIDSelection] + " " + lastNameArray[runUIDSelection] +" </td><td>"+ dataList[x][userInputDate] + "</td><td>"+ 
-                    dataList[x][readValue] + "</td><td>"+ dataList[x][readNonFictionValue] + "</td><td>"+ dataList[x][readEnjoymentValue] + "</td><td>"+ 
-                    dataList[x][luckValue] + "</td><td>"+ dataList[x][wellbeingValue] + "</td><td>"+ dataList[x][stressValue] + "</td><td>"+ 
-                    dataList[x][sleepValue] + "</td><td>"+ dataList[x][sleepHourValue] + "</td><td>"+ dataList[x][fallAsleepValue] + "</td><td>"+ 
-                    dataList[x][awakenValue] + "</td><td>"+ dataList[x][chronotypeValue] + "</td><td>"+ dataList[x][exerciseValue] + "</td><td>"+ 
-                    dataList[x][snoreValue] + "</td><td>"+  dataList[x][partnerSnoreValue] + "</td><td>"+ dataList[x][petValue] + "</td><td>"+ 
-                    dataList[x][addictiveValue] + "</td><td>"+ dataList[x][viaBestOneValue] + "</td><td>"+ dataList[x][viaBestTwoValue] + "</td><td>"+ 
-                    dataList[x][viaBestThreeValue] + "</td><td>"+ dataList[x][viaBestFourValue] + "</td><td>"+ dataList[x][viaBestFiveValue] + "</td><td>"+ 
-                    dataList[x][viaLowestFiveValue] + "</td><td>"+ dataList[x][viaLowestFourValue] + "</td><td>"+ dataList[x][viaLowestThreefValue] + "</td><td>"+ 
-                    dataList[x][viaLowestTwoValue] + "</td><td>"+  dataList[x][viaLowestOneValue] + "</td><td>"+ 
-                    dataList[x][gritValue] + "</td><td>"+ dataList[x][gritPercentage] + "</td><td>"+ dataList[x][physicalTouchPercentage] + "</td><td>"+ 
-                    dataList[x][qualityTimePercentage] + "</td><td>"+ dataList[x][wordsOfAffirmationPercentage] + "</td><td>"+ 
-                    dataList[x][actsOfServicePercentage] + "</td><td>"+ dataList[x][receivingGiftsPercentage] + "</td><td>"+ dataList[x][exerciseValue] + "</td><td>"+ 
-                    dataList[x][fitnessValue] + "</td><td>"+ dataList[x][caffeinatedValue] + "</td><td>"+ dataList[x][caffeinatedDateValue] + "</td><td>"+ 
-                    dataList[x][alcoholValue] + "</tr>";
-                }
+                //Use every UID to get every user details
+                tableContents = tableContents + await setHTMLData(uidArray[y], y);
             }
             //Check the result is empty by comapre it
             if (tableContents != initialTableContents) {
@@ -195,39 +163,13 @@ function Admin() {
         //Check both input is match or not
         else if(firstNameInput !== "" && lastNameInput !== "")
         {
-            for(var i = 0; i < fristNameArray.length; i++)
+            for(var i = 0; i < firstNameArray.length; i++)
             {
                 runUIDSelection++;
-                if(fristNameArray[i] === firstNameInput && lastNameArray[i] === lastNameInput)
+                if(firstNameArray[i] === firstNameInput && lastNameArray[i] === lastNameInput)
                 {
-                var dataJson = await fetch('http://localhost:5000/api/sleepData/getWithUid', {
-                method: 'POST',
-                headers: { 'Content-Type' : 'application/json'},
-                body: JSON.stringify(
-                {"user": uidArray[i]}
-                )}
-                )
-                await dataJson.json().then(result => dataList = result);
-
-                for( x = 0; x < dataList.length; x++)
-                {
-                    
-                    tableContents = tableContents+"<tr><td>" + fristNameArray[runUIDSelection] + " " + lastNameArray[runUIDSelection] +" </td><td>"+ dataList[x][userInputDate] + "</td><td>"+ 
-                    dataList[x][readValue] + "</td><td>"+ dataList[x][readNonFictionValue] + "</td><td>"+ dataList[x][readEnjoymentValue] + "</td><td>"+ 
-                    dataList[x][luckValue] + "</td><td>"+ dataList[x][wellbeingValue] + "</td><td>"+ dataList[x][stressValue] + "</td><td>"+ 
-                    dataList[x][sleepValue] + "</td><td>"+ dataList[x][sleepHourValue] + "</td><td>"+ dataList[x][fallAsleepValue] + "</td><td>"+ 
-                    dataList[x][awakenValue] + "</td><td>"+ dataList[x][chronotypeValue] + "</td><td>"+ dataList[x][exerciseValue] + "</td><td>"+ 
-                    dataList[x][snoreValue] + "</td><td>"+  dataList[x][partnerSnoreValue] + "</td><td>"+ dataList[x][petValue] + "</td><td>"+ 
-                    dataList[x][addictiveValue] + "</td><td>"+ dataList[x][viaBestOneValue] + "</td><td>"+ dataList[x][viaBestTwoValue] + "</td><td>"+ 
-                    dataList[x][viaBestThreeValue] + "</td><td>"+ dataList[x][viaBestFourValue] + "</td><td>"+ dataList[x][viaBestFiveValue] + "</td><td>"+ 
-                    dataList[x][viaLowestFiveValue] + "</td><td>"+ dataList[x][viaLowestFourValue] + "</td><td>"+ dataList[x][viaLowestThreefValue] + "</td><td>"+ 
-                    dataList[x][viaLowestTwoValue] + "</td><td>"+  dataList[x][viaLowestOneValue] + "</td><td>"+ 
-                    dataList[x][gritValue] + "</td><td>"+ dataList[x][gritPercentage] + "</td><td>"+ dataList[x][physicalTouchPercentage] + "</td><td>"+ 
-                    dataList[x][qualityTimePercentage] + "</td><td>"+ dataList[x][wordsOfAffirmationPercentage] + "</td><td>"+ 
-                    dataList[x][actsOfServicePercentage] + "</td><td>"+ dataList[x][receivingGiftsPercentage] + "</td><td>"+ dataList[x][exerciseValue] + "</td><td>"+ 
-                    dataList[x][fitnessValue] + "</td><td>"+ dataList[x][caffeinatedValue] + "</td><td>"+ dataList[x][caffeinatedDateValue] + "</td><td>"+ 
-                    dataList[x][alcoholValue] + "</tr>";
-                }
+                    //Use every UID to get every user details
+                    tableContents = tableContents + await setHTMLData(uidArray[i], runUIDSelection);
                 }
             }
             //Check the result is empty by comapre it
@@ -241,39 +183,13 @@ function Admin() {
         //Check firstNameInput is not empty and lastNameInput is empty
         else if(firstNameInput !== "" && lastNameInput === "")
         {
-            for(i = 0; i < fristNameArray.length; i++)
+            for(i = 0; i < firstNameArray.length; i++)
             {
                 runUIDSelection++;
-                if(fristNameArray[i] === firstNameInput)
+                if(firstNameArray[i] === firstNameInput)
                 {
-                var dataJson = await fetch('http://localhost:5000/api/sleepData/getWithUid', {
-                method: 'POST',
-                headers: { 'Content-Type' : 'application/json'},
-                body: JSON.stringify(
-                {"user": uidArray[i]}
-                )}
-                )
-                await dataJson.json().then(result => dataList = result);
-
-                for( x = 0; x < dataList.length; x++)
-                {
-                    
-                    tableContents = tableContents+"<tr><td>" + fristNameArray[runUIDSelection] + " " + lastNameArray[runUIDSelection] +" </td><td>"+ dataList[x][userInputDate] + "</td><td>"+ 
-                    dataList[x][readValue] + "</td><td>"+ dataList[x][readNonFictionValue] + "</td><td>"+ dataList[x][readEnjoymentValue] + "</td><td>"+ 
-                    dataList[x][luckValue] + "</td><td>"+ dataList[x][wellbeingValue] + "</td><td>"+ dataList[x][stressValue] + "</td><td>"+ 
-                    dataList[x][sleepValue] + "</td><td>"+ dataList[x][sleepHourValue] + "</td><td>"+ dataList[x][fallAsleepValue] + "</td><td>"+ 
-                    dataList[x][awakenValue] + "</td><td>"+ dataList[x][chronotypeValue] + "</td><td>"+ dataList[x][exerciseValue] + "</td><td>"+ 
-                    dataList[x][snoreValue] + "</td><td>"+  dataList[x][partnerSnoreValue] + "</td><td>"+ dataList[x][petValue] + "</td><td>"+ 
-                    dataList[x][addictiveValue] + "</td><td>"+ dataList[x][viaBestOneValue] + "</td><td>"+ dataList[x][viaBestTwoValue] + "</td><td>"+ 
-                    dataList[x][viaBestThreeValue] + "</td><td>"+ dataList[x][viaBestFourValue] + "</td><td>"+ dataList[x][viaBestFiveValue] + "</td><td>"+ 
-                    dataList[x][viaLowestFiveValue] + "</td><td>"+ dataList[x][viaLowestFourValue] + "</td><td>"+ dataList[x][viaLowestThreefValue] + "</td><td>"+ 
-                    dataList[x][viaLowestTwoValue] + "</td><td>"+  dataList[x][viaLowestOneValue] + "</td><td>"+ 
-                    dataList[x][gritValue] + "</td><td>"+ dataList[x][gritPercentage] + "</td><td>"+ dataList[x][physicalTouchPercentage] + "</td><td>"+ 
-                    dataList[x][qualityTimePercentage] + "</td><td>"+ dataList[x][wordsOfAffirmationPercentage] + "</td><td>"+ 
-                    dataList[x][actsOfServicePercentage] + "</td><td>"+ dataList[x][receivingGiftsPercentage] + "</td><td>"+ dataList[x][exerciseValue] + "</td><td>"+ 
-                    dataList[x][fitnessValue] + "</td><td>"+ dataList[x][caffeinatedValue] + "</td><td>"+ dataList[x][caffeinatedDateValue] + "</td><td>"+ 
-                    dataList[x][alcoholValue] + "</tr>";
-                }
+                    //Use every UID to get every user details
+                    tableContents = tableContents + await setHTMLData(uidArray[i], runUIDSelection);
                 }
             }
             //Check the result is empty by comapre it
@@ -292,34 +208,8 @@ function Admin() {
                 runUIDSelection++;
                 if(lastNameArray[i] === lastNameInput)
                 {
-                var dataJson = await fetch('http://localhost:5000/api/sleepData/getWithUid', {
-                method: 'POST',
-                headers: { 'Content-Type' : 'application/json'},
-                body: JSON.stringify(
-                {"user": uidArray[i]}
-                )}
-                )
-                await dataJson.json().then(result => dataList = result);
-
-                for( x = 0; x < dataList.length; x++)
-                {
-                    
-                    tableContents = tableContents+"<tr><td>" + fristNameArray[runUIDSelection] + " " + lastNameArray[runUIDSelection] +" </td><td>"+ dataList[x][userInputDate] + "</td><td>"+ 
-                    dataList[x][readValue] + "</td><td>"+ dataList[x][readNonFictionValue] + "</td><td>"+ dataList[x][readEnjoymentValue] + "</td><td>"+ 
-                    dataList[x][luckValue] + "</td><td>"+ dataList[x][wellbeingValue] + "</td><td>"+ dataList[x][stressValue] + "</td><td>"+ 
-                    dataList[x][sleepValue] + "</td><td>"+ dataList[x][sleepHourValue] + "</td><td>"+ dataList[x][fallAsleepValue] + "</td><td>"+ 
-                    dataList[x][awakenValue] + "</td><td>"+ dataList[x][chronotypeValue] + "</td><td>"+ dataList[x][exerciseValue] + "</td><td>"+ 
-                    dataList[x][snoreValue] + "</td><td>"+  dataList[x][partnerSnoreValue] + "</td><td>"+ dataList[x][petValue] + "</td><td>"+ 
-                    dataList[x][addictiveValue] + "</td><td>"+ dataList[x][viaBestOneValue] + "</td><td>"+ dataList[x][viaBestTwoValue] + "</td><td>"+ 
-                    dataList[x][viaBestThreeValue] + "</td><td>"+ dataList[x][viaBestFourValue] + "</td><td>"+ dataList[x][viaBestFiveValue] + "</td><td>"+ 
-                    dataList[x][viaLowestFiveValue] + "</td><td>"+ dataList[x][viaLowestFourValue] + "</td><td>"+ dataList[x][viaLowestThreefValue] + "</td><td>"+ 
-                    dataList[x][viaLowestTwoValue] + "</td><td>"+  dataList[x][viaLowestOneValue] + "</td><td>"+ 
-                    dataList[x][gritValue] + "</td><td>"+ dataList[x][gritPercentage] + "</td><td>"+ dataList[x][physicalTouchPercentage] + "</td><td>"+ 
-                    dataList[x][qualityTimePercentage] + "</td><td>"+ dataList[x][wordsOfAffirmationPercentage] + "</td><td>"+ 
-                    dataList[x][actsOfServicePercentage] + "</td><td>"+ dataList[x][receivingGiftsPercentage] + "</td><td>"+ dataList[x][exerciseValue] + "</td><td>"+ 
-                    dataList[x][fitnessValue] + "</td><td>"+ dataList[x][caffeinatedValue] + "</td><td>"+ dataList[x][caffeinatedDateValue] + "</td><td>"+ 
-                    dataList[x][alcoholValue] + "</tr>";
-                }
+                    //Use every UID to get every user details
+                    tableContents = tableContents + await setHTMLData(uidArray[i], runUIDSelection);
                 }
             }
             //Check the result is empty by comapre it
@@ -333,8 +223,6 @@ function Admin() {
 
         document.getElementById("info").innerHTML = "";
         document.getElementById("resultsBlock").hidden = false;
-
-        
     }
 
     return (
