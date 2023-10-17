@@ -54,7 +54,7 @@ function App(){
   // If logged in:
   if (isSignedIn == true) {
     // If logged in as Admin:
-    if (auth.currentUser.uid == "TEy2XcxrV8T5yp2GjbtBx8WMPBl2") {
+    if (auth.currentUser.uid == process.env.REACT_APP_ADMIN_ID) {
       return (
         <div>
           <div class="topbar" style={{position: "static"}}/>
