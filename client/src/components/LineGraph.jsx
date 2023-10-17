@@ -10,8 +10,13 @@ import {
 function LineGraph({ Data, inputDates }) {
   // Check if Data is an array before using map
 
-  if (!Array.isArray(Data) || !Array.isArray(inputDates)) {
-    return <div>No Valid Data To Display</div>;
+  if (!Array.isArray(Data) || !Array.isArray(inputDates) || inputDates.length < 3) {
+    if(inputDates.length < 3 && inputDates.length > 0){
+      return <div style={{fontSize: "30px", outline:"2px black", alignContent:"center"}}>Need more data to display a graph</div>;
+    }else{
+      return <div style={{fontSize: "30px", outline:"2px black", alignContent: "center"}}>No Valid Data To Display</div>;
+    }
+    
   }
 
   var newData = Data.map((value, index) => ({
