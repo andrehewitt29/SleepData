@@ -2,6 +2,7 @@ const express = require('express');
 const request = require('request');
 const bodyParser = require('body-parser');
 const path = require('path');
+require('dotenv').config();
 
 const app = express();
 
@@ -13,9 +14,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.post('/subscribe', (req, res) =>{
-    //console.log('hey!');
     const {email, js} = req.body;
-    console.log(req.body);
 
     const mcData = {
         members: [{
@@ -30,7 +29,8 @@ app.post('/subscribe', (req, res) =>{
         url: 'https://us8.api.mailchimp.com/3.0/lists/3576522b16',
         method: 'POST',
         headers: {
-            Authorization: 'auth bcd90c415bd26776a9c707b50ec7b52b-us8'
+            Authorization: process.env.REACT_APP_EMAIL_AUTH 
+
         },
         body: mcDataPost
     }
@@ -42,7 +42,7 @@ app.post('/subscribe', (req, res) =>{
                 if(js){
                     res.sendStatus(200);
                 }else{
-                    res.redirect('/success.html')
+                    res.status(404).send({message: 'Failed'})
                 }
             }
         })

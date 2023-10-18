@@ -13,9 +13,8 @@ function SignUp() {
         try {
             e.preventDefault();
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            console.log(userCredential);
         
-            await fetch('http://localhost:5000/api/sleepData/addSettings', {
+            await fetch('http://'+ process.env.REACT_APP_IP_ADDRESS +':5000/api/sleepData/addSettings', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(
@@ -30,7 +29,7 @@ function SignUp() {
                     )
             })
 
-            await fetch('http://localhost:5000/api/sleepData/addPersonal', {
+            await fetch('http://'+ process.env.REACT_APP_IP_ADDRESS +':5000/api/sleepData/addPersonal', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(

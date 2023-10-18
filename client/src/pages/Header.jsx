@@ -5,7 +5,7 @@ import { Squash as Hamburger } from 'hamburger-react';
 
 function Header() {
     if (auth.currentUser != null) {
-        if (auth.currentUser.uid == "E3113lutLFfVBcSrQlFJMx9Krti1") {
+        if (auth.currentUser.uid == process.env.REACT_APP_ADMIN_ID) {
             return (
                 <header class="topbar">
                     <ul id="leftHeader" style={{position:"absolute", padding: "1vh"}}>
@@ -16,6 +16,16 @@ function Header() {
                         <a href="AdminSearchByValue" class="headlink" id="Search"><li>Value Search</li></a>
                         <a href="Settings" class="headlink" id="settings"><li>Settings</li></a>
                         <a href="Home" class="headlink" id="logout" onClick={() => auth.signOut()}><li>Log Out</li></a>
+                    </ul>
+                </header>
+            );
+        }
+
+        if (window.location.href.split("/").pop().toLowerCase() == "signup") {
+            return (
+                <header class="topbar">
+                    <ul id="leftHeader" style={{position:"absolute", padding: "1vh"}}>
+                        <a href="Home"><img id="logo" src={logo} alt="" style={{position:"absolute"}}/></a>
                     </ul>
                 </header>
             );

@@ -20,6 +20,8 @@ Discord: Project-repo</br>
 
 SleepData\server> npm i express</br>
 SleepData\server> npm i nodemon -D</br>
+SleepData\server> npm i cors</br>
+SleepData\server> npm i firebase-admin</br>
 SleepData\server> npm install --save-dev http-proxy-middleware</br>
 SleepData\server> npm run Dev
 

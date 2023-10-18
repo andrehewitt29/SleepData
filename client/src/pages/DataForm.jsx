@@ -7,7 +7,7 @@ function DataForm() {
 
     // When the submit button is clicked, send all form data as well as the signed in user ID to the backend
     function SubmitClicked() {
-        fetch('http://localhost:5000/api/sleepData/add', {
+        fetch('http://'+ process.env.REACT_APP_IP_ADDRESS +':5000/api/sleepData/add', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(
@@ -58,7 +58,7 @@ function DataForm() {
 
     // Loads and shows the user's data
     async function loadData() {
-        var dataJson = await fetch('http://localhost:5000/api/sleepData/', {
+        var dataJson = await fetch('http://'+ process.env.REACT_APP_IP_ADDRESS +':5000/api/sleepData/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(

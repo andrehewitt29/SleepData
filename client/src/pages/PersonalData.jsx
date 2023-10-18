@@ -9,7 +9,7 @@ function PersonalData() {
 
     // Loads and shows the user's data
     async function loadData() {
-        var dataJson = await fetch('http://localhost:5000/api/sleepData/personal', {
+        var dataJson = await fetch('http://'+ process.env.REACT_APP_IP_ADDRESS +':5000/api/sleepData/personal', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(
@@ -33,7 +33,7 @@ function PersonalData() {
 
     async function SubmitClicked() {
         if (await verifyPassword("update")) {
-            await fetch('http://localhost:5000/api/sleepData/addPersonal', {
+            await fetch('http://'+ process.env.REACT_APP_IP_ADDRESS +':5000/api/sleepData/addPersonal', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(

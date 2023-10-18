@@ -8,7 +8,7 @@ function Settings() {
 
     // Loads and shows the user's data
     async function loadData() {
-        var dataJson = await fetch('http://localhost:5000/api/sleepData/settings', {
+        var dataJson = await fetch('http://'+ process.env.REACT_APP_IP_ADDRESS +':5000/api/sleepData/settings', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(
@@ -29,7 +29,7 @@ function Settings() {
 
     async function SubmitClicked() {
         if (await verifyPassword()) {
-            await fetch('http://localhost:5000/api/sleepData/addSettings', {
+            await fetch('http://'+ process.env.REACT_APP_IP_ADDRESS +':5000/api/sleepData/addSettings', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(
@@ -100,7 +100,7 @@ function Settings() {
 
     async function deleteAccount() {
         if (await verifyPassword()) {
-            await fetch('http://localhost:5000/api/sleepData/removeUser', {
+            await fetch('http://'+ process.env.REACT_APP_IP_ADDRESS +':5000/api/sleepData/removeUser', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(

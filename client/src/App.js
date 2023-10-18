@@ -54,7 +54,7 @@ function App(){
   // If logged in:
   if (isSignedIn == true) {
     // If logged in as Admin:
-    if (auth.currentUser.uid == "E3113lutLFfVBcSrQlFJMx9Krti1") {
+    if (auth.currentUser.uid == process.env.REACT_APP_ADMIN_ID) {
       return (
         <div>
           <div class="topbar" style={{position: "static"}}/>
@@ -95,6 +95,7 @@ function App(){
             <Route path="/Settings" element={<Settings/>}/>
             <Route path="/SignUp" element={<AccountCreated/>}/>
             <Route path="/TermsAndConditions" element={<TermsAndConditions/>}/>
+            <Route path="/Reminder" element={<Reminder/>}/>
             <Route path="/*" element={<NoPage/>}/>
           </Routes>
         </BrowserRouter>

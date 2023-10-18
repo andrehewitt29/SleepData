@@ -22,7 +22,7 @@ function Account() {
 
     // Loads and shows the user's data
     async function loadData() {
-        var dataJson = await fetch('http://localhost:5000/api/sleepData/', {
+        var dataJson = await fetch('http://'+ process.env.REACT_APP_IP_ADDRESS +':5000/api/sleepData/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(
@@ -33,7 +33,7 @@ function Account() {
 
         await dataJson.json().then(result => dataList = result);
 
-        var settingsDataJson = await fetch('http://localhost:5000/api/sleepData/settings', {
+        var settingsDataJson = await fetch('http://'+ process.env.REACT_APP_IP_ADDRESS +':5000/api/sleepData/settings', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(
@@ -75,7 +75,7 @@ function Account() {
             return dataList[0][data];
         }
         else{
-            return "Undefined";
+            return "N/A";
         }
     }
 
@@ -85,11 +85,11 @@ function Account() {
                 return dataList[dataList.length-1][data];
             }
             else{
-                return "Undefined";
+                return "N/A";
             }
         }
         else{
-            return "Undefined";
+            return "N/A";
         }
     }
 
